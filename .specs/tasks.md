@@ -1,0 +1,22 @@
+# Bounded delivery tasks
+
+Owner: repository maintainer implementation through professional-coder. Status before implementation: READY. Invariant: no source execution, external transfer, silent overwrites, or missing coverage represented as a clean result.
+
+| Task | Requirement | Component | Acceptance command |
+|---|---|---|---|
+| T01 | SEC-001 | inventory, report schema, egress leads | python -m unittest tests.test_audits -v |
+| T02 | SEC-002 | dependency and hook inspection | python -m unittest tests.test_audits -v |
+| T03 | SEC-003 | MCP authority inspection | python -m unittest tests.test_audits -v |
+| T04 | SEC-004 | local exposure review | python -m unittest tests.test_audits -v |
+| T05 | SEC-005 | authorization scope validation | python -m unittest tests.test_workflows -v |
+| T06 | SEC-006 | local content snapshot comparisons | python -m unittest tests.test_workflows -v |
+| T07 | SEC-007 | offline injection cases and response grading | python -m unittest tests.test_workflows -v |
+| T08 | SEC-008 | synthetic canary route interpretation | python -m unittest tests.test_workflows -v |
+| T09 | SEC-009 | restricted container plan generation | python -m unittest tests.test_workflows -v |
+| T10 | SEC-010 | reproducible report archive and verification | python -m unittest tests.test_evidence -v |
+| T11 | SEC-011 | portable standalone skill bundles and installer | python -m unittest tests.test_portability -v |
+| T12 | SEC-012 | bounded summaries and size benchmark | python scripts/benchmark_reports.py |
+
+Implementation records and final validation belong in evidence.md and 01-requirements/traceability.md. Commands are run from the repository root. The task status is updated only after executable evidence exists.
+
+Local delivery status: T01 through T12 verified by the executable evidence in evidence.md. External CI is a separate gate attached to the pushed head revision.

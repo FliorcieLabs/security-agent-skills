@@ -1,0 +1,52 @@
+[
+  {
+    "name": "agent-egress-audit",
+    "command": "egress",
+    "description": "Audit agent packages for outbound clients, tracking indicators, sensitive input access, and execution hooks before installation."
+  },
+  {
+    "name": "dependency-provenance-audit",
+    "command": "dependencies",
+    "description": "Review local manifests, lockfiles, lifecycle hooks, and dependency provenance without installing packages."
+  },
+  {
+    "name": "mcp-authority-review",
+    "command": "mcp",
+    "description": "Review MCP configuration for remote routing, shell launch authority, credentials, and tool restrictions."
+  },
+  {
+    "name": "security-exposure-review",
+    "command": "exposure",
+    "description": "Find local application security review leads and map them to reachable trust boundaries."
+  },
+  {
+    "name": "authorized-appsec-validation",
+    "command": "appsec-plan",
+    "description": "Validate an explicit authorization and budget document before bounded application security testing."
+  },
+  {
+    "name": "agent-package-change-sentinel",
+    "command": "compare",
+    "description": "Compare local package snapshots for content changes and newly observed capabilities before upgrades."
+  },
+  {
+    "name": "prompt-injection-boundary-lab",
+    "command": "injection-lab",
+    "description": "Generate offline synthetic prompt-injection cases and grade supplied structured agent response records."
+  },
+  {
+    "name": "secret-route-mapper",
+    "command": "routes",
+    "description": "Interpret synthetic canary route records without reading or transmitting real credentials."
+  },
+  {
+    "name": "safe-install-sandbox",
+    "command": "sandbox-plan",
+    "description": "Produce a restricted Docker execution plan for inspecting untrusted installers in a disposable environment."
+  },
+  {
+    "name": "security-evidence-pack",
+    "command": "pack",
+    "description": "Pack and verify reproducible local security reports with hashes, limited export fields, and explicit provenance limits."
+  }
+]
