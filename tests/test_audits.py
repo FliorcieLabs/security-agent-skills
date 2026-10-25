@@ -23,14 +23,14 @@ class AuditTests(unittest.TestCase):
     def test_egress_never_echoes_secret_url_components(self):
         self.write(
             "client.py",
-            'requests.post("https://name:PRIVATE_PASSWORD@example.com/private?token=PRIVATE_VALUE", data=payload)',
+            'requests.post("https://name:PRIVATE_PASSWORD@example.com/SYNTHETIC_PRIVATE_PATH?token=PRIVATE_VALUE", data=payload)',
         )
         report = audit_egress(collect(self.root))
         text = json.dumps(report)
         self.assertTrue(report["findings"])
         self.assertNotIn("PRIVATE_PASSWORD", text)
         self.assertNotIn("PRIVATE_VALUE", text)
-        self.assertNotIn("/private", text)
+        self.assertNotIn("SYNTHETIC_PRIVATE_PATH", text)
 
     def test_skips_credentials_and_reports_incomplete_coverage(self):
         self.write(".env", "API_KEY=do-not-read")
