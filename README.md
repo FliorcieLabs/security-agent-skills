@@ -1,5 +1,7 @@
 # Security Agent Skills
 
+![Security Agent Skills: a circuit-node shield on a dark navy background](docs/assets/security/security-banner.png)
+
 **Know what an AI agent can read, run, and send.**
 
 [![Quality](https://github.com/FliorcieLabs/security-agent-skills/actions/workflows/quality.yml/badge.svg?branch=integ)](https://github.com/FliorcieLabs/security-agent-skills/actions/workflows/quality.yml?query=branch%3Ainteg)
@@ -9,6 +11,10 @@
 Fifteen local security skills and five portable agent profiles for reviewing AI tooling and the projects it touches. Inspect unfamiliar skills, review MCP authority, compare upgrades, or check CI, containers, infrastructure, and LLM data settings before granting access.
 
 **No API key. No runtime Python dependencies. No telemetry. No source upload.** Analysis helpers read bounded local inputs without importing or executing reviewed code.
+
+[Quick start](#start-with-one-folder) · [Demo](#see-a-local-review) · [15 skills](#choose-the-security-question) · [Install](#install-for-your-assistant) · [5 agents](#five-portable-security-agents) · [Report contract](#one-result-contract) · [Limits](#privacy-and-limits) · [Contribute](CONTRIBUTING.md)
+
+Use it before installing an unfamiliar agent package, granting an MCP server access, accepting a dependency change, or sharing a security finding. Start with one question and one skill. Review the referenced source before deciding what to allow or fix.
 
 ## Start with one folder
 
@@ -22,15 +28,25 @@ python scripts/security_check.py egress ../my-project --format markdown --max-fi
 
 Replace `../my-project` with an existing project folder. Python 3.11+ is required; use `python3` or `py -3` if that is your interpreter command. Static scans return **exit 3, PARTIAL**, including when they find no indicators. This is an intentional evidence status, not a crashed command.
 
-```text
-Local project or agent package
-             |
-     Bounded static helper
-             |
- Fixed review leads + visible coverage
-             |
- Human or AI reviews relevant source lines
-```
+## See a local review
+
+![Animated synthetic egress review: inspect inert text, find three review leads, show two with one omitted, report one skipped file, and retain PARTIAL coverage](docs/assets/security/security-demo.gif)
+
+**Synthetic inputs, actual CLI results.** This rendered summary shows the egress helper inspecting inert source-like text. It finds sensitive input access, a network client call, and a process execution boundary. The console is limited to two findings; the full report retains all three. A synthetic `.env` file is skipped. No fixture code runs and no outbound request is made.
+
+Prefer a still image? [Open the PNG sample](docs/assets/security/security-demo.png). Read the [text walkthrough](docs/assets/security/README.md), [compact JSON](docs/assets/security/demo-compact.json), or [full JSON](docs/assets/security/demo-report.json). The demo is a presentation of one local scan, not a recording of an AI assistant or a confirmed attack.
+
+### Pick a review path
+
+| Your task | Start here | Follow with |
+|---|---|---|
+| Adopt a new skill or agent | Agent Egress Audit | Instruction Boundary Audit and Dependency Provenance Audit |
+| Grant an MCP server access | MCP Authority Review | Agent Egress Audit for the server package |
+| Review a deployment change | CI Workflow Security Audit | Container Boundary Audit or Infrastructure Exposure Audit |
+| Check AI data settings | LLM Data Boundary Audit | Trace the flagged endpoint or capture setting in the source |
+| Review a package upgrade | Agent Package Change Sentinel | A focused audit of the changed files |
+
+Each path narrows the next decision. It does not combine the results into a safety score.
 
 ## Choose the security question
 
@@ -102,6 +118,8 @@ Deterministic local work, one relevant skill, references opened on demand, and f
 
 The [synthetic benchmark](docs/report-benchmark.md) measured **78,487 to 1,157 `cl100k_base` tokens**, a **98.53% reduction** when compacting a 1,000-finding fixture to twenty visible findings. This measures serialization, not real-project savings, model quality, or billing. Full evidence remains available separately.
 
+Keep a follow-up small: pass the saved report, relevant finding IDs, and the source lines needed to resolve them. Raise `--max-findings` when a decision needs more evidence. An omitted finding remains unresolved until reviewed.
+
 ## One result contract
 
 Every report uses [`security-agent-skills/report-v1`](schemas/report-v1.schema.json), retaining workflow, scope, findings, coverage, limitations, and details. Findings have stable IDs, rule names, source locations, and confidence. Lexical matches are review leads, not confirmed vulnerabilities.
@@ -114,6 +132,8 @@ Every report uses [`security-agent-skills/report-v1`](schemas/report-v1.schema.j
 | `3` | PARTIAL | Evidence is incomplete or the operation is static. |
 
 Agent profiles use Result, Findings, Coverage, Validation, and Remaining. Passing package tests does not turn a partially inspected target into a safe target.
+
+For example, the [demo's compact report](docs/assets/security/demo-compact.json) keeps `finding_count: 3`, `omitted_findings: 1`, and `runtime_observed: false` together. A short report still tells the reviewer what remains unseen.
 
 ## Privacy and limits
 
@@ -139,6 +159,8 @@ python scripts/benchmark_reports.py
 Tests cover scanner boundaries, source non-execution, output privacy, incomplete coverage, no-overwrite installation, archive integrity, and installed-helper subprocesses across all four directory layouts. CI runs Python 3.11 and 3.14 on Linux, Windows, and macOS. These tests do not establish interactive recognition or decision quality inside every AI product.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for lint, types, formatting, build, and installed-wheel checks, [SECURITY.md](SECURITY.md) for vulnerability reporting, and [.specs](.specs/README.md) for requirements and evidence.
+
+Documentation artwork and demo sources live in [docs/assets/security](docs/assets/security/README.md). They are local assets, so the README does not depend on a third-party GIF host. The optional Pillow renderer is for documentation authors only; it is not a runtime dependency.
 
 `integ` is the development branch. `main` requires review and passing CI, including for administrators. No release or merge is automatic.
 

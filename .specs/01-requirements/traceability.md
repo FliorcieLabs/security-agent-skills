@@ -19,4 +19,4 @@
 | SEC-015 | container-boundary-audit | extended_audits.py | test_extended_audits, test_installed_workflows; see ../evidence.md |
 | SEC-016 | infrastructure-exposure-audit | extended_audits.py | test_extended_audits, test_installed_workflows; see ../evidence.md |
 | SEC-017 | llm-data-boundary-audit | extended_audits.py | test_extended_audits, test_installed_workflows; see ../evidence.md |
-| SEC-018 | Five portable Markdown agent profiles, bundled references, and usage documentation | agents/, docs/agents.md, scripts/build_skills.py | validate_skills, test_installed_workflows; see ../evidence.md |
+| SEC-018 | Five portable Markdown agent profiles, bundled references, and usage documentation | agents/, docs/agents.md, README.md, docs/assets/security/, scripts/build_skills.py | validate_skills, test_installed_workflows, T19 presentation checks; see ../evidence.md |

@@ -32,3 +32,19 @@ The Quality workflow defines Linux, Windows, and macOS runs on Python 3.11 and 3
 ## Limits
 
 Static scanners emit review leads and preserve PARTIAL. No live CVE lookup, package execution, real secret collection, active penetration testing, model-provider request, packet capture, or container sandbox execution was performed. Sandbox output is a plan, and synthetic route events are supplied observations. Archive consistency is not external truth or authenticity. No universal security, interactive host compatibility, billing savings, or adoption claim is made.
+
+## T19 README presentation checks
+
+Scope: README navigation and review paths, original PNG banner, a five-frame animated example, static PNG alternative, text walkthrough, normalized JSON examples, and an optional documentation renderer. Product helpers and skill bundles are unchanged. The decorative banner was generated using a visual prompt only; its exact prompt is in docs/assets/security/README.md. This documentation asset generation is separate from analysis CLI behavior.
+
+- `python docs/assets/security/render_demo.py`: PASS. Actual egress CLI invocation on inert synthetic text returned PARTIAL, exit 3, three expected rules, two console findings, and one omitted finding. Coverage shows one text file read, one credential filename excluded, and runtime_observed false. The renderer asserts these values. Only the temporary scope path is normalized in committed reports. Fixture and report text use LF line endings.
+- `python -m unittest discover -s tests -t . -v`: PASS, 49 tests in 14.705 seconds.
+- `python scripts/validate_skills.py`: PASS, 15 skills and 5 agent profiles.
+- `python scripts/build_skills.py --check`: PASS, 245 generated files unchanged.
+- `python scripts/validate_specs.py`: PASS, 18 requirements mapped.
+- `python -m ruff check docs/assets/security/render_demo.py` and `python -m black --check --workers 1 docs/assets/security/render_demo.py`: PASS.
+- README and media-guide relative links: 48 file/directory targets resolved. Navigation anchors match README headings. New Markdown contains no em or en dashes.
+- Pillow decode and verification: banner 2172 x 724, static demo 1120 x 650, GIF 1120 x 650 with five frames and 15,600 ms loop duration. All five frames were visually inspected. The GIF is a rendered summary, not a screen recording. Static and text alternatives are linked.
+- `git diff --check`: PASS. No runtime dependency, installer change, new skill, package publication, or protected-main merge is part of T19.
+
+The first renderer attempt could not create a fixture subdirectory in the restricted sandbox's temporary directory. The same renderer succeeded with normal temporary-directory access. No filesystem permission workaround was added to the project.

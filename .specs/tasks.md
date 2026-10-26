@@ -37,3 +37,9 @@ Owner: primary implementation agent. Status before implementation: READY. Keep l
 Acceptance also requires subprocess execution of all fifteen installed helpers in all four host directory layouts, no overwrites, source-to-bundle parity, and existing quality checks. Native interactive recognition on every AI platform is not an acceptance claim.
 
 Local expansion status: T13 through T18 verified by the 49-test suite, skill validation, deterministic bundles, lint/type/format checks, and package smoke evidence. Remote checks apply to the pushed head and are reported in the PR.
+
+## README presentation
+
+T19, SEC-018. Owner: primary implementation agent. Status: READY. Scope: README navigation, original security artwork, and an animated CLI example. Invariant: the example uses synthetic inputs, shows actual helper results and incomplete coverage, and makes no new security or platform claims. Acceptance: relative Markdown links and media decode; demonstration output matches a fresh CLI run; all existing tests and bundle validators pass. Record executed evidence in evidence.md.
+
+Local T19 status: VERIFIED by the README presentation checks in evidence.md. Remote checks apply to the pushed head.
