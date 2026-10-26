@@ -43,3 +43,19 @@ Local expansion status: T13 through T18 verified by the 49-test suite, skill val
 T19, SEC-018. Owner: primary implementation agent. Status: READY. Scope: README navigation, original security artwork, and an animated CLI example. Invariant: the example uses synthetic inputs, shows actual helper results and incomplete coverage, and makes no new security or platform claims. Acceptance: relative Markdown links and media decode; demonstration output matches a fresh CLI run; all existing tests and bundle validators pass. Record executed evidence in evidence.md.
 
 Local T19 status: VERIFIED by the README presentation checks in evidence.md. Remote checks apply to the pushed head.
+
+## Internal agent operations
+
+Owner: primary implementation agent. Status before implementation: READY. Invariant: validate bounded local records without executing actions, changing host permissions, delegating agents, or representing declared records as runtime truth. Every helper keeps the report contract and source-verification limits visible.
+
+| Task | Requirement | Component | Acceptance command |
+|---|---|---|---|
+| T20 | SEC-019 | agent-task-planner: dependency graph, ownership, step budget | python -m unittest tests.test_internal_operations -v |
+| T21 | SEC-020 | agent-handoff-review: authority subset and completion evidence | python -m unittest tests.test_internal_operations -v |
+| T22 | SEC-021 | agent-context-checkpoint: bounded references with mandatory context preserved | python -m unittest tests.test_internal_operations -v |
+| T23 | SEC-022 | agent-tool-preflight: declared policy comparison without a permission grant | python -m unittest tests.test_internal_operations -v |
+| T24 | SEC-023 | agent-retry-guard: stop conditions and ambiguous-write reconciliation | python -m unittest tests.test_internal_operations -v |
+
+Integration acceptance: all twenty installed helpers run outside the checkout in all four host layouts; source-to-bundle parity, strict input boundaries, output privacy, existing tests and quality gates pass. Update README, compatibility, capability limits, profile guide, traceability, and reproducible evidence. No interactive host recognition or actual agent execution is claimed.
+
+Local T20 through T24 status: VERIFIED by 67 passing tests, 80 installed bundles, 350 generated files, shape/skill/spec validation, quality checks, package build, offline wheel smoke, and documentation checks in evidence.md. Remote checks apply to the pushed head.

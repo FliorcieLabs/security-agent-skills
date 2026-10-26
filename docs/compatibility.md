@@ -1,6 +1,6 @@
 # Host compatibility
 
-All fifteen skills use the common name/description YAML frontmatter subset and a self-contained Python 3.11+ helper. There are no vendor-specific tool permission grants, plugin hooks, MCP dependencies, absolute machine paths, or repository-location imports inside a built bundle.
+All twenty skills use the common name/description YAML frontmatter subset and a self-contained Python 3.11+ helper. There are no vendor-specific tool permission grants, plugin hooks, MCP dependencies, absolute machine paths, or repository-location imports inside a built bundle.
 
 The installer uses native discovery roots. Current source references:
 
@@ -11,4 +11,6 @@ The installer uses native discovery roots. Current source references:
 
 Format checks, temporary project installs for all four hosts, and standalone helper execution are automated. Interactive Claude, Cursor, Copilot, and Codex model sessions are not part of those tests. Recognition in an older client, personal-to-cloud synchronization, and model decision quality are not established by a filesystem install test. Use the host's skill picker or restart its discovery process if it has cached the old list. The installer does not force a reload.
 
-The five new Markdown agent profiles can be read as ordinary instructions on other AI platforms. They are also bundled in the matching skills at references/agent.md. This is text portability, not universal native registration. Assistants with no local tools can review supplied excerpts and preserve partial coverage; helper execution needs a terminal and Python. See agents.md.
+The ten Markdown agent profiles can be read as ordinary instructions on other AI platforms. They are also bundled in the matching skills at references/agent.md. This is text portability, not universal native registration. Assistants with no local tools can review supplied excerpts and preserve partial coverage; helper execution needs a terminal and Python. See agents.md.
+
+Internal operations use explicit local JSON records. They do not assume a host-specific orchestration, delegation, memory, or retry API. Directory-layout tests exercise all twenty helpers in all four supported installation layouts; they do not start interactive model sessions or prove host decision quality. See [operation contracts](internal-operations.md).

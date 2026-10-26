@@ -8,11 +8,11 @@
 [![MIT license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-blue.svg)](pyproject.toml)
 
-Fifteen local security skills and five portable agent profiles for reviewing AI tooling and the projects it touches. Inspect unfamiliar skills, review MCP authority, compare upgrades, or check CI, containers, infrastructure, and LLM data settings before granting access.
+Twenty local skills and ten portable agent profiles for security review and internal agent operations. Inspect unfamiliar AI tooling, review project boundaries, plan bounded tasks, prepare handoffs, checkpoint context, and review tool or retry proposals before execution.
 
 **No API key. No runtime Python dependencies. No telemetry. No source upload.** Analysis helpers read bounded local inputs without importing or executing reviewed code.
 
-[Quick start](#start-with-one-folder) · [Demo](#see-a-local-review) · [15 skills](#choose-the-security-question) · [Install](#install-for-your-assistant) · [5 agents](#five-portable-security-agents) · [Report contract](#one-result-contract) · [Limits](#privacy-and-limits) · [Contribute](CONTRIBUTING.md)
+[Quick start](#start-with-one-folder) · [Demo](#see-a-local-review) · [Security skills](#choose-the-security-question) · [Agent operations](#internal-agent-operations) · [Install](#install-for-your-assistant) · [10 agents](#portable-agent-profiles) · [Limits](#privacy-and-limits) · [Contribute](CONTRIBUTING.md)
 
 Use it before installing an unfamiliar agent package, granting an MCP server access, accepting a dependency change, or sharing a security finding. Start with one question and one skill. Review the referenced source before deciding what to allow or fix.
 
@@ -70,6 +70,35 @@ Each path narrows the next decision. It does not combine the results into a safe
 
 Use a directory as the target for each static command. Read the skill's workflow reference for structured inputs to the other commands. [Capabilities and limits](docs/capabilities.md) describe what each helper can establish.
 
+## Internal agent operations
+
+These five skills help an assistant manage its work with explicit scope, evidence, and stop conditions. Their helpers validate supplied JSON records locally. They do not provide a background agent runtime or invoke tools on your behalf.
+
+| Skill | Internal operation | CLI command |
+|---|---|---|
+| [Agent Task Planner](skills/agent-task-planner) | Checks a task dependency graph, write ownership, evidence requirements, and step caps. | `task-plan` |
+| [Agent Handoff Review](skills/agent-handoff-review) | Checks permission subsets, acceptance references, evidence, and completion claims. | `handoff` |
+| [Agent Context Checkpoint](skills/agent-context-checkpoint) | Builds a reference-only capsule while retaining constraints, evidence, revision, unresolved work, and next action. | `checkpoint` |
+| [Agent Tool Preflight](skills/agent-tool-preflight) | Compares a proposed tool action with declared tools, resources, effects, transfer policy, and approval requirements. | `preflight` |
+| [Agent Retry Guard](skills/agent-retry-guard) | Stops after success or a recorded effect, bounds attempts, and requires reconciliation for unknown write outcomes. | `retry` |
+
+Try the supplied synthetic records:
+
+```sh
+python scripts/security_check.py task-plan examples/internal-operations/task-plan.json --format markdown
+python scripts/security_check.py checkpoint examples/internal-operations/checkpoint.json --max-findings 5
+python scripts/security_check.py preflight examples/internal-operations/preflight.json
+python scripts/security_check.py retry examples/internal-operations/retry.json
+```
+
+The task-plan example passes its declared consistency checks. Checkpoint and matching preflight return PARTIAL (exit 3). The retry example deliberately returns BLOCKED (exit 2): it describes a write with an unknown outcome. Neither result executes an action or grants authority.
+
+Example request:
+
+> Use Agent Context Checkpoint to prepare a resume packet for this task. Preserve the current revision, user constraints, evidence references, unresolved work, and next action. Keep optional history out of the packet and report any omissions. Do not write host memory or upload the checkpoint.
+
+Use symbolic local references instead of raw prompts, credentials, payloads, or entire transcripts. Resolve those references and verify freshness before resuming. The reference budget is not a token count. [Operation contracts and examples](docs/internal-operations.md).
+
 ## Install for your assistant
 
 Preview one skill for an existing project, then apply the plan:
@@ -79,7 +108,7 @@ python scripts/install_skills.py --agent codex --project ../my-project --skill i
 python scripts/install_skills.py --agent codex --project ../my-project --skill instruction-boundary-audit --apply
 ```
 
-Choose `claude`, `codex`, `cursor`, `copilot`, or `all`. Omit `--skill` to select all fifteen. Replace `--project ../my-project` with `--global` for personal discovery across projects. Existing destinations are refused, never silently upgraded or overwritten.
+Choose `claude`, `codex`, `cursor`, `copilot`, or `all`. Omit `--skill` to select all twenty. Replace `--project ../my-project` with `--global` for personal discovery across projects. Existing destinations are refused, never silently upgraded or overwritten.
 
 | Assistant | Project skills | Personal skills |
 |---|---|---|
@@ -90,15 +119,20 @@ Choose `claude`, `codex`, `cursor`, `copilot`, or `all`. Omit `--skill` to selec
 
 Each bundle includes its own helper and can run from another folder without this checkout. The installer does not enable hooks, grant permissions, install dependencies, edit project instructions, or force a reload. A failed copy may leave its new folder for inspection. Older clients and cloud sessions can have different discovery rules. [Compatibility details](docs/compatibility.md).
 
-## Five portable security agents
+## Portable agent profiles
 
 - [Instruction Boundary Auditor](agents/instruction-boundary-audit.md)
 - [CI Workflow Security Reviewer](agents/ci-workflow-security-audit.md)
 - [Container Boundary Reviewer](agents/container-boundary-audit.md)
 - [Infrastructure Exposure Reviewer](agents/infrastructure-exposure-audit.md)
 - [LLM Data Boundary Reviewer](agents/llm-data-boundary-audit.md)
+- [Agent Task Planner](agents/agent-task-planner.md)
+- [Agent Handoff Reviewer](agents/agent-handoff-review.md)
+- [Agent Context Checkpoint Keeper](agents/agent-context-checkpoint.md)
+- [Agent Tool Preflight Reviewer](agents/agent-tool-preflight.md)
+- [Agent Retry Guard](agents/agent-retry-guard.md)
 
-Attach a profile or load its text into an assistant that accepts Markdown instructions. Each new installed skill also carries its profile in `references/agent.md`. These are portable instructions, not universal native agent registrations. Without filesystem access, an assistant can review supplied excerpts and report partial coverage. Running helpers requires terminal access and Python. [Agent usage](docs/agents.md).
+Attach a profile or load its text into an assistant that accepts Markdown instructions. Each matching installed skill carries its profile in `references/agent.md`. These are portable instructions, not universal native agent registrations. Without filesystem access, an assistant can review supplied excerpts and report partial coverage. Running helpers requires terminal access and Python. [Agent usage](docs/agents.md).
 
 Example request:
 
@@ -112,7 +146,7 @@ Pass the project root to the `ci` helper so `.github/workflows` retains its expe
 python scripts/security_check.py llm-data ../my-project --max-findings 5 --output llm-review.json
 ```
 
-The console shows five findings plus the total count, omitted count, coverage, and limitations. The new `llm-review.json` file keeps the complete report. Keep output outside the target when comparing snapshots.
+The console shows up to five findings plus the total count, omitted count, coverage, and limitations. The new `llm-review.json` file keeps the complete report. Keep output outside the target when comparing snapshots.
 
 Deterministic local work, one relevant skill, references opened on demand, and focused source review reduce repeated context. Stable finding IDs let follow-ups refer to saved evidence instead of replaying the whole report.
 
@@ -142,6 +176,7 @@ For example, the [demo's compact report](docs/assets/security/demo-compact.json)
 - Static findings omit source excerpts and configuration values. Reports still include scope paths and filenames. Evidence export omits scope paths and freeform details and applies best-effort pattern scrubbing. Inspect artifacts before sharing.
 - New audits are lexical, line-based checks. They do not evaluate complete YAML/HCL semantics, templates, inherited permissions, provider defaults, or runtime data flows. Quoted examples and negations can produce leads.
 - AppSec validation checks declared scope without making requests. Injection grading consumes supplied records. Route mapping consumes synthetic events. Sandbox generation does not launch Docker. Evidence hashes establish local consistency, not authenticity or external truth.
+- Internal-operation records are declarations. Helpers do not open evidence references, verify their freshness, resolve resource aliases, or observe actual tool effects. A matching preflight is PARTIAL and never grants host permission. Checkpoints contain reference IDs that may themselves be sensitive; review before sharing.
 - No helper proves absence of malware, certifies compliance, or grants permission for active tests. No DDoS executor, hidden telemetry, or automatic package publishing is included.
 
 ## Develop and verify

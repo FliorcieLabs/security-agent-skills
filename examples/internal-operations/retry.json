@@ -1,0 +1,8 @@
+{
+  "schema": "security-agent-skills/retry-v1",
+  "effect": "write",
+  "outcome": "unknown",
+  "attempts": 1,
+  "max_attempts": 3,
+  "reconciliation": "not_checked"
+}

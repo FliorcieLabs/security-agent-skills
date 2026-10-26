@@ -1,5 +1,11 @@
 # Capabilities and limits
 
+## Internal operation records
+
+Five workflows validate supplied local records without orchestrating an agent runtime. Task Planner checks graph order, ownership declarations, evidence requirements, and step caps. Handoff Review checks permission subsets and status/evidence consistency. Context Checkpoint produces a bounded reference capsule that retains mandatory context. Tool Preflight compares exact declared policy fields. Retry Guard returns a stop, reconcile, or review decision. [Contracts and limits](internal-operations.md).
+
+These helpers do not verify record claims, resolve evidence, grant permissions, invoke tools, send handoffs, persist memory, or retry effects. Checkpoint and matching preflight stay PARTIAL. PASS for task/handoff checks means record consistency only; PASS for Retry Guard means stop without retry under the supplied declarations. Resource aliasing, actual authority, freshness, hidden side effects, and runtime behavior remain unresolved.
+
 ## Additional boundary audits
 
 The following five audits use bounded local text, fixed messages, stable finding IDs, and file/line locations. They always return PARTIAL. Coverage distinguishes files admitted by inventory from files evaluated by the selected workflow. Zero evaluated files does not establish safety.

@@ -1,0 +1,12 @@
+{
+  "schema": "security-agent-skills/handoff-v1",
+  "task_id": "review_change",
+  "source_agent": "reviewer",
+  "target_agent": "verifier",
+  "parent_permissions": ["read_project", "write_report"],
+  "delegated_permissions": ["read_project"],
+  "acceptance_refs": ["acceptance_01"],
+  "evidence_refs": ["diff_01"],
+  "unresolved_refs": ["check_01"],
+  "status": "ready"
+}

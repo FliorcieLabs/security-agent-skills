@@ -17,6 +17,7 @@ from .extended_audits import (
     audit_instructions,
     audit_llm,
 )
+from .internal_operations import OPERATIONS
 from .inventory import collect, reparse
 from .plans import appsec_plan, sandbox_plan
 from .reports import SCHEMA, compact, markdown, report
@@ -25,7 +26,16 @@ from .sentinel import compare_snapshots, snapshot
 EXIT_CODES = {"PASS": 0, "FIX": 1, "BLOCKED": 2, "PARTIAL": 3}
 
 
-def read_json(path: str) -> Any:
+def _unique_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    value: dict[str, Any] = {}
+    for key, item in pairs:
+        if key in value:
+            raise ValueError("Duplicate JSON object key")
+        value[key] = item
+    return value
+
+
+def read_json(path: str, *, unique_keys: bool = False) -> Any:
     source = Path(path)
     if not source.is_file() or reparse(source) or source.stat().st_size > 8_000_000:
         raise ValueError("JSON input must be a bounded regular non-link file")
@@ -33,7 +43,7 @@ def read_json(path: str) -> Any:
         raw = stream.read(8_000_001)
     if len(raw) > 8_000_000:
         raise ValueError("JSON input byte limit")
-    return json.loads(raw)
+    return json.loads(raw, object_pairs_hook=_unique_object if unique_keys else None)
 
 
 def parser() -> argparse.ArgumentParser:
@@ -59,6 +69,7 @@ def parser() -> argparse.ArgumentParser:
         "sandbox-plan",
         "pack",
         "verify",
+        *OPERATIONS,
     ]:
         sub = subs.add_parser(name)
         sub.add_argument(
@@ -108,10 +119,14 @@ def parser() -> argparse.ArgumentParser:
             sub.add_argument("--archive", required=True)
         elif name == "verify":
             sub.add_argument("archive")
+        elif name in OPERATIONS:
+            sub.add_argument("record", help="Bounded local JSON operation record, never executed")
     return result
 
 
 def dispatch(args: argparse.Namespace) -> dict[str, Any] | list[dict[str, Any]]:
+    if args.command in OPERATIONS:
+        return OPERATIONS[args.command](read_json(args.record, unique_keys=True))
     audits = {
         "egress": audit_egress,
         "dependencies": audit_dependencies,

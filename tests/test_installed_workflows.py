@@ -8,6 +8,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from security_agent_skills.internal_operations import OPERATIONS
 from tests.test_portability import ROOT, installer
 
 
@@ -42,6 +43,18 @@ class InstalledWorkflowTests(unittest.TestCase):
             for name, content in fixtures.items():
                 (target / name).write_text(content, encoding="utf-8")
             scope, trace = root / "scope.json", root / "trace.json"
+            operation_records = {}
+            for command in OPERATIONS:
+                record = root / (command + ".json")
+                record.write_bytes(
+                    (ROOT / "examples/internal-operations" / record.name).read_bytes()
+                )
+                operation_records[command] = record
+            internal_skills = {
+                entry["name"]: entry["command"]
+                for entry in catalog
+                if entry["command"] in OPERATIONS
+            }
             scope.write_text('{"authorized":false}', encoding="utf-8")
             trace.write_text(
                 '[{"canary":"SYNTHETIC_TEST","source":"fixture","sink":"https://example.invalid"}]',
@@ -79,7 +92,19 @@ class InstalledWorkflowTests(unittest.TestCase):
                 with self.subTest(host=entry["host"], skill=entry["skill"]):
                     run = Path(entry["destination"]) / "scripts/run.py"
                     name = entry["skill"]
-                    if name == "authorized-appsec-validation":
+                    if name in internal_skills:
+                        command = internal_skills[name]
+                        expected = {
+                            "task-plan": 0,
+                            "handoff": 0,
+                            "checkpoint": 3,
+                            "preflight": 3,
+                            "retry": 2,
+                        }[command]
+                        value = call(run, [operation_records[command]], expected)
+                        self.assertFalse(value["details"]["executed"])
+                        self.assertFalse(value["details"]["authorization_granted"])
+                    elif name == "authorized-appsec-validation":
                         value = call(run, [scope], 2)
                         self.assertEqual(value["result"], "BLOCKED")
                     elif name == "agent-package-change-sentinel":

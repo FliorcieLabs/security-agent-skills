@@ -34,6 +34,17 @@ class EndToEndTests(unittest.TestCase):
                 patch("socket.create_connection", side_effect=AssertionError("Unexpected network")),
                 patch("subprocess.run", side_effect=AssertionError("Unexpected process execution")),
             ):
+                examples = Path(__file__).resolve().parents[1] / "examples/internal-operations"
+                for command, expected in {
+                    "task-plan": 0,
+                    "handoff": 0,
+                    "checkpoint": 3,
+                    "preflight": 3,
+                    "retry": 2,
+                }.items():
+                    operation = call([command, str(examples / (command + ".json"))], expected)
+                    self.assertFalse(operation["details"]["executed"])
+                    self.assertFalse(operation["details"]["authorization_granted"])
                 report_path = root / "report.json"
                 for command in ["egress", "dependencies", "mcp", "exposure"]:
                     args = [command, str(target)]

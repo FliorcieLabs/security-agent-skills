@@ -1,0 +1,337 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Internal agent operation record shapes",
+  "description": "Shape checks only. The offline helpers also check graph, authority, budget, completion, and retry semantics. Records do not grant authority or establish runtime truth.",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/task-plan"
+    },
+    {
+      "$ref": "#/$defs/handoff"
+    },
+    {
+      "$ref": "#/$defs/checkpoint"
+    },
+    {
+      "$ref": "#/$defs/preflight"
+    },
+    {
+      "$ref": "#/$defs/retry"
+    }
+  ],
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+      "not": {
+        "pattern": "[^A-Za-z0-9_-]"
+      }
+    },
+    "refs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/identifier"
+      },
+      "maxItems": 100,
+      "uniqueItems": true
+    },
+    "task-plan": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": "security-agent-skills/task-plan-v1"
+        },
+        "max_total_steps": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000
+        },
+        "tasks": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 100,
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "$ref": "#/$defs/identifier"
+              },
+              "owner": {
+                "$ref": "#/$defs/identifier"
+              },
+              "depends_on": {
+                "$ref": "#/$defs/refs"
+              },
+              "write_resources": {
+                "$ref": "#/$defs/refs"
+              },
+              "max_steps": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 100
+              },
+              "evidence_required": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "id",
+              "owner",
+              "depends_on",
+              "write_resources",
+              "max_steps",
+              "evidence_required"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "schema",
+        "max_total_steps",
+        "tasks"
+      ],
+      "additionalProperties": false
+    },
+    "handoff": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": "security-agent-skills/handoff-v1"
+        },
+        "task_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "source_agent": {
+          "$ref": "#/$defs/identifier"
+        },
+        "target_agent": {
+          "$ref": "#/$defs/identifier"
+        },
+        "parent_permissions": {
+          "$ref": "#/$defs/refs"
+        },
+        "delegated_permissions": {
+          "$ref": "#/$defs/refs"
+        },
+        "acceptance_refs": {
+          "$ref": "#/$defs/refs"
+        },
+        "evidence_refs": {
+          "$ref": "#/$defs/refs"
+        },
+        "unresolved_refs": {
+          "$ref": "#/$defs/refs"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "ready",
+            "blocked",
+            "complete"
+          ]
+        }
+      },
+      "required": [
+        "schema",
+        "task_id",
+        "source_agent",
+        "target_agent",
+        "parent_permissions",
+        "delegated_permissions",
+        "acceptance_refs",
+        "evidence_refs",
+        "unresolved_refs",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "checkpoint": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": "security-agent-skills/checkpoint-v1"
+        },
+        "objective_ref": {
+          "$ref": "#/$defs/identifier"
+        },
+        "revision_ref": {
+          "$ref": "#/$defs/identifier"
+        },
+        "next_action_ref": {
+          "$ref": "#/$defs/identifier"
+        },
+        "constraint_refs": {
+          "$ref": "#/$defs/refs"
+        },
+        "evidence_refs": {
+          "$ref": "#/$defs/refs"
+        },
+        "unresolved_refs": {
+          "$ref": "#/$defs/refs"
+        },
+        "decision_refs": {
+          "$ref": "#/$defs/refs"
+        },
+        "max_refs": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 400
+        }
+      },
+      "required": [
+        "schema",
+        "objective_ref",
+        "revision_ref",
+        "next_action_ref",
+        "constraint_refs",
+        "evidence_refs",
+        "unresolved_refs",
+        "decision_refs",
+        "max_refs"
+      ],
+      "additionalProperties": false
+    },
+    "preflight": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": "security-agent-skills/preflight-v1"
+        },
+        "policy": {
+          "type": "object",
+          "properties": {
+            "allowed_tools": {
+              "$ref": "#/$defs/refs"
+            },
+            "allowed_resources": {
+              "$ref": "#/$defs/refs"
+            },
+            "allowed_effects": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "read",
+                  "write"
+                ]
+              },
+              "maxItems": 2,
+              "uniqueItems": true
+            },
+            "external_transfer_allowed": {
+              "type": "boolean"
+            },
+            "approval_required_for_write": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "allowed_tools",
+            "allowed_resources",
+            "allowed_effects",
+            "external_transfer_allowed",
+            "approval_required_for_write"
+          ],
+          "additionalProperties": false
+        },
+        "action": {
+          "type": "object",
+          "properties": {
+            "tool": {
+              "$ref": "#/$defs/identifier"
+            },
+            "resources": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/identifier"
+              },
+              "maxItems": 100,
+              "uniqueItems": true,
+              "minItems": 1
+            },
+            "effect": {
+              "type": "string",
+              "enum": [
+                "read",
+                "write"
+              ]
+            },
+            "external_transfer": {
+              "type": "boolean"
+            },
+            "approval_recorded": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "tool",
+            "resources",
+            "effect",
+            "external_transfer",
+            "approval_recorded"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "schema",
+        "policy",
+        "action"
+      ],
+      "additionalProperties": false
+    },
+    "retry": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": "security-agent-skills/retry-v1"
+        },
+        "effect": {
+          "type": "string",
+          "enum": [
+            "read",
+            "write"
+          ]
+        },
+        "outcome": {
+          "type": "string",
+          "enum": [
+            "not_started",
+            "succeeded",
+            "failed_no_effect",
+            "unknown"
+          ]
+        },
+        "attempts": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "max_attempts": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        },
+        "reconciliation": {
+          "type": "string",
+          "enum": [
+            "not_checked",
+            "effect_absent",
+            "effect_present",
+            "inconclusive"
+          ]
+        }
+      },
+      "required": [
+        "schema",
+        "effect",
+        "outcome",
+        "attempts",
+        "max_attempts",
+        "reconciliation"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,5 +1,9 @@
 # Reproducible implementation evidence
 
+Current delivery: twenty skills, ten Markdown agent profiles, and 23 mapped requirements. The latest internal-operation validation is recorded under T20 through T24 below. Earlier sections retain their original counts and timings as historical evidence.
+
+## T01 through T18 baseline
+
 Scope: fifteen portable skill workflows, five Markdown agent profiles, bounded local helpers, report contract, copy installer, standalone bundles, package, and CI definitions. Local validation host: Windows x64, Python 3.14.6. Date: October 26, 2026.
 
 ## Executed local checks
@@ -48,3 +52,30 @@ Scope: README navigation and review paths, original PNG banner, a five-frame ani
 - `git diff --check`: PASS. No runtime dependency, installer change, new skill, package publication, or protected-main merge is part of T19.
 
 The first renderer attempt could not create a fixture subdirectory in the restricted sandbox's temporary directory. The same renderer succeeded with normal temporary-directory access. No filesystem permission workaround was added to the project.
+
+## T20 through T24 internal operations
+
+Scope: five new local record helpers, five skills, five Markdown profiles, formal input shape schema, five synthetic records, CLI routing, standalone bundles, documentation, and regression coverage. No new runtime dependencies, network clients, tool dispatch, agent spawning, permissions, memory writes, or retry execution were introduced.
+
+| Executed command or check | Outcome |
+|---|---|
+| python -m unittest discover -s tests -t . -v | PASS, 67 tests in 20.479 seconds. Includes 18 new tests, strict record shapes, duplicate JSON keys, authority mismatches, evidence preservation, retry contradictions, existing regressions, and all installed workflows. |
+| Installed-workflow integration | PASS, 20 skills across four temporary host layouts, 80 installed bundles, isolated subprocesses outside the checkout. |
+| Existing end-to-end CLI test | PASS, new operation commands run while network and subprocess calls are patched to fail if attempted. |
+| python -m ruff check src scripts tests | PASS |
+| python -m mypy src | PASS, 12 source modules |
+| python -m black --check --workers 1 src scripts tests | PASS, 29 files |
+| python scripts/build_skills.py --check | PASS, 350 generated files match canonical sources |
+| python scripts/validate_skills.py | PASS, 20 skills and 10 profiles |
+| python scripts/validate_specs.py | PASS, 23 mapped requirements |
+| python -m build | PASS, local source distribution and wheel built, not published |
+| python scripts/package_smoke.py | PASS, offline wheel install, help, egress scan, and new preflight command with authorization_granted false |
+| python scripts/benchmark_reports.py | PASS, existing synthetic serialization fixture remains 267,150 to 4,335 bytes, 98.38%; no new tokenizer run or checkpoint savings measurement |
+| skill-creator quick_validate.py on the five new skill folders | PASS, all five |
+| Local Draft202012Validator | PASS, formal input schema, all five supplied examples, and rejection of an invalid newline-bearing identifier; optional development validator, not a runtime dependency |
+| Markdown checks | PASS, 21 touched entrypoint/profile/guide files, 76 relative links and seven README navigation anchors; no em or en dashes |
+| git diff --check | PASS |
+
+The sandboxed formatter stalled and was stopped before running the same formatting command with normal process access. No code or test timeout was relaxed. The full test suite and package smoke ran with normal temporary-directory access.
+
+The helpers validate declarations, not the truth of referenced evidence. Matching preflight and generated checkpoints remain PARTIAL. Task/handoff PASS means the named record consistency checks passed; retry PASS means a stop decision under supplied claims. All reports keep executed and authorization_granted false. Only checkpoint reports intentionally include symbolic references. No live orchestration, native agent registration, interactive model sessions, host memory integration, external effect reconciliation, or new token savings measurement was performed. Remote CI applies to the pushed commit and remains a separate PR gate.

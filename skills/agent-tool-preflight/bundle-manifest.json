@@ -1,0 +1,19 @@
+{
+  "LICENSE": "f5033d78389b7f320379e1903152935424c571cf69e672331aed8704e5c8f9b6",
+  "SKILL.md": "54c601beb75a28e9d69dfa0336f5c6bba1317ed43302233bb7e850688b9f32f4",
+  "references/agent.md": "33497ed0b390c9f5bede2d179080f3c4d04f3e164ca34a40d95b3733511cdacf",
+  "references/workflow.md": "d1e079e1ccf542665be379bb718dc33d493af7be2a9be97b29ae609a2ac5979e",
+  "scripts/_security_agent_skills/__init__.py": "78a813f0a9275b5624023294bb6bfb641635f79659bccb2d5e611470eb8cf9f4",
+  "scripts/_security_agent_skills/audits.py": "04973b3a5890caaaa7960a05ae7fa4a650475a936f6f0fd2a6f41a75140a05a7",
+  "scripts/_security_agent_skills/boundaries.py": "2c78d28c2b77612f6ca6481e798f5605c1651254c7b39dec3823868339b092ed",
+  "scripts/_security_agent_skills/cli.py": "f879cc6f81a649178b10d6477679b72ee6e6953ffe95e8f14500409b92c3f35a",
+  "scripts/_security_agent_skills/evidence.py": "e1c90605e5ef393e039eb4c59284a7d240242bf937c42b0e09a3534fa8de4329",
+  "scripts/_security_agent_skills/extended_audits.py": "84d835d34c6f034290818e9d10ff79fc1174b91c3a45a2badb351c9794dd2acb",
+  "scripts/_security_agent_skills/internal_operations.py": "c204356532d42830f74a6653b34da852c6d4068bbd9398435ca7f438fd33513b",
+  "scripts/_security_agent_skills/inventory.py": "96c891f6c54a68c999cbcf924aec4bf87afd49b7a0b81c4c8305c14d4b7554da",
+  "scripts/_security_agent_skills/plans.py": "7392f77ae5216c2b101ae70feec4073f1101a93a86dc01bea797d0bcadeb1f25",
+  "scripts/_security_agent_skills/reports.py": "054f60b193aff275498a27f7df0e2a8ecf6aac26995e39cc83079572112c2f1d",
+  "scripts/_security_agent_skills/sentinel.py": "75ecb4fdc7c6f5ad7d69767e5af157b571ad093ef1ece721ae4971b0ed5ab78d",
+  "scripts/_security_agent_skills/workflows.py": "888ea02fa1cc53c2c22dc6404cde227aef8fb1fb7168daef0e98e9ea44512054",
+  "scripts/run.py": "8d1f55658b999009e674d773cb0851b5c2c855cff4807b4ffcdbbd06205c9c13"
+}

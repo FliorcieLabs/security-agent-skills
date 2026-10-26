@@ -78,5 +78,35 @@
     "command": "llm-data",
     "description": "Review local LLM settings and source for explicit content capture, disabled scrubbing, remote code trust, provider endpoints, and TLS verification bypasses.",
     "agent": "agents/llm-data-boundary-audit.md"
+  },
+  {
+    "name": "agent-task-planner",
+    "command": "task-plan",
+    "description": "Review a bounded agent task graph for cycles, ownership collisions, missing evidence requirements, and step budgets before execution.",
+    "agent": "agents/agent-task-planner.md"
+  },
+  {
+    "name": "agent-handoff-review",
+    "command": "handoff",
+    "description": "Check a declared agent handoff for permission expansion, missing acceptance or evidence references, and unresolved completion claims.",
+    "agent": "agents/agent-handoff-review.md"
+  },
+  {
+    "name": "agent-context-checkpoint",
+    "command": "checkpoint",
+    "description": "Build a reference-only context checkpoint that retains constraints, evidence, revision, and unresolved work within a declared reference budget.",
+    "agent": "agents/agent-context-checkpoint.md"
+  },
+  {
+    "name": "agent-tool-preflight",
+    "command": "preflight",
+    "description": "Compare a proposed tool action with a supplied allowlist, resource scope, transfer policy, and approval declaration without invoking the tool.",
+    "agent": "agents/agent-tool-preflight.md"
+  },
+  {
+    "name": "agent-retry-guard",
+    "command": "retry",
+    "description": "Review a declared operation outcome and attempt budget, stopping retries after success and requiring reconciliation for ambiguous writes.",
+    "agent": "agents/agent-retry-guard.md"
   }
 ]

@@ -20,3 +20,8 @@
 | SEC-016 | infrastructure-exposure-audit | extended_audits.py | test_extended_audits, test_installed_workflows; see ../evidence.md |
 | SEC-017 | llm-data-boundary-audit | extended_audits.py | test_extended_audits, test_installed_workflows; see ../evidence.md |
 | SEC-018 | Five portable Markdown agent profiles, bundled references, and usage documentation | agents/, docs/agents.md, README.md, docs/assets/security/, scripts/build_skills.py | validate_skills, test_installed_workflows, T19 presentation checks; see ../evidence.md |
+| SEC-019 | Bounded task dependency planning with distinct write ownership and evidence requirements | internal_operations.py task_plan, agent-task-planner | test_internal_operations, test_installed_workflows; see ../evidence.md |
+| SEC-020 | Handoff authority subset and completion-evidence consistency | internal_operations.py handoff_review, agent-handoff-review | test_internal_operations, test_installed_workflows; see ../evidence.md |
+| SEC-021 | Reference-only context checkpoint that never drops mandatory constraints or unresolved work to fit a budget | internal_operations.py context_checkpoint, agent-context-checkpoint | test_internal_operations, test_installed_workflows; see ../evidence.md |
+| SEC-022 | Declared tool proposal comparison without tool execution or an authority grant | internal_operations.py tool_preflight, agent-tool-preflight | test_internal_operations, test_installed_workflows; see ../evidence.md |
+| SEC-023 | Stop decisions and ambiguous-write reconciliation before a retry candidate | internal_operations.py retry_guard, agent-retry-guard | test_internal_operations, test_installed_workflows; see ../evidence.md |

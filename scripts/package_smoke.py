@@ -33,4 +33,16 @@ with tempfile.TemporaryDirectory() as temporary:
     )
     value = json.loads(result.stdout)
     assert result.returncode == 3 and value["finding_count"] == 1 and value["result"] == "PARTIAL"
+    record = Path(temporary) / "preflight.json"
+    record.write_bytes((root / "examples/internal-operations/preflight.json").read_bytes())
+    result = subprocess.run(
+        [str(python), "-m", "security_agent_skills.cli", "preflight", str(record)],
+        cwd=temporary,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    value = json.loads(result.stdout)
+    assert result.returncode == 3 and value["result"] == "PARTIAL"
+    assert value["details"]["authorization_granted"] is False
 print("Installed-package offline smoke: PASS")
