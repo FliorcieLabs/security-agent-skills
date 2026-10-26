@@ -10,6 +10,13 @@ from typing import Any
 from .audits import audit_dependencies, audit_egress, audit_exposure, audit_mcp
 from .boundaries import grade_injection, injection_cases, map_routes
 from .evidence import pack_reports, verify_pack
+from .extended_audits import (
+    audit_ci,
+    audit_containers,
+    audit_infrastructure,
+    audit_instructions,
+    audit_llm,
+)
 from .inventory import collect, reparse
 from .plans import appsec_plan, sandbox_plan
 from .reports import SCHEMA, compact, markdown, report
@@ -39,6 +46,11 @@ def parser() -> argparse.ArgumentParser:
         "dependencies",
         "mcp",
         "exposure",
+        "instructions",
+        "ci",
+        "containers",
+        "iac",
+        "llm-data",
         "snapshot",
         "compare",
         "appsec-plan",
@@ -59,7 +71,18 @@ def parser() -> argparse.ArgumentParser:
             default=20,
             help="Bound console findings only; total counts and coverage remain visible",
         )
-        if name in {"egress", "dependencies", "mcp", "exposure", "snapshot"}:
+        if name in {
+            "egress",
+            "dependencies",
+            "mcp",
+            "exposure",
+            "snapshot",
+            "instructions",
+            "ci",
+            "containers",
+            "iac",
+            "llm-data",
+        }:
             sub.add_argument("target")
             sub.add_argument("--max-files", type=int, default=10000)
             sub.add_argument("--max-file-bytes", type=int, default=1_000_000)
@@ -94,6 +117,11 @@ def dispatch(args: argparse.Namespace) -> dict[str, Any] | list[dict[str, Any]]:
         "dependencies": audit_dependencies,
         "mcp": audit_mcp,
         "exposure": audit_exposure,
+        "instructions": audit_instructions,
+        "ci": audit_ci,
+        "containers": audit_containers,
+        "iac": audit_infrastructure,
+        "llm-data": audit_llm,
     }
     if args.command in {*audits, "snapshot"}:
         inventory = collect(args.target, max_files=args.max_files, max_bytes=args.max_file_bytes)

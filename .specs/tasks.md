@@ -20,3 +20,20 @@ Owner: repository maintainer implementation through professional-coder. Status b
 Implementation records and final validation belong in evidence.md and 01-requirements/traceability.md. Commands are run from the repository root. The task status is updated only after executable evidence exists.
 
 Local delivery status: T01 through T12 verified by the executable evidence in evidence.md. External CI is a separate gate attached to the pushed head revision.
+
+## Expansion tasks
+
+Owner: primary implementation agent. Status before implementation: READY. Keep local-only analysis and explicit incomplete coverage. Each scanner owns one review boundary and emits fixed messages and source locations, never source values. Shared integration owns CLI routing, bundles, and the catalog.
+
+| Task | Requirement | Component | Acceptance command |
+|---|---|---|---|
+| T13 | SEC-013 | instruction-boundary-audit | python -m unittest tests.test_extended_audits -v |
+| T14 | SEC-014 | ci-workflow-security-audit | python -m unittest tests.test_extended_audits -v |
+| T15 | SEC-015 | container-boundary-audit | python -m unittest tests.test_extended_audits -v |
+| T16 | SEC-016 | infrastructure-exposure-audit | python -m unittest tests.test_extended_audits -v |
+| T17 | SEC-017 | llm-data-boundary-audit | python -m unittest tests.test_extended_audits -v |
+| T18 | SEC-018 | five portable agent profiles and Markdown guide | python scripts/validate_skills.py |
+
+Acceptance also requires subprocess execution of all fifteen installed helpers in all four host directory layouts, no overwrites, source-to-bundle parity, and existing quality checks. Native interactive recognition on every AI platform is not an acceptance claim.
+
+Local expansion status: T13 through T18 verified by the 49-test suite, skill validation, deterministic bundles, lint/type/format checks, and package smoke evidence. Remote checks apply to the pushed head and are reported in the PR.

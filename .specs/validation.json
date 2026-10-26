@@ -1,6 +1,6 @@
 {
   "scope": "local Windows Python 3.14.6",
-  "test_count": 39,
+  "test_count": 49,
   "checks": [
     {
       "command": [
@@ -46,6 +46,8 @@
         "-m",
         "black",
         "--check",
+        "--workers",
+        "1",
         "src",
         "scripts",
         "tests"
@@ -95,5 +97,8 @@
       "exit_code": 0,
       "status": "PASS"
     }
-  ]
+  ],
+  "skill_count": 15,
+  "agent_count": 5,
+  "installed_bundles_tested": 60
 }

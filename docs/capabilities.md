@@ -1,5 +1,30 @@
 # Capabilities and limits
 
+## Additional boundary audits
+
+The following five audits use bounded local text, fixed messages, stable finding IDs, and file/line locations. They always return PARTIAL. Coverage distinguishes files admitted by inventory from files evaluated by the selected workflow. Zero evaluated files does not establish safety.
+
+| Workflow | Selected inputs | Current checks | Not established |
+|---|---|---|---|
+| Instruction Boundary Audit | Named agent instruction files and text under agents/prompts/instructions/rules | Priority overrides, approval bypass language, concealment, sensitive-transfer language, invisible characters | Intent, provenance, instruction compliance, or resistance to an actual attack |
+| CI Workflow Security Audit | .github/workflows/*.yml and *.yaml relative to the project root | Mutable uses references, privileged triggers, broad permissions, inherited secrets, self-hosted selection, untrusted expressions | Full YAML semantics, expressions in aliases, effective nested permissions, callee trust, or exploitability |
+| Container Boundary Audit | Dockerfile*/Containerfile* and YAML | Explicit root, privilege, host namespaces, daemon socket references, selected escalation settings, remote ADD | Complete Compose/Kubernetes policy, image defaults, multiline arrays, cluster admission, or runtime isolation |
+| Infrastructure Exposure Audit | .tf HCL | Literal world ranges, wildcard action/resource lists, public storage controls, encryption and validation bypass settings | Terraform JSON, plans, state, variable expansion, modules, Allow/Deny meaning, or live cloud exposure |
+| LLM Data Boundary Audit | JSON/TOML/YAML and Python/JavaScript/TypeScript text | Explicit capture/scrubbing/trust/TLS flags and configured provider/proxy endpoints | Actual transfers, all providers, retention/training terms, reachability, or source-to-sink data flow |
+
+Comments, quoted fixtures, prohibitions, data-only expressions, and unrelated YAML may produce review leads. These helpers are not full parsers. Findings omit matched values; inspect the cited source locally before recommending a change.
+
+Primary references for the delivery review questions:
+
+- [GitHub Actions secure use](https://docs.github.com/en/actions/reference/security/secure-use)
+- [GitHub Actions script injections](https://docs.github.com/en/actions/concepts/security/script-injections)
+- [Docker build practices](https://docs.docker.com/build/building/best-practices/)
+- [Kubernetes Pod Security Standards](https://kubernetes.io/docs/concepts/security/pod-security-standards/)
+
+These references motivate review questions, not a claim that the lexical scanner implements or certifies the complete guidance.
+
+## Shared and original helper limits
+
 The product is a set of workflows with bounded local helpers. A skill is an instruction package, not an independent security boundary.
 
 Static audits inspect UTF-8 source text and supported JSON/TOML manifests. They intentionally return PARTIAL. Strings in comments or tests can match; computed destinations, obfuscated code, dynamic imports, reflection, native binaries, dependency behavior, generated code, and runtime configuration can escape detection. Inspect each lead. No match is not a safety decision.

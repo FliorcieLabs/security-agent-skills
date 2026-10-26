@@ -36,6 +36,10 @@ def generated_files():
         files["references/workflow.md"] = (
             (base / "references/workflow.md").read_bytes().replace(b"\r\n", b"\n")
         )
+        if skill.get("agent"):
+            files["references/agent.md"] = (
+                (ROOT / skill["agent"]).read_bytes().replace(b"\r\n", b"\n")
+            )
         manifest = {name: sha256(raw).hexdigest() for name, raw in sorted(files.items())}
         files["bundle-manifest.json"] = (
             json.dumps(manifest, sort_keys=True, indent=2) + "\n"

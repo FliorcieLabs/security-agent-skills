@@ -9,6 +9,11 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def main():
     errors = []
+    catalog = json.loads((ROOT / "catalog.json").read_text(encoding="utf-8"))
+    expected = {entry["name"] for entry in catalog}
+    actual = {path.parent.name for path in (ROOT / "skills").glob("*/SKILL.md")}
+    if len(expected) != len(catalog) or actual != expected:
+        errors.append("Skill inventory must match the catalog without duplicates")
     count = 0
     for path in sorted((ROOT / "skills").glob("*/SKILL.md")):
         count += 1
@@ -41,10 +46,23 @@ def main():
         for relative in ["references/workflow.md", "scripts/run.py", "bundle-manifest.json"]:
             if not (path.parent / relative).is_file():
                 errors.append(name + ": missing " + relative)
-    if count != 10:
-        errors.append("Expected exactly ten skills")
+    agents = [entry for entry in catalog if entry.get("agent")]
+    for entry in agents:
+        profile = ROOT / entry["agent"]
+        bundled = ROOT / "skills" / entry["name"] / "references/agent.md"
+        if not profile.is_file() or not bundled.is_file():
+            errors.append(entry["name"] + ": missing agent profile")
+        elif profile.read_bytes().replace(b"\r\n", b"\n") != bundled.read_bytes():
+            errors.append(entry["name"] + ": agent profile bundle differs")
     print(
-        json.dumps({"result": "FIX" if errors else "PASS", "skill_count": count, "errors": errors})
+        json.dumps(
+            {
+                "result": "FIX" if errors else "PASS",
+                "skill_count": count,
+                "agent_count": len(agents),
+                "errors": errors,
+            }
+        )
     )
     return bool(errors)
 

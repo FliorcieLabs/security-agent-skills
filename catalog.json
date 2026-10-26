@@ -48,5 +48,35 @@
     "name": "security-evidence-pack",
     "command": "pack",
     "description": "Pack and verify reproducible local security reports with hashes, limited export fields, and explicit provenance limits."
+  },
+  {
+    "name": "instruction-boundary-audit",
+    "command": "instructions",
+    "description": "Review agent instruction files for priority overrides, approval bypasses, concealed transfers, and invisible characters before trusting them.",
+    "agent": "agents/instruction-boundary-audit.md"
+  },
+  {
+    "name": "ci-workflow-security-audit",
+    "command": "ci",
+    "description": "Review GitHub Actions workflows for mutable action references, privileged triggers, inherited secrets, broad permissions, and untrusted expressions.",
+    "agent": "agents/ci-workflow-security-audit.md"
+  },
+  {
+    "name": "container-boundary-audit",
+    "command": "containers",
+    "description": "Review Dockerfiles and YAML deployment files for explicit root users, privileged containers, host namespaces, daemon sockets, and remote ADD sources.",
+    "agent": "agents/container-boundary-audit.md"
+  },
+  {
+    "name": "infrastructure-exposure-audit",
+    "command": "iac",
+    "description": "Review Terraform HCL source for world address ranges, wildcard policy scope, public storage settings, disabled encryption, and validation bypasses.",
+    "agent": "agents/infrastructure-exposure-audit.md"
+  },
+  {
+    "name": "llm-data-boundary-audit",
+    "command": "llm-data",
+    "description": "Review local LLM settings and source for explicit content capture, disabled scrubbing, remote code trust, provider endpoints, and TLS verification bypasses.",
+    "agent": "agents/llm-data-boundary-audit.md"
   }
 ]

@@ -33,7 +33,7 @@ class PortabilityTests(unittest.TestCase):
             with self.assertRaises(FileExistsError):
                 installer.plan_install("codex", directory, ["agent-egress-audit"])
 
-    def test_all_ten_entrypoints_load_without_repo_context(self):
+    def test_all_catalog_entrypoints_load_without_repo_context(self):
         with tempfile.TemporaryDirectory() as directory:
             for path in (ROOT / "skills").glob("*/scripts/run.py"):
                 r = subprocess.run(
