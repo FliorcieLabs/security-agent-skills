@@ -19,7 +19,7 @@ All output uses [report-v1](../schemas/report-v1.schema.json). Findings refer to
 From the checkout:
 
 ```sh
-python scripts/security_check.py handoff examples/internal-operations/handoff.json --format markdown
+python scripts/security_check.py handoff examples/internal-operations/handoff.json
 ```
 
 From any folder after installing the corresponding skill:
@@ -29,6 +29,8 @@ python "<skill-dir>/scripts/run.py" "<local-record.json>" --max-findings 5 --out
 ```
 
 The target is a JSON record file, not a source directory. Existing output paths are refused. The full JSON report retains all findings; the console limit affects only visible findings. Checkpoint decisions omitted by the reference budget remain in the original input record, not in the generated capsule.
+
+Use the default JSON console output for these operations: the candidate task order, capsule, preflight comparison, and retry decision are in `details`. The optional Markdown view shows findings, coverage, and limitations; it does not render `details`. Use a new `--output` JSON file when you need those structured fields alongside a Markdown view.
 
 The [input shape schema](../schemas/internal-operations-v1.schema.json) describes all five records. Each skill's `references/workflow.md` is self-contained and carries its exact contract and a synthetic example. The helper also checks semantic conditions that JSON Schema does not establish, including dependency cycles and retry contradictions. Its strict type checks reject booleans and floating-point values in integer fields.
 

@@ -85,7 +85,7 @@ These five skills help an assistant manage its work with explicit scope, evidenc
 Try the supplied synthetic records:
 
 ```sh
-python scripts/security_check.py task-plan examples/internal-operations/task-plan.json --format markdown
+python scripts/security_check.py task-plan examples/internal-operations/task-plan.json
 python scripts/security_check.py checkpoint examples/internal-operations/checkpoint.json --max-findings 5
 python scripts/security_check.py preflight examples/internal-operations/preflight.json
 python scripts/security_check.py retry examples/internal-operations/retry.json

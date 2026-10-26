@@ -1,6 +1,6 @@
 {
   "LICENSE": "f5033d78389b7f320379e1903152935424c571cf69e672331aed8704e5c8f9b6",
-  "SKILL.md": "54c601beb75a28e9d69dfa0336f5c6bba1317ed43302233bb7e850688b9f32f4",
+  "SKILL.md": "4ab89bb788329c32bf17e6db5f11f3f4e9be19b643025fefbcf278db94aa509c",
   "references/agent.md": "33497ed0b390c9f5bede2d179080f3c4d04f3e164ca34a40d95b3733511cdacf",
   "references/workflow.md": "d1e079e1ccf542665be379bb718dc33d493af7be2a9be97b29ae609a2ac5979e",
   "scripts/_security_agent_skills/__init__.py": "78a813f0a9275b5624023294bb6bfb641635f79659bccb2d5e611470eb8cf9f4",
