@@ -11,7 +11,7 @@ Twenty local skills and ten portable agent profiles for security review and inte
 
 **No API key. No runtime Python dependencies. No telemetry. No source upload.** Analysis helpers read bounded local inputs without importing or executing reviewed code.
 
-**Release status: preview candidate.** Automated CI is disabled by maintainer request. Use the local verification commands below; disabling CI is not evidence of a passing check. See the [release assessment](docs/release-readiness.md) for tested scope and remaining prerequisites.
+**Release status: 0.1.0a1 preview preparation.** GitHub Actions is disabled, workflow files are removed, and no CI check is required to merge. Verification is local; independent review remains required. See the [preview notes](docs/releases/0.1.0a1.md) and [release assessment](docs/release-readiness.md) for tested scope and limits.
 
 [Quick start](#start-with-one-folder) · [Demo](#see-a-local-review) · [Security skills](#choose-the-security-question) · [Agent operations](#internal-agent-operations) · [Install](#install-for-your-assistant) · [10 agents](#portable-agent-profiles) · [Limits](#privacy-and-limits) · [Contribute](CONTRIBUTING.md)
 
@@ -192,12 +192,12 @@ python scripts/validate_specs.py
 python scripts/benchmark_reports.py
 ```
 
-Tests cover scanner boundaries, source non-execution, output privacy, incomplete coverage, no-overwrite installation, archive integrity, and installed-helper subprocesses across all four directory layouts. The retained manual workflow defines Python 3.11 and 3.14 on Linux, Windows, and macOS, but is disabled remotely and has no push or pull-request triggers. These tests do not establish interactive recognition or decision quality inside every AI product.
+Tests cover scanner boundaries, source non-execution, output privacy, incomplete coverage, no-overwrite installation, archive integrity, and installed-helper subprocesses across all four directory layouts. No CI pipeline is configured or required. Representative explicitly loaded workflows were exercised in this Codex session on Windows; automatic discovery, other assistants, and the latest macOS runtime remain unverified. See [compatibility evidence](docs/compatibility.md).
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for lint, types, formatting, build, and installed-wheel checks, [SECURITY.md](SECURITY.md) for vulnerability reporting, and [.specs](.specs/README.md) for requirements and evidence.
 
 Documentation artwork and demo sources live in [docs/assets/security](docs/assets/security/README.md). They are local assets, so the README does not depend on a third-party GIF host. The optional Pillow renderer is for documentation authors only; it is not a runtime dependency.
 
-`integ` is the development branch. `main` remains protected, including for administrators. Its existing required `quality-gate` check remains configured even though CI is disabled; this blocks merging until a maintainer explicitly resolves that policy. No release or merge is automatic. See [branch policy](docs/branch-policy.md).
+`integ` is the development branch. `main` remains protected, including for administrators, and requires independent review. The required CI check has been removed. No release or merge is automatic. See [branch policy](docs/branch-policy.md).
 
 MIT licensed by Fliorcie Labs. This project ships original workflows and helpers, not copies of third-party agent projects. [Portfolio estimates](docs/portfolio.md) are hypotheses, not promises of adoption.

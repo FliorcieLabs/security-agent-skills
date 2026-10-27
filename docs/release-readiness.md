@@ -1,12 +1,12 @@
 # Release readiness assessment
 
-Date: October 27, 2026. Scope: twenty skills, ten Markdown agent profiles, shared local helpers, CLI, standalone bundles, copy installer, schemas, documentation, and package build. Baseline: fc23339, with the sandbox argument-array correction and CI disablement recorded in this delivery.
+Date: October 27, 2026. Scope: twenty skills, ten Markdown agent profiles, shared local helpers, CLI, standalone bundles, copy installer, schemas, documentation, and package build. Baseline: 3b22cc0, followed by no-CI preview preparation at version 0.1.0a1. Earlier verification counts below retain their recorded source scope; current checks are recorded under T26 in .specs/evidence.md.
 
 ## Decision
 
 The implementation is a public preview candidate after the correction below. The bounded helpers pass the executed local checks. A stable release or a claim of universal interactive compatibility is not supported by the current evidence.
 
-The repository is already public. The implementation remains on integ; main still contains the initial repository contents. No release or tag exists at review time. Publishing a formal release from main remains blocked by the open pull request's required review and required quality-gate policy. CI disablement does not satisfy that check, and this review does not remove or bypass it.
+The repository is already public. The implementation remains on integ; main still contains the initial repository contents. A preview is prepared for independent review. Required CI checks have been removed, repository Actions is disabled, and no workflow remains. Publishing from main is blocked only by the independent review, not by a pipeline requirement. No approval is fabricated or bypassed.
 
 ## What is ready for preview use
 
@@ -53,9 +53,13 @@ On the pre-correction baseline fc23339, remote Ubuntu and Windows jobs for Pytho
 
 ## CI state
 
-The Quality workflow is disabled remotely with state disabled_manually. Its saved definition retains workflow_dispatch only; push and pull-request triggers were removed. The failing status badge was removed rather than represented as a pass. No required main check, review requirement, administrator enforcement, or other branch protection was removed.
+GitHub Actions is disabled at the repository level, the retained workflow file has been deleted, and main's required_status_checks is absent. There is no automatic or manual pipeline prerequisite. The earlier disabled workflow may remain in GitHub's historical workflow list; historical failed runs are not rewritten as passing.
 
-The [branch policy](branch-policy.md) describes the resulting required-check blockage. The [contributor guide](../CONTRIBUTING.md) retains the manual verification commands. With automated CI disabled, every future release needs recorded verification for its actual source revision; this report does not cover later changes.
+The [branch policy](branch-policy.md) retains independent review and administrator enforcement. The active administrator is also the PR author and cannot provide independent approval. The [contributor guide](../CONTRIBUTING.md) retains the local verification commands. With no CI, each release needs recorded verification for its actual source revision; this report does not cover later changes.
+
+## Preview host check
+
+Three representative skills were explicitly loaded and invoked in the current Codex desktop session on Windows using synthetic inputs. The recorded egress result was PARTIAL, Task Planner was bounded PASS, and matching Preflight was PARTIAL without granting authority. This validates that explicit workflow for these examples, not native automatic discovery or all client surfaces. See [compatibility evidence](compatibility.md). Other assistant CLIs and macOS execution were unavailable; their limits are disclosed in the [preview notes](releases/0.1.0a1.md).
 
 ## Distribution scope
 
@@ -67,8 +71,8 @@ The repository and each standalone bundle include the MIT license. No third-part
 
 ## Remaining before release
 
-1. Obtain the required review and explicitly resolve the disabled-CI/required-check policy before merging the implementation into main. Do not remove review controls or fabricate a passing status.
-2. Choose the release revision and version, and label the initial release as a preview or prerelease. Current package metadata is 0.1.0; no version or release was published by this assessment.
+1. Obtain the required independent review before merging the implementation into main. No CI check is required. Do not remove review controls or fabricate approval.
+2. Publish the prepared 0.1.0a1 only as a preview/prerelease after review. Package and bundled runtime versions are aligned; draft preparation is not public release publication.
 3. State the actual verification scope in release notes. For a stable cross-platform claim, complete the missing macOS checks on the release revision and verify representative interactive sessions in the supported assistants.
 4. Retain the known capability boundaries: incomplete static coverage, best-effort export scrubbing, unverified evidence references, no runtime egress capture, no executed sandbox, and no permission enforcement. Work from a trusted, stable checkout; installer planning and filesystem reads do not provide atomic protection against every concurrent filesystem replacement.
 

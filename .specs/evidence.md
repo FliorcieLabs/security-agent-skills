@@ -1,6 +1,6 @@
 # Reproducible implementation evidence
 
-Current delivery: twenty skills, ten Markdown agent profiles, and 23 mapped requirements. The latest release-readiness validation is recorded under T25 below. Earlier sections retain their original counts and timings as historical evidence.
+Current delivery: twenty skills, ten Markdown agent profiles, and 23 mapped requirements. The latest no-CI preview preparation is recorded under T26 below. Earlier sections retain their original counts and timings as historical evidence.
 
 ## T01 through T18 baseline
 
@@ -97,3 +97,15 @@ AST inspection covered twelve runtime modules and found no direct network/proces
 Verdict: public preview candidate after the correction; stable release readiness is not established. The repository is already public, but the implementation remains on integ and main still needs the required review and required-check policy resolution. No release, tag, package publication, main merge, or branch-protection relaxation occurred.
 
 Final documentation checks: all twenty skill-creator validators passed; the updated release/branch/contributor/README documents resolved 56 local links and seven README navigation anchors, with no em or en dashes. Parsed workflow trigger inventory is workflow_dispatch only. Network filesystem and hosted-assistant behavior remain outside the no-direct-client source check.
+
+## T26 no-CI preview preparation
+
+Date: October 27, 2026. Version: 0.1.0a1 in pyproject.toml, canonical runtime, and all twenty bundled runtimes. Administrative API changes removed main's required_status_checks and disabled repository Actions (enabled false). Main still requires one independent approval including latest-push review and administrator enforcement, with force pushes and deletion disabled. The retained workflow file was deleted. No CI, manual pipeline, new status check, or publishing automation was introduced.
+
+Local verification on the alpha source: 69 tests passed; the installed-workflow test exercised twenty bundles across four layouts (80 installed bundles). Ruff, MyPy (12 modules), Black (29 files), skill validation (20 skills/10 profiles), deterministic bundles (350 files), and traceability (23 requirements) passed. Version inspection matched all 21 runtime/source copies and package metadata. Source/wheel build and offline installed-wheel smoke passed at 0.1.0a1. The previous wheel was preserved under the local Git metadata directory, not published or deleted.
+
+In this Codex desktop session, the assistant read the Egress Audit, Task Planner, and Preflight skill instructions and workflow references, installed their alpha bundles into an isolated Codex-layout project, and invoked them on synthetic inputs. Results were PARTIAL with one outbound-client lead, bounded PASS, and matching PARTIAL with authorization_granted false. No target code, additional agent/model session, or network request was executed. docs/compatibility-evidence.json records the limited host scope. Native automatic discovery, other assistant sessions, and macOS were not verified or represented as passing.
+
+Documentation/version checks passed: 65 relative links and seven README anchors resolved; changed Markdown has no em or en dashes; no YAML workflow remains. The preview notes name the capabilities, unsupported checks, distribution differences, and incomplete coverage. This is an alpha preview, not stable or universal platform support.
+
+Source archive inventory, SHA256SUMS, and draft-release verification are performed against the committed head and recorded with the draft release artifacts. Public publication remains dependent on independent review. The active administrator is PR #1's author, so that account cannot provide the required independent approval; no review bypass or self-approval is used.

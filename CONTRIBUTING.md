@@ -2,7 +2,7 @@
 
 Work from integ and propose a reviewed pull request to main. Keep one semantic change per commit when practical. Never weaken security checks just to make a fixture pass.
 
-Automated CI is disabled by maintainer request. The saved workflow has only workflow_dispatch and is also disabled in GitHub. Run and record the local checks below before proposing a change. A maintainer must explicitly re-enable the workflow before manually running it. Main's existing required quality-gate remains configured; do not remove or bypass it as part of a contribution.
+There is no CI pipeline. GitHub Actions is disabled for the repository, workflow files are removed, and main has no required status checks. Run and record the local checks below before proposing a change. Independent review, administrator enforcement, and the other branch protections remain in force. Do not add pipelines or automatic publishing without maintainer authorization.
 
 Use Python 3.11+ and an isolated environment. Runtime code must use the standard library. Optional development tools are pinned in requirements-dev.txt.
 

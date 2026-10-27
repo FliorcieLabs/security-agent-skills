@@ -3,7 +3,7 @@
   "SKILL.md": "54de6379c20c9cb2bf5c49ffe8dae2a2d91009ff192b6a423e36c693cd1f5088",
   "references/agent.md": "35e9dedb9d3cfa59bd5dd58fbbd3c2590bea2c4c7194d5245b71bca444921a18",
   "references/workflow.md": "a40241bfaf25297695e0457371d15d94d4a35f29d0f1f609656870359b5700c1",
-  "scripts/_security_agent_skills/__init__.py": "78a813f0a9275b5624023294bb6bfb641635f79659bccb2d5e611470eb8cf9f4",
+  "scripts/_security_agent_skills/__init__.py": "1549fb64a51afea74628a02168cce3bc71b71999722e197080397b5737e06a58",
   "scripts/_security_agent_skills/audits.py": "04973b3a5890caaaa7960a05ae7fa4a650475a936f6f0fd2a6f41a75140a05a7",
   "scripts/_security_agent_skills/boundaries.py": "2c78d28c2b77612f6ca6481e798f5605c1651254c7b39dec3823868339b092ed",
   "scripts/_security_agent_skills/cli.py": "f879cc6f81a649178b10d6477679b72ee6e6953ffe95e8f14500409b92c3f35a",
