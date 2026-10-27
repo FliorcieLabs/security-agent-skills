@@ -1,6 +1,6 @@
 # Reproducible implementation evidence
 
-Current delivery: twenty skills, ten Markdown agent profiles, and 23 mapped requirements. The latest internal-operation validation is recorded under T20 through T24 below. Earlier sections retain their original counts and timings as historical evidence.
+Current delivery: twenty skills, ten Markdown agent profiles, and 23 mapped requirements. The latest release-readiness validation is recorded under T25 below. Earlier sections retain their original counts and timings as historical evidence.
 
 ## T01 through T18 baseline
 
@@ -81,3 +81,19 @@ The sandboxed formatter stalled and was stopped before running the same formatti
 The helpers validate declarations, not the truth of referenced evidence. Matching preflight and generated checkpoints remain PARTIAL. Task/handoff PASS means the named record consistency checks passed; retry PASS means a stop decision under supplied claims. All reports keep executed and authorization_granted false. Only checkpoint reports intentionally include symbolic references. No live orchestration, native agent registration, interactive model sessions, host memory integration, external effect reconciliation, or new token savings measurement was performed. Remote CI applies to the pushed commit and remains a separate PR gate.
 
 The final documentation examples use default JSON output because operation decisions and checkpoint capsules live in details, which the existing Markdown view does not render. A direct task-plan example displayed candidate_order_positions [1, 2]; a direct checkpoint example displayed all seven mandatory references and one optional decision, with two optional decisions omitted. Its PARTIAL exit 3 is expected. Documentation and bundles were revalidated after this clarification; no runtime code changed.
+
+## T25 CI disablement and release review
+
+Date: October 27, 2026. Baseline fc23339 plus the correction and documentation recorded in this delivery. Remote Quality workflow 396292068 was disabled as requested; API verification returned disabled_manually. The saved workflow has workflow_dispatch only. Main review protections and the required quality-gate were inspected and retained, leaving merging blocked until an explicit maintainer policy decision.
+
+Baseline PR run 40347602696 and push run 40347602271 failed their aggregate gates after macOS jobs were abandoned. The macOS check annotations state that no hosted runner acquired the job after multiple attempts and report macOS arm64 capacity constraints. Ubuntu/Windows tests and the quality job passed. This is not a completed macOS verification or a product assertion failure.
+
+Review found and fixed the sandbox plan's acceptance of non-array command JSON. New tests reject strings, objects, invalid scalars/elements, and ensure CLI errors do not echo the rejected command; the existing positive case now checks exact argv preservation. The helper remains inert.
+
+Executed after the correction: 69 tests passed in 44.407 seconds; all twenty helpers ran across four host layouts (80 bundles). Ruff passed; MyPy passed for 12 modules; Black passed for 29 files; skill validation passed for 20 skills/10 profiles; bundle check passed for 350 files; spec validation passed for 23 requirements. Source/wheel build and offline installed-package smoke passed. The existing byte benchmark reproduced 98.38% on its synthetic fixture, with no tokenizer or checkpoint savings measurement.
+
+AST inspection covered twelve runtime modules and found no direct network/process-client imports or eval/exec/dynamic-import calls. A selected-pattern text check found no matching machine-user paths, private-key headers, or selected token literals in the reviewed files. These checks supplement source review and tests, not a complete secret scan or runtime attestation. The release assessment records incomplete platform coverage, interactive host verification, filesystem races, distribution scope, and publication prerequisites. See docs/release-readiness.md.
+
+Verdict: public preview candidate after the correction; stable release readiness is not established. The repository is already public, but the implementation remains on integ and main still needs the required review and required-check policy resolution. No release, tag, package publication, main merge, or branch-protection relaxation occurred.
+
+Final documentation checks: all twenty skill-creator validators passed; the updated release/branch/contributor/README documents resolved 56 local links and seven README navigation anchors, with no em or en dashes. Parsed workflow trigger inventory is workflow_dispatch only. Network filesystem and hosted-assistant behavior remain outside the no-direct-client source check.

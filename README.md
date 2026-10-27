@@ -4,13 +4,14 @@
 
 **Know what an AI agent can read, run, and send.**
 
-[![Quality](https://github.com/FliorcieLabs/security-agent-skills/actions/workflows/quality.yml/badge.svg?branch=integ)](https://github.com/FliorcieLabs/security-agent-skills/actions/workflows/quality.yml?query=branch%3Ainteg)
 [![MIT license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-blue.svg)](pyproject.toml)
 
 Twenty local skills and ten portable agent profiles for security review and internal agent operations. Inspect unfamiliar AI tooling, review project boundaries, plan bounded tasks, prepare handoffs, checkpoint context, and review tool or retry proposals before execution.
 
 **No API key. No runtime Python dependencies. No telemetry. No source upload.** Analysis helpers read bounded local inputs without importing or executing reviewed code.
+
+**Release status: preview candidate.** Automated CI is disabled by maintainer request. Use the local verification commands below; disabling CI is not evidence of a passing check. See the [release assessment](docs/release-readiness.md) for tested scope and remaining prerequisites.
 
 [Quick start](#start-with-one-folder) · [Demo](#see-a-local-review) · [Security skills](#choose-the-security-question) · [Agent operations](#internal-agent-operations) · [Install](#install-for-your-assistant) · [10 agents](#portable-agent-profiles) · [Limits](#privacy-and-limits) · [Contribute](CONTRIBUTING.md)
 
@@ -191,12 +192,12 @@ python scripts/validate_specs.py
 python scripts/benchmark_reports.py
 ```
 
-Tests cover scanner boundaries, source non-execution, output privacy, incomplete coverage, no-overwrite installation, archive integrity, and installed-helper subprocesses across all four directory layouts. CI runs Python 3.11 and 3.14 on Linux, Windows, and macOS. These tests do not establish interactive recognition or decision quality inside every AI product.
+Tests cover scanner boundaries, source non-execution, output privacy, incomplete coverage, no-overwrite installation, archive integrity, and installed-helper subprocesses across all four directory layouts. The retained manual workflow defines Python 3.11 and 3.14 on Linux, Windows, and macOS, but is disabled remotely and has no push or pull-request triggers. These tests do not establish interactive recognition or decision quality inside every AI product.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for lint, types, formatting, build, and installed-wheel checks, [SECURITY.md](SECURITY.md) for vulnerability reporting, and [.specs](.specs/README.md) for requirements and evidence.
 
 Documentation artwork and demo sources live in [docs/assets/security](docs/assets/security/README.md). They are local assets, so the README does not depend on a third-party GIF host. The optional Pillow renderer is for documentation authors only; it is not a runtime dependency.
 
-`integ` is the development branch. `main` requires review and passing CI, including for administrators. No release or merge is automatic.
+`integ` is the development branch. `main` remains protected, including for administrators. Its existing required `quality-gate` check remains configured even though CI is disabled; this blocks merging until a maintainer explicitly resolves that policy. No release or merge is automatic. See [branch policy](docs/branch-policy.md).
 
 MIT licensed by Fliorcie Labs. This project ships original workflows and helpers, not copies of third-party agent projects. [Portfolio estimates](docs/portfolio.md) are hypotheses, not promises of adoption.

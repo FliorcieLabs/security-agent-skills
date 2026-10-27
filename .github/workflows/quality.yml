@@ -1,9 +1,6 @@
 name: Quality
 on:
-  push:
-    branches: [main, integ]
-  pull_request:
-    branches: [main, integ]
+  workflow_dispatch:
 permissions:
   contents: read
 concurrency:

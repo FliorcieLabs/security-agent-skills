@@ -59,3 +59,11 @@ Owner: primary implementation agent. Status before implementation: READY. Invari
 Integration acceptance: all twenty installed helpers run outside the checkout in all four host layouts; source-to-bundle parity, strict input boundaries, output privacy, existing tests and quality gates pass. Update README, compatibility, capability limits, profile guide, traceability, and reproducible evidence. No interactive host recognition or actual agent execution is claimed.
 
 Local T20 through T24 status: VERIFIED by 67 passing tests, 80 installed bundles, 350 generated files, shape/skill/spec validation, quality checks, package build, offline wheel smoke, and documentation checks in evidence.md. Remote checks apply to the pushed head.
+
+## CI disablement and release readiness
+
+T25, SEC-009 and SEC-018. Owner: primary implementation agent. Status before implementation: READY. Disable the Quality workflow remotely and remove automatic push/PR triggers from its saved definition. Preserve branch protection, tests, validators, and manual verification commands. Correct the sandbox plan's argument-array validation with regression coverage. Review source, installation boundaries, public claims, distribution, and available verification evidence before recommending a release tier. Do not publish a release, tag, merge, or remove required main checks as part of this review.
+
+Acceptance: remote workflow state disabled_manually, saved workflow has workflow_dispatch only, full test and quality checks pass, deterministic bundles validate, package build and offline smoke pass, and release assessment names any unresolved prerequisites. Record evidence and update README, branch policy, and contributor instructions.
+
+Local T25 status: VERIFIED by the 69-test suite, 80 installed bundles, bundle/skill/spec validation, lint/type/format checks, source/wheel build, offline smoke, source review, and recorded remote settings. Release verdict remains a preview candidate with publication prerequisites in docs/release-readiness.md; stable readiness is not established.
