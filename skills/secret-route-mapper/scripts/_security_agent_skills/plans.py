@@ -115,7 +115,11 @@ def sandbox_plan(target: str, image: str, command: list[str]) -> dict[str, Any]:
         raise ValueError("Ambiguous container mount path")
     if not re.fullmatch(r"[a-zA-Z0-9][a-zA-Z0-9./:_-]*@sha256:[a-f0-9]{64}", image):
         raise ValueError("Container image must be pinned to a SHA-256 digest")
-    if not command or any(not isinstance(arg, str) or not arg or "\x00" in arg for arg in command):
+    if (
+        not isinstance(command, list)
+        or not command
+        or any(not isinstance(arg, str) or not arg or "\x00" in arg for arg in command)
+    ):
         raise ValueError("Provide an explicit command argument array")
     argv = [
         "docker",

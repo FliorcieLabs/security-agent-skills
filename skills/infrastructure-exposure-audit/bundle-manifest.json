@@ -11,7 +11,7 @@
   "scripts/_security_agent_skills/extended_audits.py": "84d835d34c6f034290818e9d10ff79fc1174b91c3a45a2badb351c9794dd2acb",
   "scripts/_security_agent_skills/internal_operations.py": "c204356532d42830f74a6653b34da852c6d4068bbd9398435ca7f438fd33513b",
   "scripts/_security_agent_skills/inventory.py": "96c891f6c54a68c999cbcf924aec4bf87afd49b7a0b81c4c8305c14d4b7554da",
-  "scripts/_security_agent_skills/plans.py": "7392f77ae5216c2b101ae70feec4073f1101a93a86dc01bea797d0bcadeb1f25",
+  "scripts/_security_agent_skills/plans.py": "a8cb3fb447a249cb789f2bdefcd7298a819c2332ea85f5e2f8c56cb0007d605d",
   "scripts/_security_agent_skills/reports.py": "054f60b193aff275498a27f7df0e2a8ecf6aac26995e39cc83079572112c2f1d",
   "scripts/_security_agent_skills/sentinel.py": "75ecb4fdc7c6f5ad7d69767e5af157b571ad093ef1ece721ae4971b0ed5ab78d",
   "scripts/_security_agent_skills/workflows.py": "888ea02fa1cc53c2c22dc6404cde227aef8fb1fb7168daef0e98e9ea44512054",

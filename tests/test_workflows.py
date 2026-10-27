@@ -127,6 +127,36 @@ class WorkflowTests(unittest.TestCase):
             self.assertIn("no-new-privileges", argv)
             self.assertFalse(result["details"]["executed"])
             self.assertIn("readonly", " ".join(argv))
+            self.assertEqual(argv[-3:], ["python", "-c", "print(1)"])
+
+    def test_sandbox_rejects_non_array_commands_and_invalid_elements(self):
+        with tempfile.TemporaryDirectory() as directory:
+            for command in ["python", {"python": 1}, None, 1, False, [], [""], [None], ["a\x00b"]]:
+                with self.subTest(command=command), self.assertRaises(ValueError):
+                    sandbox_plan(directory, "python@sha256:" + "a" * 64, command)
+
+    def test_sandbox_cli_blocks_scalar_command_without_echoing_it(self):
+        import contextlib
+        import io
+
+        from security_agent_skills.cli import main
+
+        with tempfile.TemporaryDirectory() as directory:
+            output = io.StringIO()
+            with contextlib.redirect_stdout(output):
+                code = main(
+                    [
+                        "sandbox-plan",
+                        directory,
+                        "--image",
+                        "python@sha256:" + "a" * 64,
+                        "--command-json",
+                        json.dumps("PRIVATE_SYNTHETIC_COMMAND"),
+                    ]
+                )
+            self.assertEqual(code, 2)
+            self.assertEqual(json.loads(output.getvalue())["result"], "BLOCKED")
+            self.assertNotIn("PRIVATE_SYNTHETIC_COMMAND", output.getvalue())
 
     def test_sandbox_rejects_unpinned_image_and_ambiguous_mount(self):
         with tempfile.TemporaryDirectory() as directory:
