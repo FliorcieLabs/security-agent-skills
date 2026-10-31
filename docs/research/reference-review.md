@@ -1,5 +1,7 @@
 # Reference review and independent product decisions
 
+Historical T27 research below describes the independent 0.1.0a2 additions. On October 31, 2026, T28 subsequently imported selected pure functions for two attributed offline adaptations. Current provenance is in [third-party notices](../../THIRD_PARTY_NOTICES.md) and [adaptation limits](../adapted-skills.md). Statements below that no content was imported apply to T27, not the later attributed additions.
+
 Reviewed October 31, 2026. Reference: [Anthropic-Cybersecurity-Skills](https://github.com/mukul975/Anthropic-Cybersecurity-Skills/tree/54a798831d2266a3ca61ce68a7acb80b81160d57), revision `54a798831d2266a3ca61ce68a7acb80b81160d57`.
 
 ## Coverage and limits

@@ -132,5 +132,19 @@
     "command": "skill-route",
     "description": "Select a bounded set of local security skills from explicit goals and preserve unknown or deferred work.",
     "agent": "agents/security-skill-router.md"
+  },
+  {
+    "name": "email-header-triage",
+    "command": "email-headers",
+    "description": "Review a supplied email header block for claimed SPF/DKIM/DMARC results and From/Reply-To differences without DNS, attachment processing, or sender verification.",
+    "agent": "agents/email-header-triage.md",
+    "provenance": "third-party-provenance.json"
+  },
+  {
+    "name": "http-header-snapshot-review",
+    "command": "http-headers",
+    "description": "Review supplied HTTP headers for HSTS, nosniff, referrer-policy presence, and identification headers without fetching a URL.",
+    "agent": "agents/http-header-snapshot-review.md",
+    "provenance": "third-party-provenance.json"
   }
 ]

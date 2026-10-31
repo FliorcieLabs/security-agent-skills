@@ -317,6 +317,8 @@ ROUTES = {
     "detection_rules": "detection-replay-lab",
     "regression_metrics": "security-regression-board",
     "skill_selection": "security-skill-router",
+    "email_headers": "email-header-triage",
+    "http_headers": "http-header-snapshot-review",
 }
 
 
@@ -324,7 +326,7 @@ def skill_route(value: Any) -> dict[str, Any]:
     doc = _record(value, "skill-route", {"goals", "max_skills"})
     goals = _ids(doc["goals"])
     budget = doc["max_skills"]
-    if not goals or type(budget) is not int or not 1 <= budget <= 24:
+    if not goals or type(budget) is not int or not 1 <= budget <= 26:
         raise ValueError("Invalid routing budget")
     unknown = sorted(set(goals) - ROUTES.keys())
     candidates = sorted({ROUTES[goal] for goal in goals if goal in ROUTES})

@@ -1,6 +1,6 @@
 # Reproducible implementation evidence
 
-Current delivery: 24 skills, 14 Markdown agent profiles, four optional MCP tools, and 28 mapped requirements. The latest independent security decision preview is recorded under T27 below. Earlier sections retain their original counts and timings as historical evidence.
+Current delivery: 26 skills, 16 Markdown agent profiles, four optional MCP tools, and 30 mapped requirements. The latest attributed offline adaptations are recorded under T28 below. Earlier sections retain their original counts and timings as historical evidence.
 
 ## T01 through T18 baseline
 
@@ -138,3 +138,30 @@ Verification limits: no native automatic discovery, Claude/Cursor/Copilot sessio
 Additional T27 checks: 91 Markdown files and 146 relative links resolved; no em/en dash punctuation found in that documentation scope. The formal assurance JSON Schema and four examples validated with Draft202012Validator (authoring-time dependency only). AST import classification across 15 runtime modules found standard-library imports only and no direct network/process client imports. urllib.parse is present for URL parsing and is not a network client. This inspection is not complete semantic data-flow verification. Local benchmark JSON is recorded in docs/assurance-benchmark.json. Actions remained enabled=false and main required_status_checks=null; the independent review count remained one.
 
 Final T27 protocol review added support for standard object-valued MCP request metadata, which is ignored for analysis and cannot grant authority. Malformed metadata is rejected. All 24 skills passed skill-creator quick_validate. Final format check covered 36 source/test/script files. The rebuilt 0.1.0a2 wheel passed offline installation and the installed MCP executable smoke after that correction.
+
+## T28 attributed offline adaptations
+
+Date: October 31, 2026. Host: Windows, Python 3.14.6. Version: 0.1.0a3 development preview. Owner: primary implementation agent. Scope: SEC-029 email-header-triage and SEC-030 http-header-snapshot-review. Imported selected reviewed pure helpers at pinned upstream revision 54a798831d2266a3ca61ce68a7acb80b81160d57, retaining Apache-2.0 license, copyright 2026 mukul975, upstream author metadata mahipal, source hashes, and modification notices. Original project files remain MIT. No license obligations were concealed through renaming.
+
+Full upstream workflows were not imported. Excluded acquisition, DNS, subprocess, HTTP clients, attachments, writes, raw reports, grading, and CLI paths. Email output preserves contradictory supplied claims without validating sender identity. HTTP output checks only a narrow header subset and does not implement CSP or cookies. Both adapters suppress raw values and return PARTIAL. The four-tool MCP interface is unchanged. Bundles and wheel/source distributions include both licenses, the notice, and source provenance.
+
+| Command/check | Actual outcome |
+|---|---|
+| python -m unittest discover -s tests -t . -v | PASS, 108 tests in 34.259 seconds, including 26 skills across four layouts, 104 installed bundles |
+| python -m unittest tests.test_header_records -v | PASS, 11 focused tests after strengthening the file-access guard |
+| python -m ruff check src scripts tests | PASS |
+| python -m mypy src | PASS, 18 modules |
+| python -m black --check --workers 1 src scripts tests | PASS, 40 files |
+| python scripts/build_skills.py --check | PASS, 692 generated files, including license/notice/provenance in all bundles |
+| python scripts/validate_skills.py | PASS, 26 skills, 16 profiles |
+| python scripts/validate_specs.py | PASS, 30 requirements |
+| python -m build | PASS, 0.1.0a3 wheel and source distribution |
+| python scripts/package_smoke.py | PASS, offline installed CLI, both adapted commands, existing MCP roundtrip, and packaged license/notice/provenance assertions |
+| skill-creator quick_validate | PASS, all 26 skills |
+| Source/license hash comparison | PASS, both adapted source and license files match pinned provenance; no upstream NOTICE* file found |
+
+Documentation check covered 101 Markdown files and 170 relative links with no broken targets or em/en dash punctuation. Source and per-bundle tests retain original attribution. README's prior wholly-original/MIT-only wording was corrected and historical research claims were labeled as T27 scope. docs/adapted-skills.md explains direct reuse, omissions, input contracts, and why other candidates were not imported.
+
+Remaining: no new live endpoint, sender cryptography, native assistant recognition, hosted MCP integration, macOS execution, comprehensive header grammar, or competitor benchmark was verified. No global install or host config was changed. CI and publication remain disabled/unchanged under existing policy. The earlier draft release is untouched.
+
+Build environment note: an optional `python -m build --no-isolation` attempt could not import setuptools.build_meta from the host interpreter. The required standard isolated `python -m build` succeeded without adding global build dependencies; its installed-wheel smoke passed. This was a build-environment limitation, not a passed no-isolation check.

@@ -1,0 +1,4 @@
+{
+  "schema": "security-agent-skills/email-headers-v1",
+  "headers": "From: Sender <sender@example.invalid>\nReply-To: reply@example.invalid\nAuthentication-Results: mx.example.invalid; spf=fail; dkim=pass; dmarc=fail\nReceived: from relay.example.invalid by mx.example.invalid\n"
+}

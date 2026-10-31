@@ -187,7 +187,7 @@ class AssuranceTests(unittest.TestCase):
     def test_router_vocabulary_matches_catalog_and_cap_types(self):
         catalog = json.loads((ROOT / "catalog.json").read_text())
         self.assertEqual(set(ROUTES.values()), {item["name"] for item in catalog})
-        for budget in (True, False, 0, 25, "2"):
+        for budget in (True, False, 0, 27, "2"):
             doc = example("skill-route")
             doc["max_skills"] = budget
             with self.assertRaises(ValueError):

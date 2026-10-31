@@ -18,6 +18,7 @@ from .extended_audits import (
     audit_instructions,
     audit_llm,
 )
+from .header_records import HEADER_RECORDS
 from .internal_operations import OPERATIONS
 from .inventory import collect, reparse
 from .plans import appsec_plan, sandbox_plan
@@ -72,6 +73,7 @@ def parser() -> argparse.ArgumentParser:
         "verify",
         *OPERATIONS,
         *ASSURANCE,
+        *HEADER_RECORDS,
     ]:
         sub = subs.add_parser(name)
         sub.add_argument(
@@ -121,12 +123,14 @@ def parser() -> argparse.ArgumentParser:
             sub.add_argument("--archive", required=True)
         elif name == "verify":
             sub.add_argument("archive")
-        elif name in {*OPERATIONS, *ASSURANCE}:
+        elif name in {*OPERATIONS, *ASSURANCE, *HEADER_RECORDS}:
             sub.add_argument("record", help="Bounded local JSON operation record, never executed")
     return result
 
 
 def dispatch(args: argparse.Namespace) -> dict[str, Any] | list[dict[str, Any]]:
+    if args.command in HEADER_RECORDS:
+        return HEADER_RECORDS[args.command](read_json(args.record, unique_keys=True))
     if args.command in ASSURANCE:
         return ASSURANCE[args.command](read_json(args.record, unique_keys=True))
     if args.command in OPERATIONS:

@@ -4,12 +4,12 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "security-agent-skills"
-version = "0.1.0a2"
+version = "0.1.0a3"
 description = "Local security workflows for agent packages, MCP servers, and application folders"
 readme = "README.md"
 requires-python = ">=3.11"
-license = "MIT"
-license-files = ["LICENSE"]
+license = "MIT AND Apache-2.0"
+license-files = ["LICENSE", "LICENSES/Apache-2.0.txt", "THIRD_PARTY_NOTICES.md", "third-party-provenance.json"]
 authors = [{name = "Fliorcie Labs"}]
 dependencies = []
 

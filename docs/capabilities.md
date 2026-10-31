@@ -50,3 +50,7 @@ Filesystem reads are bounded and avoid links, reparse points, special files, and
 ## Security decision experiments and MCP
 
 Four [record workflows](assurance-workflows.md) analyze graph paths, exact-match labeled events, paired metrics, and explicit skill goals. All valid reports remain PARTIAL. They do not construct a full graph from source, validate exploits, implement Sigma, authenticate labels, measure real model quality, or infer natural-language intent. The [optional stdio MCP interface](mcp.md) exposes only those four pure record functions and returns data to the invoking host. No host installation, independent network request, arbitrary file read, or target execution occurs through these tools.
+
+## Attributed header adaptations
+
+Two [offline header adaptations](adapted-skills.md) reuse selected Apache-2.0 helper functions with attribution. Email headers yield unverified authentication claims and From/Reply-To differences. HTTP snapshots check a limited subset of header presence/values. Neither acquires live evidence, sends DNS/HTTP requests, processes attachments, or verifies sender or application security. All valid reports remain PARTIAL.

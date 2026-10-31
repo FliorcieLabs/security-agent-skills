@@ -28,6 +28,12 @@ def generated_files():
             "scripts/run.py": launcher,
             "LICENSE": (ROOT / "LICENSE").read_bytes().replace(b"\r\n", b"\n"),
         }
+        for relative in [
+            "LICENSES/Apache-2.0.txt",
+            "THIRD_PARTY_NOTICES.md",
+            "third-party-provenance.json",
+        ]:
+            files[relative] = (ROOT / relative).read_bytes().replace(b"\r\n", b"\n")
         for source in sorted(package.glob("*.py")):
             files["scripts/_security_agent_skills/" + source.name] = source.read_bytes().replace(
                 b"\r\n", b"\n"

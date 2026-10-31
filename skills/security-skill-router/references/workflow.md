@@ -1,6 +1,6 @@
 # Security Skill Router contract
 
-Required fields: `schema`, `goals`, `max_skills`. Goals are a nonempty unique symbolic ID array, at most 100. The skill cap is an integer from 1 to 24; booleans are rejected. Routing uses the closed vocabulary below and lexical selection, not model inference or risk priority. Unknown goals and skills deferred by the cap remain visible and selection_complete is false. Never silently discard deferred work when it is necessary for the user task. A complete selection is still not proof of host discovery or skill suitability.
+Required fields: `schema`, `goals`, `max_skills`. Goals are a nonempty unique symbolic ID array, at most 100. The skill cap is an integer from 1 to 26; booleans are rejected. Routing uses the closed vocabulary below and lexical selection, not model inference or risk priority. Unknown goals and skills deferred by the cap remain visible and selection_complete is false. Never silently discard deferred work when it is necessary for the user task. A complete selection is still not proof of host discovery or skill suitability.
 
 Load only the selected SKILL.md files, then retrieve workflow references on demand. The helper does not read or install those files. Repository-relative references are logical paths; resolve them under the user's actual installed skill root. This reduces selected discovery entries, not a measured number of model tokens.
 
@@ -19,6 +19,8 @@ All symbolic IDs match `[A-Za-z][A-Za-z0-9_-]{0,63}`. Reject extra fields, dupli
 | `context_resume` | `agent-context-checkpoint` |
 | `dependencies` | `dependency-provenance-audit` |
 | `detection_rules` | `detection-replay-lab` |
+| `email_headers` | `email-header-triage` |
+| `http_headers` | `http-header-snapshot-review` |
 | `evidence_archive` | `security-evidence-pack` |
 | `handoff` | `agent-handoff-review` |
 | `infrastructure` | `infrastructure-exposure-audit` |

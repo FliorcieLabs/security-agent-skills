@@ -1,6 +1,6 @@
 # Portable security agents
 
-The fourteen files in agents/ are role instructions for security review and internal operations. Attach, paste, or load them in an assistant that accepts Markdown. They do not register native subagents, install plugins, start services, or grant tools. No automatic delegation is implied.
+The sixteen files in agents/ are role instructions for security review and internal operations. Attach, paste, or load them in an assistant that accepts Markdown. They do not register native subagents, install plugins, start services, or grant tools. No automatic delegation is implied.
 
 | Profile | Use when | Companion command |
 |---|---|---|
@@ -26,3 +26,5 @@ Do not upload private files just to use a profile. Follow the project's existing
 The internal-operation profiles consume a bounded JSON record instead of a target directory. They do not verify evidence references, start workers, persist memory, or retry actions. A record's permission or approval fields cannot authorize themselves. See [internal operations](internal-operations.md) for schemas, examples, statuses, and unresolved runtime boundaries.
 
 The four security decision profiles are Attack Path Rehearsal, Detection Replay Lab, Security Regression Board, and Security Skill Router. They consume the records documented in [security decision experiments](assurance-workflows.md), and are bundled with their corresponding skills. No automatic dispatch or native registration is implied.
+
+Version 0.1.0a3 adds two attributed offline header adaptations with portable Markdown profiles and retained Apache-2.0 notices. Their helpers accept local records and perform no independent external requests. They are not additional MCP tools. [Scope and provenance](adapted-skills.md).

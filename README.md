@@ -4,16 +4,16 @@
 
 **Review the risk. Rehearse the boundary. Check whether the fix holds.**
 
-[![MIT license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![MIT and Apache-2.0](https://img.shields.io/badge/license-MIT%20%2B%20Apache--2.0-blue.svg)](THIRD_PARTY_NOTICES.md)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-blue.svg)](pyproject.toml)
 
-Twenty-four local skills and fourteen portable agent profiles for security review and internal agent operations. Inspect unfamiliar AI tooling, review project boundaries, plan bounded tasks, prepare handoffs, checkpoint context, and review tool or retry proposals before execution.
+Twenty-six local skills and sixteen portable agent profiles for security review and internal agent operations. Inspect unfamiliar AI tooling, review project boundaries, plan bounded tasks, prepare handoffs, checkpoint context, and review tool or retry proposals before execution.
 
 **No API key. No runtime Python dependencies. No telemetry. No source upload.** Analysis helpers read bounded local inputs without importing or executing reviewed code.
 
-**Release status: 0.1.0a2 development preview.** The earlier 0.1.0a1 draft remains pinned to its earlier source revision; these additions are not a published release. GitHub Actions is disabled, workflow files are removed, and no CI check is required to merge. Verification is local; independent review remains required. See the [development preview notes](docs/releases/0.1.0a2.md) and [release assessment](docs/release-readiness.md) for tested scope and limits.
+**Release status: 0.1.0a3 development preview.** The earlier 0.1.0a1 draft remains pinned to its earlier source revision; these additions are not a published release. GitHub Actions is disabled, workflow files are removed, and no CI check is required to merge. Verification is local; independent review remains required. See the [development preview notes](docs/releases/0.1.0a3.md) and [release assessment](docs/release-readiness.md) for tested scope and limits.
 
-[Quick start](#start-with-one-folder) Ãƒâ€šÃ‚Â· [Demo](#see-a-local-review) Ãƒâ€šÃ‚Â· [Security skills](#choose-the-security-question) Ãƒâ€šÃ‚Â· [Agent operations](#internal-agent-operations) Ãƒâ€šÃ‚Â· [Install](#install-for-your-assistant) Ãƒâ€šÃ‚Â· [14 agents](#portable-agent-profiles) Ãƒâ€šÃ‚Â· [Limits](#privacy-and-limits) Ãƒâ€šÃ‚Â· [Contribute](CONTRIBUTING.md)
+[Quick start](#start-with-one-folder) ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· [Demo](#see-a-local-review) ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· [Security skills](#choose-the-security-question) ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· [Agent operations](#internal-agent-operations) ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· [Install](#install-for-your-assistant) ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· [16 agents](#portable-agent-profiles) ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· [Limits](#privacy-and-limits) ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· [Contribute](CONTRIBUTING.md)
 
 Use it before installing an unfamiliar agent package, granting an MCP server access, accepting a dependency change, or sharing a security finding. Start with one question and one skill. Review the referenced source before deciding what to allow or fix.
 
@@ -92,7 +92,21 @@ The graph example retains an unknown edge. The replay example exposes a missed d
 
 An optional [local stdio MCP server](docs/mcp.md) exposes these same four record operations. It accepts structured records and emits results to the invoking host, with no arbitrary file reads, shell tool, or independent network client. Markdown profiles, Python helpers, and MCP are separate access paths. Use only the path your AI platform supports.
 
-We reviewed the complete tracked inventory of a widely adopted security skill library and manually examined selected workflows. [Research, source revision, adoption signals, ten prioritized areas, and reasons for deferred imports](docs/research/reference-review.md). No upstream skill content was imported, and no head-to-head superiority claim is made.
+We reviewed the complete tracked inventory of a widely adopted security skill library and manually examined selected workflows. [Research, source revision, adoption signals, ten prioritized areas, and reasons for deferred imports](docs/research/reference-review.md). The four decision workflows were independently authored. Two later offline adaptations retain selected upstream helper functions with explicit attribution and Apache-2.0 licensing. No head-to-head superiority claim is made.
+
+## Attributed offline adaptations
+
+| Local skill | Upstream skill | Available behavior |
+|---|---|---|
+| [Email Header Triage](skills/email-header-triage) | analyzing-email-headers-for-phishing-investigation | Supplied header claims and sender/reply-to differences, without DNS or attachments |
+| [HTTP Header Snapshot Review](skills/http-header-snapshot-review) | performing-security-headers-audit | Supplied HSTS, nosniff, referrer-policy presence, and identification headers, without HTTP requests |
+
+```sh
+python scripts/security_check.py email-headers examples/adapted-headers/email-headers.json
+python scripts/security_check.py http-headers examples/adapted-headers/http-headers.json
+```
+
+Both return PARTIAL, exit 3. These reuse selected reviewed pure functions, not the full upstream scripts. Names describe their narrower offline scope. Original authorship, pinned revision, changes, and Apache-2.0 terms remain explicit. [Third-party notices](THIRD_PARTY_NOTICES.md) and [adaptation limits](docs/adapted-skills.md). Original project code remains MIT; distributed bundles contain both licenses.
 
 ## Internal agent operations
 
@@ -132,7 +146,7 @@ python scripts/install_skills.py --agent codex --project ../my-project --skill i
 python scripts/install_skills.py --agent codex --project ../my-project --skill instruction-boundary-audit --apply
 ```
 
-Choose `claude`, `codex`, `cursor`, `copilot`, or `all`. Omit `--skill` to select all twenty-four. Replace `--project ../my-project` with `--global` for personal discovery across projects. Existing destinations are refused, never silently upgraded or overwritten.
+Choose `claude`, `codex`, `cursor`, `copilot`, or `all`. Omit `--skill` to select all twenty-six. Replace `--project ../my-project` with `--global` for personal discovery across projects. Existing destinations are refused, never silently upgraded or overwritten.
 
 | Assistant | Project skills | Personal skills |
 |---|---|---|
@@ -159,6 +173,8 @@ Each bundle includes its own helper and can run from another folder without this
 - [Detection Replay Reviewer](agents/detection-replay-lab.md)
 - [Security Regression Reviewer](agents/security-regression-board.md)
 - [Security Skill Selection Reviewer](agents/security-skill-router.md)
+- [Email Header Triage Reviewer](agents/email-header-triage.md)
+- [HTTP Header Snapshot Reviewer](agents/http-header-snapshot-review.md)
 
 Attach a profile or load its text into an assistant that accepts Markdown instructions. Each matching installed skill carries its profile in `references/agent.md`. These are portable instructions, not universal native agent registrations. Without filesystem access, an assistant can review supplied excerpts and report partial coverage. Running helpers requires terminal access and Python. [Agent usage](docs/agents.md).
 
@@ -227,4 +243,4 @@ Documentation artwork and demo sources live in [docs/assets/security](docs/asset
 
 `integ` is the development branch. `main` remains protected, including for administrators, and requires independent review. The required CI check has been removed. No release or merge is automatic. See [branch policy](docs/branch-policy.md).
 
-MIT licensed by Fliorcie Labs. This project ships original workflows and helpers, not copies of third-party agent projects. [Portfolio estimates](docs/portfolio.md) are hypotheses, not promises of adoption.
+Original Fliorcie-authored code is MIT licensed. Two adapted helper modules retain Apache-2.0 licensing and original attribution. Standalone bundles carry both licenses and [third-party notices](THIRD_PARTY_NOTICES.md). [Portfolio estimates](docs/portfolio.md) are hypotheses, not promises of adoption.

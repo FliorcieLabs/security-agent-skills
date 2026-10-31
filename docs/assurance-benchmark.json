@@ -27,9 +27,9 @@
   },
   "result": "PASS",
   "routing": {
-    "all_entrypoint_bytes": 43190,
-    "catalog_entries": 24,
-    "entrypoint_byte_reduction_percent": 87.74,
+    "all_entrypoint_bytes": 46450,
+    "catalog_entries": 26,
+    "entrypoint_byte_reduction_percent": 88.6,
     "selected_entries": 3,
     "selected_entrypoint_bytes": 5296
   },

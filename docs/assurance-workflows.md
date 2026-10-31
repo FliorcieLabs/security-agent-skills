@@ -53,7 +53,7 @@ Eight independently authored synthetic events compare a deliberately broad text 
 
 The exact predicate removes noise but misses schema drift. Higher F1 does not establish overall superiority. The regression board preserves that lost detection. Real comparisons need frozen fixtures, trusted labels, exact source revisions, actual captured outputs, the same execution budgets, and complete or explicitly excluded cases. Never fill in a competitor's outputs by guessing. There is no measured performance comparison against the reference library or an AI model.
 
-The same script measures the bytes of three selected skill entrypoints versus all 24 entrypoints. It prints the actual values for the current checkout. This is a document-selection measure, not tokenizer output, context usage, latency, or billing. Workflow references and tool schemas add context when loaded. MCP includes both structured content and a text representation for compatibility, so its wire size is not a token-saving claim.
+The same script measures the bytes of three selected skill entrypoints versus all 26 entrypoints. It prints the actual values for the current checkout. This is a document-selection measure, not tokenizer output, context usage, latency, or billing. Workflow references and tool schemas add context when loaded. MCP includes both structured content and a text representation for compatibility, so its wire size is not a token-saving claim.
 
 ## Platform boundary
 

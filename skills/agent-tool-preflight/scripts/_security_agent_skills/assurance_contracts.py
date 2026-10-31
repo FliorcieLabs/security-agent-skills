@@ -81,7 +81,7 @@ CONTRACTS = {
         "skill-route",
         {
             "goals": {**IDS, "minItems": 1},
-            "max_skills": {"type": "integer", "minimum": 1, "maximum": 24},
+            "max_skills": {"type": "integer", "minimum": 1, "maximum": 26},
         },
     ),
 }

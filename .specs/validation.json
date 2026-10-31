@@ -1,10 +1,10 @@
 {
-  "scope": "local Windows Python 3.14.6, T27 development preview",
-  "package_version": "0.1.0a2",
+  "scope": "local Windows Python 3.14.6, T28 attributed offline adaptations",
+  "package_version": "0.1.0a3",
   "ci_required": false,
   "github_actions_enabled": false,
   "explicit_codex_workflows_exercised": 3,
-  "test_count": 97,
+  "test_count": 108,
   "checks": [
     {
       "command": [
@@ -110,16 +110,18 @@
       "status": "PASS"
     }
   ],
-  "skill_count": 24,
-  "agent_count": 14,
-  "installed_bundles_tested": 96,
-  "generated_files": 494,
-  "runtime_modules": 15,
+  "skill_count": 26,
+  "agent_count": 16,
+  "installed_bundles_tested": 104,
+  "generated_files": 692,
+  "runtime_modules": 18,
   "mcp_tools": 4,
   "new_native_host_sessions_tested": false,
   "reference_python_files_parsed": 1103,
   "reference_tracked_files_inventoried": 4532,
   "explicit_codex_evidence_scope": "historical 0.1.0a1, not the four new workflows",
   "validation_date": "2026-10-31",
-  "test_duration_seconds": 26.065
+  "test_duration_seconds": 34.259,
+  "adapted_upstream_modules": 2,
+  "licensing": "MIT AND Apache-2.0"
 }
