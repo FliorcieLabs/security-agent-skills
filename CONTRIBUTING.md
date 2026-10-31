@@ -29,3 +29,5 @@ Internal-operation contracts live in internal_operations.py, schemas/internal-op
 Keep SKILL.md focused and short. Put mode-specific inputs in references/workflow.md. Do not force implicit activation, read entire projects into context, grant tool permissions, or add telemetry. Every claimed runtime check needs reproducible evidence. Host documentation support is different from interactive client verification.
 
 Run package checks without publishing. Do not add release automation, tags, or package publishing without explicit maintainer authorization. See .specs for requirement IDs and traceability.
+
+For security decision workflows, run `python scripts/benchmark_assurance.py` and the focused `python -m unittest tests.test_assurance tests.test_mcp_stdio -v` checks. Regenerate bundles after runtime changes. Protocol smoke must exercise the installed MCP executable offline, not merely import source code. Reference research uses pinned revisions and inventory coverage; do not copy outside skill content or claim measured superiority without a fair executed comparison.

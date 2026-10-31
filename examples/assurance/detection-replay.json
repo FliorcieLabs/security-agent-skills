@@ -1,0 +1,42 @@
+{
+  "schema": "security-agent-skills/detection-replay-v1",
+  "rules": [
+    {
+      "id": "unapprovedWrite",
+      "equals": {
+        "effect": "write",
+        "approved": "false"
+      }
+    }
+  ],
+  "events": [
+    {
+      "id": "deniedWrite",
+      "fields": {
+        "effect": "write",
+        "approved": "false"
+      },
+      "expected": [
+        "unapprovedWrite"
+      ]
+    },
+    {
+      "id": "safeRead",
+      "fields": {
+        "effect": "read",
+        "approved": "false"
+      },
+      "expected": []
+    },
+    {
+      "id": "schemaDrift",
+      "fields": {
+        "effect": "write",
+        "approval": "false"
+      },
+      "expected": [
+        "unapprovedWrite"
+      ]
+    }
+  ]
+}

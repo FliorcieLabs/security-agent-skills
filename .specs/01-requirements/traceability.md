@@ -25,3 +25,8 @@
 | SEC-021 | Reference-only context checkpoint that never drops mandatory constraints or unresolved work to fit a budget | internal_operations.py context_checkpoint, agent-context-checkpoint | test_internal_operations, test_installed_workflows; see ../evidence.md |
 | SEC-022 | Declared tool proposal comparison without tool execution or an authority grant | internal_operations.py tool_preflight, agent-tool-preflight | test_internal_operations, test_installed_workflows; see ../evidence.md |
 | SEC-023 | Stop decisions and ambiguous-write reconciliation before a retry candidate | internal_operations.py retry_guard, agent-retry-guard | test_internal_operations, test_installed_workflows; see ../evidence.md |
+| SEC-024 | attack-path-rehearsal | assurance.py, attack-path-rehearsal | test_assurance, test_installed_workflows; see ../evidence.md |
+| SEC-025 | detection-replay-lab | assurance.py, detection-replay-lab | test_assurance, test_installed_workflows; see ../evidence.md |
+| SEC-026 | security-regression-board | assurance.py, security-regression-board | test_assurance, test_installed_workflows; see ../evidence.md |
+| SEC-027 | security-skill-router | assurance.py, security-skill-router | test_assurance, test_installed_workflows; see ../evidence.md |
+| SEC-028 | Optional bounded record-only MCP stdio interface with CLI-equivalent reports | mcp_stdio.py, assurance_contracts.py, docs/mcp.md | test_mcp_stdio, package_smoke; see ../evidence.md |

@@ -8,6 +8,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from security_agent_skills.assurance import ASSURANCE
 from security_agent_skills.internal_operations import OPERATIONS
 from tests.test_portability import ROOT, installer
 
@@ -92,7 +93,12 @@ class InstalledWorkflowTests(unittest.TestCase):
                 with self.subTest(host=entry["host"], skill=entry["skill"]):
                     run = Path(entry["destination"]) / "scripts/run.py"
                     name = entry["skill"]
-                    if name in internal_skills:
+                    command = next(item["command"] for item in catalog if item["name"] == name)
+                    if command in ASSURANCE:
+                        value = call(run, [ROOT / "examples/assurance" / (command + ".json")], 3)
+                        self.assertFalse(value["details"]["executed"])
+                        self.assertFalse(value["coverage"]["source_claims_verified"])
+                    elif name in internal_skills:
                         command = internal_skills[name]
                         expected = {
                             "task-plan": 0,

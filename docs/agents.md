@@ -1,6 +1,6 @@
 # Portable security agents
 
-The ten files in agents/ are role instructions for security review and internal operations. Attach, paste, or load them in an assistant that accepts Markdown. They do not register native subagents, install plugins, start services, or grant tools. No automatic delegation is implied.
+The fourteen files in agents/ are role instructions for security review and internal operations. Attach, paste, or load them in an assistant that accepts Markdown. They do not register native subagents, install plugins, start services, or grant tools. No automatic delegation is implied.
 
 | Profile | Use when | Companion command |
 |---|---|---|
@@ -24,3 +24,5 @@ Native custom-agent registration uses the chosen host's current configuration an
 Do not upload private files just to use a profile. Follow the project's existing data-sharing policy and keep credentials out of prompts. The helpers themselves operate locally.
 
 The internal-operation profiles consume a bounded JSON record instead of a target directory. They do not verify evidence references, start workers, persist memory, or retry actions. A record's permission or approval fields cannot authorize themselves. See [internal operations](internal-operations.md) for schemas, examples, statuses, and unresolved runtime boundaries.
+
+The four security decision profiles are Attack Path Rehearsal, Detection Replay Lab, Security Regression Board, and Security Skill Router. They consume the records documented in [security decision experiments](assurance-workflows.md), and are bundled with their corresponding skills. No automatic dispatch or native registration is implied.

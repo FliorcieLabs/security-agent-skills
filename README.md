@@ -2,18 +2,18 @@
 
 ![Security Agent Skills: a circuit-node shield on a dark navy background](docs/assets/security/security-banner.png)
 
-**Know what an AI agent can read, run, and send.**
+**Review the risk. Rehearse the boundary. Check whether the fix holds.**
 
 [![MIT license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-blue.svg)](pyproject.toml)
 
-Twenty local skills and ten portable agent profiles for security review and internal agent operations. Inspect unfamiliar AI tooling, review project boundaries, plan bounded tasks, prepare handoffs, checkpoint context, and review tool or retry proposals before execution.
+Twenty-four local skills and fourteen portable agent profiles for security review and internal agent operations. Inspect unfamiliar AI tooling, review project boundaries, plan bounded tasks, prepare handoffs, checkpoint context, and review tool or retry proposals before execution.
 
 **No API key. No runtime Python dependencies. No telemetry. No source upload.** Analysis helpers read bounded local inputs without importing or executing reviewed code.
 
-**Release status: 0.1.0a1 preview preparation.** GitHub Actions is disabled, workflow files are removed, and no CI check is required to merge. Verification is local; independent review remains required. See the [preview notes](docs/releases/0.1.0a1.md) and [release assessment](docs/release-readiness.md) for tested scope and limits.
+**Release status: 0.1.0a2 development preview.** The earlier 0.1.0a1 draft remains pinned to its earlier source revision; these additions are not a published release. GitHub Actions is disabled, workflow files are removed, and no CI check is required to merge. Verification is local; independent review remains required. See the [development preview notes](docs/releases/0.1.0a2.md) and [release assessment](docs/release-readiness.md) for tested scope and limits.
 
-[Quick start](#start-with-one-folder) · [Demo](#see-a-local-review) · [Security skills](#choose-the-security-question) · [Agent operations](#internal-agent-operations) · [Install](#install-for-your-assistant) · [10 agents](#portable-agent-profiles) · [Limits](#privacy-and-limits) · [Contribute](CONTRIBUTING.md)
+[Quick start](#start-with-one-folder) Ãƒâ€šÃ‚Â· [Demo](#see-a-local-review) Ãƒâ€šÃ‚Â· [Security skills](#choose-the-security-question) Ãƒâ€šÃ‚Â· [Agent operations](#internal-agent-operations) Ãƒâ€šÃ‚Â· [Install](#install-for-your-assistant) Ãƒâ€šÃ‚Â· [14 agents](#portable-agent-profiles) Ãƒâ€šÃ‚Â· [Limits](#privacy-and-limits) Ãƒâ€šÃ‚Â· [Contribute](CONTRIBUTING.md)
 
 Use it before installing an unfamiliar agent package, granting an MCP server access, accepting a dependency change, or sharing a security finding. Start with one question and one skill. Review the referenced source before deciding what to allow or fix.
 
@@ -71,6 +71,29 @@ Each path narrows the next decision. It does not combine the results into a safe
 
 Use a directory as the target for each static command. Read the skill's workflow reference for structured inputs to the other commands. [Capabilities and limits](docs/capabilities.md) describe what each helper can establish.
 
+## Rehearse a boundary and test the evidence
+
+Four independent additions connect security review to a concrete next decision:
+
+| Skill | Try it when | CLI command |
+|---|---|---|
+| [Attack Path Rehearsal](skills/attack-path-rehearsal) | You need declared entry-to-asset paths and the effect of removing one edge, including alternate routes | `attack-path` |
+| [Detection Replay Lab](skills/detection-replay-lab) | You want to test exact field predicates against labeled events before trusting a detection | `detection-replay` |
+| [Security Regression Board](skills/security-regression-board) | You need paired baseline/candidate metrics without hiding lost detections or incomplete cases | `regression-board` |
+| [Security Skill Router](skills/security-skill-router) | You want to load a few explicit goal matches and preserve deferred work | `skill-route` |
+
+```sh
+python scripts/security_check.py attack-path examples/assurance/attack-path.json
+python scripts/security_check.py detection-replay examples/assurance/detection-replay.json
+python scripts/benchmark_assurance.py
+```
+
+The graph example retains an unknown edge. The replay example exposes a missed detection after a field rename. Valid analyses return PARTIAL, exit 3. The benchmark reports synthetic precision, recall, per-case regressions, and selected entrypoint bytes. It does not measure another repository, live attacks, model tokens, or real-world coverage. [Examples, contracts, and measured limits](docs/assurance-workflows.md).
+
+An optional [local stdio MCP server](docs/mcp.md) exposes these same four record operations. It accepts structured records and emits results to the invoking host, with no arbitrary file reads, shell tool, or independent network client. Markdown profiles, Python helpers, and MCP are separate access paths. Use only the path your AI platform supports.
+
+We reviewed the complete tracked inventory of a widely adopted security skill library and manually examined selected workflows. [Research, source revision, adoption signals, ten prioritized areas, and reasons for deferred imports](docs/research/reference-review.md). No upstream skill content was imported, and no head-to-head superiority claim is made.
+
 ## Internal agent operations
 
 These five skills help an assistant manage its work with explicit scope, evidence, and stop conditions. Their helpers validate supplied JSON records locally. They do not provide a background agent runtime or invoke tools on your behalf.
@@ -109,7 +132,7 @@ python scripts/install_skills.py --agent codex --project ../my-project --skill i
 python scripts/install_skills.py --agent codex --project ../my-project --skill instruction-boundary-audit --apply
 ```
 
-Choose `claude`, `codex`, `cursor`, `copilot`, or `all`. Omit `--skill` to select all twenty. Replace `--project ../my-project` with `--global` for personal discovery across projects. Existing destinations are refused, never silently upgraded or overwritten.
+Choose `claude`, `codex`, `cursor`, `copilot`, or `all`. Omit `--skill` to select all twenty-four. Replace `--project ../my-project` with `--global` for personal discovery across projects. Existing destinations are refused, never silently upgraded or overwritten.
 
 | Assistant | Project skills | Personal skills |
 |---|---|---|
@@ -132,6 +155,10 @@ Each bundle includes its own helper and can run from another folder without this
 - [Agent Context Checkpoint Keeper](agents/agent-context-checkpoint.md)
 - [Agent Tool Preflight Reviewer](agents/agent-tool-preflight.md)
 - [Agent Retry Guard](agents/agent-retry-guard.md)
+- [Attack Path Rehearsal Reviewer](agents/attack-path-rehearsal.md)
+- [Detection Replay Reviewer](agents/detection-replay-lab.md)
+- [Security Regression Reviewer](agents/security-regression-board.md)
+- [Security Skill Selection Reviewer](agents/security-skill-router.md)
 
 Attach a profile or load its text into an assistant that accepts Markdown instructions. Each matching installed skill carries its profile in `references/agent.md`. These are portable instructions, not universal native agent registrations. Without filesystem access, an assistant can review supplied excerpts and report partial coverage. Running helpers requires terminal access and Python. [Agent usage](docs/agents.md).
 

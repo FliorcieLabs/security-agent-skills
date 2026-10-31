@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "security-agent-skills"
-version = "0.1.0a1"
+version = "0.1.0a2"
 description = "Local security workflows for agent packages, MCP servers, and application folders"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -15,6 +15,7 @@ dependencies = []
 
 [project.scripts]
 security-agent-skills = "security_agent_skills.cli:main"
+security-agent-skills-mcp = "security_agent_skills.mcp_stdio:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

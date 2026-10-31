@@ -108,5 +108,29 @@
     "command": "retry",
     "description": "Review a declared operation outcome and attempt budget, stopping retries after success and requiring reconciliation for ambiguous writes.",
     "agent": "agents/agent-retry-guard.md"
+  },
+  {
+    "name": "attack-path-rehearsal",
+    "command": "attack-path",
+    "description": "Trace declared entry-to-asset paths and evaluate single-edge control counterfactuals while preserving unknown edges.",
+    "agent": "agents/attack-path-rehearsal.md"
+  },
+  {
+    "name": "detection-replay-lab",
+    "command": "detection-replay",
+    "description": "Replay bounded exact-match detection predicates against labeled synthetic events and show false positives and missed labels.",
+    "agent": "agents/detection-replay-lab.md"
+  },
+  {
+    "name": "security-regression-board",
+    "command": "regression-board",
+    "description": "Compare paired baseline and candidate security labels with explicit exclusions, precision, recall, and regression cases.",
+    "agent": "agents/security-regression-board.md"
+  },
+  {
+    "name": "security-skill-router",
+    "command": "skill-route",
+    "description": "Select a bounded set of local security skills from explicit goals and preserve unknown or deferred work.",
+    "agent": "agents/security-skill-router.md"
   }
 ]

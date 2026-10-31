@@ -46,3 +46,7 @@ Safe Install Sandbox emits a restricted Docker plan but does not execute it, att
 Evidence Pack checks local report inventory and hash consistency. A malicious actor can rewrite both reports and the manifest. No signing, remote attestation, immutable storage, WORM, or compliance status is implied. Redaction is best-effort pattern scrubbing. Output paths, findings, and even filenames may contain sensitive information; review before sharing.
 
 Filesystem reads are bounded and avoid links, reparse points, special files, and known credential filenames. Root and file checks do not provide an atomic snapshot or defeat every concurrent filesystem race on every OS. Input supplied by another process can change; rescan stable copies where content identity matters. Generated dependencies and credentials are excluded explicitly in coverage.
+
+## Security decision experiments and MCP
+
+Four [record workflows](assurance-workflows.md) analyze graph paths, exact-match labeled events, paired metrics, and explicit skill goals. All valid reports remain PARTIAL. They do not construct a full graph from source, validate exploits, implement Sigma, authenticate labels, measure real model quality, or infer natural-language intent. The [optional stdio MCP interface](mcp.md) exposes only those four pure record functions and returns data to the invoking host. No host installation, independent network request, arbitrary file read, or target execution occurs through these tools.

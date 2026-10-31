@@ -1,5 +1,7 @@
 # Release readiness assessment
 
+Current development preview: 0.1.0a2, October 31, 2026. Scope expands to 24 skills, 14 profiles, and a bounded four-tool stdio MCP interface. Current executed checks are recorded under T27 in [.specs/evidence.md](../.specs/evidence.md). The 0.1.0a1 assessment below is historical and its draft assets remain unchanged. No universal host or competitor benchmark claim is added. [Development preview notes](releases/0.1.0a2.md).
+
 Date: October 27, 2026. Scope: twenty skills, ten Markdown agent profiles, shared local helpers, CLI, standalone bundles, copy installer, schemas, documentation, and package build. Baseline: 3b22cc0, followed by no-CI preview preparation at version 0.1.0a1. Earlier verification counts below retain their recorded source scope; current checks are recorded under T26 in .specs/evidence.md.
 
 ## Decision

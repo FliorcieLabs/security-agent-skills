@@ -1,6 +1,6 @@
 # Reproducible implementation evidence
 
-Current delivery: twenty skills, ten Markdown agent profiles, and 23 mapped requirements. The latest no-CI preview preparation is recorded under T26 below. Earlier sections retain their original counts and timings as historical evidence.
+Current delivery: 24 skills, 14 Markdown agent profiles, four optional MCP tools, and 28 mapped requirements. The latest independent security decision preview is recorded under T27 below. Earlier sections retain their original counts and timings as historical evidence.
 
 ## T01 through T18 baseline
 
@@ -109,3 +109,32 @@ In this Codex desktop session, the assistant read the Egress Audit, Task Planner
 Documentation/version checks passed: 65 relative links and seven README anchors resolved; changed Markdown has no em or en dashes; no YAML workflow remains. The preview notes name the capabilities, unsupported checks, distribution differences, and incomplete coverage. This is an alpha preview, not stable or universal platform support.
 
 Source archive inventory, SHA256SUMS, and draft-release verification are performed against the committed head and recorded with the draft release artifacts. Public publication remains dependent on independent review. The active administrator is PR #1's author, so that account cannot provide the required independent approval; no review bypass or self-approval is used.
+
+## T27 independent security decision preview
+
+Date: October 31, 2026. Host: Windows x64, Python 3.14.6. Version: 0.1.0a2, unpublished development preview. Owner: primary implementation agent. References: SEC-024 through SEC-028. No CI, host settings, global installs, network listener, release publication, or protected-main review policy was added or changed. The earlier 0.1.0a1 draft assets remain pinned to their source revision.
+
+The reference repository at 54a798831d2266a3ca61ce68a7acb80b81160d57 was downloaded for static review. All 4,532 tracked files were inventoried, 4,531 UTF-8 text files scanned, and 1,103 Python files parsed with no syntax errors. The single binary image was not semantically analyzed. Deeper selected source review and excluded checks are recorded in docs/research/reference-review.md and JSON; a SHA-256 inventory identifies all reviewed files. No third-party skill content was imported or executed. Network/process lexical indicators are review leads, not maliciousness or complete data-flow conclusions.
+
+Implementation: assurance.py owns graph BFS and edge-removal counterfactuals, exact-match fixture replay, paired metrics with explicit exclusions, and capped closed-vocabulary routing. assurance_contracts.py exposes shape contracts. mcp_stdio.py exposes only the same four record functions via bounded newline-delimited JSON-RPC; CLI and MCP results are tested for equality. Examples, profiles, workflow references, source-to-bundle manifests, preview notes, README, and compatibility boundaries are updated.
+
+| Command or check | Actual result |
+|---|---|
+| python -m unittest discover -s tests -t . -v | PASS, 97 tests in 26.065 seconds, including 96 installed bundles (24 skills across four layouts) |
+| python -m ruff check src scripts tests | PASS |
+| python -m mypy src | PASS, 15 source modules |
+| python -m black --check --workers 1 src scripts tests | PASS |
+| python scripts/build_skills.py --check | PASS, 494 generated files |
+| python scripts/validate_skills.py | PASS, 24 skills and 14 profiles |
+| python scripts/validate_specs.py | PASS, 28 requirements |
+| python -m build | PASS, 0.1.0a2 source distribution and wheel |
+| python scripts/package_smoke.py | PASS, offline wheel install, CLI help, egress, preflight, installed MCP executable initialization/list/four calls from outside the checkout |
+| python scripts/benchmark_assurance.py | PASS, eight synthetic cases, toy baseline TP2/FP3/FN0, exact replay TP1/FP0/FN1; lower recall retained visibly |
+
+Benchmark fixture SHA-256: c9faa3e648f12be9bd99dfbb1d220e1aa507b5a38d13a4e526129668adf0a653. No reference implementation, model, API, live target, or assistant benchmark was executed. Selected entrypoint bytes are measured separately from tokens and billing.
+
+Verification limits: no native automatic discovery, Claude/Cursor/Copilot session, current macOS run, hosted MCP integration, live attack, external advisory match, complete semantic graph extraction, or operational detection coverage was established. All four valid record analyses remain PARTIAL. MCP reports are deliberately returned to the invoking host, whose provider data handling is outside this helper's boundary.
+
+Additional T27 checks: 91 Markdown files and 146 relative links resolved; no em/en dash punctuation found in that documentation scope. The formal assurance JSON Schema and four examples validated with Draft202012Validator (authoring-time dependency only). AST import classification across 15 runtime modules found standard-library imports only and no direct network/process client imports. urllib.parse is present for URL parsing and is not a network client. This inspection is not complete semantic data-flow verification. Local benchmark JSON is recorded in docs/assurance-benchmark.json. Actions remained enabled=false and main required_status_checks=null; the independent review count remained one.
+
+Final T27 protocol review added support for standard object-valued MCP request metadata, which is ignored for analysis and cannot grant authority. Malformed metadata is rejected. All 24 skills passed skill-creator quick_validate. Final format check covered 36 source/test/script files. The rebuilt 0.1.0a2 wheel passed offline installation and the installed MCP executable smoke after that correction.

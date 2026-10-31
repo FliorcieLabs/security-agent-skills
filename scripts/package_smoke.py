@@ -45,4 +45,51 @@ with tempfile.TemporaryDirectory() as temporary:
     value = json.loads(result.stdout)
     assert result.returncode == 3 and value["result"] == "PARTIAL"
     assert value["details"]["authorization_granted"] is False
+    # Exercise the installed MCP entrypoint from outside the source tree, offline.
+    messages = [
+        {
+            "jsonrpc": "2.0",
+            "id": 1,
+            "method": "initialize",
+            "params": {
+                "protocolVersion": "2025-11-25",
+                "capabilities": {},
+                "clientInfo": {"name": "offline-wheel-smoke", "version": "1"},
+            },
+        },
+        {"jsonrpc": "2.0", "method": "notifications/initialized"},
+        {"jsonrpc": "2.0", "id": 2, "method": "tools/list"},
+    ]
+    for position, command in enumerate(
+        ["attack-path", "detection-replay", "regression-board", "skill-route"], 3
+    ):
+        doc = json.loads((root / "examples/assurance" / (command + ".json")).read_text())
+        messages.append(
+            {
+                "jsonrpc": "2.0",
+                "id": position,
+                "method": "tools/call",
+                "params": {"name": command.replace("-", "_"), "arguments": {"record": doc}},
+            }
+        )
+    entrypoint = env / (
+        "Scripts/security-agent-skills-mcp.exe"
+        if sys.platform == "win32"
+        else "bin/security-agent-skills-mcp"
+    )
+    result = subprocess.run(
+        [str(entrypoint)],
+        cwd=temporary,
+        input="\n".join(map(json.dumps, messages)) + "\n",
+        capture_output=True,
+        text=True,
+        timeout=30,
+        check=True,
+    )
+    assert not result.stderr
+    replies = [json.loads(line) for line in result.stdout.splitlines()]
+    assert len(replies) == 6 and len(replies[1]["result"]["tools"]) == 4
+    for reply in replies[2:]:
+        assert reply["result"]["structuredContent"]["result"] == "PARTIAL"
+        assert reply["result"]["structuredContent"]["details"]["executed"] is False
 print("Installed-package offline smoke: PASS")

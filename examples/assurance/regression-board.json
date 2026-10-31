@@ -1,0 +1,37 @@
+{
+  "schema": "security-agent-skills/regression-board-v1",
+  "cases": [
+    {
+      "id": "catchTransfer",
+      "expected": [
+        "egress"
+      ],
+      "baseline": [],
+      "candidate": [
+        "egress"
+      ],
+      "baseline_status": "complete",
+      "candidate_status": "complete"
+    },
+    {
+      "id": "benignImport",
+      "expected": [],
+      "baseline": [
+        "egress"
+      ],
+      "candidate": [],
+      "baseline_status": "complete",
+      "candidate_status": "complete"
+    },
+    {
+      "id": "unavailableHost",
+      "expected": [
+        "authority"
+      ],
+      "baseline": [],
+      "candidate": [],
+      "baseline_status": "blocked",
+      "candidate_status": "blocked"
+    }
+  ]
+}

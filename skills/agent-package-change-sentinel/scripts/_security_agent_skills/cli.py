@@ -7,6 +7,7 @@ import zipfile
 from pathlib import Path
 from typing import Any
 
+from .assurance import ASSURANCE
 from .audits import audit_dependencies, audit_egress, audit_exposure, audit_mcp
 from .boundaries import grade_injection, injection_cases, map_routes
 from .evidence import pack_reports, verify_pack
@@ -70,6 +71,7 @@ def parser() -> argparse.ArgumentParser:
         "pack",
         "verify",
         *OPERATIONS,
+        *ASSURANCE,
     ]:
         sub = subs.add_parser(name)
         sub.add_argument(
@@ -119,12 +121,14 @@ def parser() -> argparse.ArgumentParser:
             sub.add_argument("--archive", required=True)
         elif name == "verify":
             sub.add_argument("archive")
-        elif name in OPERATIONS:
+        elif name in {*OPERATIONS, *ASSURANCE}:
             sub.add_argument("record", help="Bounded local JSON operation record, never executed")
     return result
 
 
 def dispatch(args: argparse.Namespace) -> dict[str, Any] | list[dict[str, Any]]:
+    if args.command in ASSURANCE:
+        return ASSURANCE[args.command](read_json(args.record, unique_keys=True))
     if args.command in OPERATIONS:
         return OPERATIONS[args.command](read_json(args.record, unique_keys=True))
     audits = {
