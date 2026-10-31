@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-27",
+  "package_version": "0.1.0a1",
+  "host": "current Codex desktop session on Windows",
+  "mode": "explicit Markdown loading and tool invocation",
+  "native_automatic_discovery_tested": false,
+  "other_model_sessions_launched": false,
+  "inputs": "synthetic local fixture and supplied public examples",
+  "results": [
+    {
+      "skill": "agent-egress-audit",
+      "exit_code": 3,
+      "result": "PARTIAL",
+      "finding_count": 1
+    },
+    {
+      "skill": "agent-task-planner",
+      "exit_code": 0,
+      "result": "PASS",
+      "finding_count": 0
+    },
+    {
+      "skill": "agent-tool-preflight",
+      "exit_code": 3,
+      "result": "PARTIAL",
+      "finding_count": 0
+    }
+  ],
+  "limits": [
+    "Three representative workflows only.",
+    "Automatic discovery and other assistants were not verified.",
+    "No macOS runtime was available."
+  ]
+}

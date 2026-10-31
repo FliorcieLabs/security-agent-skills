@@ -1,0 +1,18 @@
+# Attributed offline skill adaptations
+
+Two skills reuse selected pure helpers from mukul975/Anthropic-Cybersecurity-Skills at revision 54a798831d2266a3ca61ce68a7acb80b81160d57. The reviewed source is Apache-2.0 licensed, copyright 2026 mukul975, with skill author metadata mahipal. See [notices](../THIRD_PARTY_NOTICES.md), [license](../LICENSES/Apache-2.0.txt), and [source hashes](../third-party-provenance.json). The names identify narrower behavior, not new ownership of the original code.
+
+| Local skill | Upstream skill | Imported portions | Excluded behavior |
+|---|---|---|---|
+| Email Header Triage | analyzing-email-headers-for-phishing-investigation | extract_authentication_results, check_from_replyto_mismatch | DNS/subprocess helpers, raw reports, URLs, bodies, attachment extraction or writes, sender authentication claims |
+| HTTP Header Snapshot Review | performing-security-headers-audit | check_hsts, check_content_type_options, check_referrer_policy, check_info_disclosure | requests.Session, live HTTP, redirects, cookies, CSP/framing analysis, grading, acquisition and complete audit runner |
+
+These are partial adaptations. Importing complete scripts unchanged would violate this project's offline/no-execution boundary or introduce dependencies and outputs outside its contract. Fliorcie wrappers validate bounded local JSON records, normalize HTTP header names, reject ambiguous duplicates and control characters, preserve conflicting email claims, suppress raw values, and return the common PARTIAL report. HSTS max-age matching is bounded and case-insensitive. This does not establish sender identity, policy enforcement, or application safety. Email Authentication-Results extraction remains a simple heuristic, not a complete grammar or trusted authentication check.
+
+Run the two synthetic examples from README. Exact contracts and examples are bundled in each skill's references/workflow.md. All current directory-layout adapters can copy these standalone bundles. They need Python 3.11+ for execution; real assistant discovery remains unverified. The optional MCP server still exposes its original four record tools; these two commands are not added to that interface.
+
+Every bundle includes the adapted modules, Apache license, third-party notice, provenance manifest, and the existing MIT license. Wheel and source distributions include the same license/notice/provenance files. Do not remove author notices, describe the adaptations as wholly original, or assume renaming removes license obligations. Modified source files carry change notices. No upstream NOTICE file was present in the reviewed checkout, so no such file was omitted from these selected imports.
+
+Other candidates remain outside this import: live RAG probes and MCP enumeration need target execution or network access; live SBOM vulnerability lookups transmit component-derived queries; Sigma conversion needs third-party libraries and backend validation; JWT attack helpers include token forgery, secret testing, and live requests; general forensic parsers need larger privacy and input boundaries. Existing local skills already cover parts of MCP, injection, dependency, and infrastructure review. This is not a claim that those upstream capabilities are malicious or unusable under another project's authorized scope.
+
+Renaming and changing a few lines is not a licensing strategy. Reuse here is transparent adaptation with retained Apache-2.0 terms. The reference library and the original Fliorcie workflows keep distinct provenance. No contributor endorsement, complete legal clearance, or measured superiority is claimed.

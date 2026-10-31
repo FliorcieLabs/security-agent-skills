@@ -1,0 +1,127 @@
+{
+  "scope": "local Windows Python 3.14.6, T28 attributed offline adaptations",
+  "package_version": "0.1.0a3",
+  "ci_required": false,
+  "github_actions_enabled": false,
+  "explicit_codex_workflows_exercised": 3,
+  "test_count": 108,
+  "checks": [
+    {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-t",
+        ".",
+        "-v"
+      ],
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "ruff",
+        "check",
+        "src",
+        "scripts",
+        "tests"
+      ],
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "mypy",
+        "src"
+      ],
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "black",
+        "--check",
+        "--workers",
+        "1",
+        "src",
+        "scripts",
+        "tests"
+      ],
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "command": [
+        "python",
+        "scripts/build_skills.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "command": [
+        "python",
+        "scripts/validate_skills.py"
+      ],
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "command": [
+        "python",
+        "scripts/validate_specs.py"
+      ],
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "build"
+      ],
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "command": [
+        "python",
+        "scripts/package_smoke.py"
+      ],
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "command": [
+        "python",
+        "scripts/benchmark_assurance.py"
+      ],
+      "exit_code": 0,
+      "status": "PASS"
+    }
+  ],
+  "skill_count": 26,
+  "agent_count": 16,
+  "installed_bundles_tested": 104,
+  "generated_files": 692,
+  "runtime_modules": 18,
+  "mcp_tools": 4,
+  "new_native_host_sessions_tested": false,
+  "reference_python_files_parsed": 1103,
+  "reference_tracked_files_inventoried": 4532,
+  "explicit_codex_evidence_scope": "historical 0.1.0a1, not the four new workflows",
+  "validation_date": "2026-10-31",
+  "test_duration_seconds": 34.259,
+  "adapted_upstream_modules": 2,
+  "licensing": "MIT AND Apache-2.0"
+}

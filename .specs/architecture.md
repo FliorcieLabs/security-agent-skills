@@ -1,0 +1,13 @@
+# Architecture
+
+Inventory owns bounded, non-following filesystem reads. Reports own consistent output and evidence identifiers. Each analysis module consumes local inputs and returns a report; it cannot authorize a consequential action. CLI owns argument parsing and exclusive output writes. Skill bundles vendor the same tested helpers so installation has no repository-location dependency. The installer copies named bundles to explicit host destinations after a preview and refuses collisions.
+
+Snapshot hashes establish local content identity only. Synthetic route events are caller-supplied observations, not independently captured network truth. Sandbox planning has no execution side effect. Evidence archives contain suite reports, not arbitrary project files.
+
+The five added boundary audits select relevant source names and apply line-based rules through the same inventory and report contracts. They record evaluated files separately from admitted text files. They do not resolve full YAML/HCL semantics or provider behavior. Agent profiles are tool-neutral Markdown, copied into the corresponding standalone bundles; native agent registration and model behavior remain host concerns.
+
+Internal operations own strict bounded JSON contracts for task dependencies, handoff authority, reference-only checkpoints, proposed tool actions, and retry state. Inputs are declared records, never verified runtime state. The CLI reads a local record and emits the existing report schema. These functions perform no filesystem writes, tool dispatch, delegation, or network access. The checkpoint retains mandatory constraints, evidence, and unresolved references or blocks when the declared reference budget cannot hold them. A tool match cannot grant permission; an ambiguous write requires reconciliation before any retry candidate.
+
+Assurance owns four pure bounded record functions. The CLI reads regular local JSON; stdio MCP accepts records directly and exposes no filesystem or command tools. Both dispatch the same functions. Shape contracts are discoverable through MCP and a generated JSON Schema; semantic checks enforce IDs, references, budgets, and conservative evidence states. The server implements a limited tool-only MCP lifecycle without network transport, sampling, resources, or host configuration changes.
+
+header_records.py wraps selected reviewed pure functions in two attributed Apache-2.0 modules. Only strict local records are accepted. No acquisition, DNS/HTTP requests, subprocesses, attachment writes, or raw header output is exposed. The bundle builder and package metadata preserve both licenses, modification notices, and pinned source provenance.

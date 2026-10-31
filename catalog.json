@@ -1,0 +1,150 @@
+[
+  {
+    "name": "agent-egress-audit",
+    "command": "egress",
+    "description": "Audit agent packages for outbound clients, tracking indicators, sensitive input access, and execution hooks before installation."
+  },
+  {
+    "name": "dependency-provenance-audit",
+    "command": "dependencies",
+    "description": "Review local manifests, lockfiles, lifecycle hooks, and dependency provenance without installing packages."
+  },
+  {
+    "name": "mcp-authority-review",
+    "command": "mcp",
+    "description": "Review MCP configuration for remote routing, shell launch authority, credentials, and tool restrictions."
+  },
+  {
+    "name": "security-exposure-review",
+    "command": "exposure",
+    "description": "Find local application security review leads and map them to reachable trust boundaries."
+  },
+  {
+    "name": "authorized-appsec-validation",
+    "command": "appsec-plan",
+    "description": "Validate an explicit authorization and budget document before bounded application security testing."
+  },
+  {
+    "name": "agent-package-change-sentinel",
+    "command": "compare",
+    "description": "Compare local package snapshots for content changes and newly observed capabilities before upgrades."
+  },
+  {
+    "name": "prompt-injection-boundary-lab",
+    "command": "injection-lab",
+    "description": "Generate offline synthetic prompt-injection cases and grade supplied structured agent response records."
+  },
+  {
+    "name": "secret-route-mapper",
+    "command": "routes",
+    "description": "Interpret synthetic canary route records without reading or transmitting real credentials."
+  },
+  {
+    "name": "safe-install-sandbox",
+    "command": "sandbox-plan",
+    "description": "Produce a restricted Docker execution plan for inspecting untrusted installers in a disposable environment."
+  },
+  {
+    "name": "security-evidence-pack",
+    "command": "pack",
+    "description": "Pack and verify reproducible local security reports with hashes, limited export fields, and explicit provenance limits."
+  },
+  {
+    "name": "instruction-boundary-audit",
+    "command": "instructions",
+    "description": "Review agent instruction files for priority overrides, approval bypasses, concealed transfers, and invisible characters before trusting them.",
+    "agent": "agents/instruction-boundary-audit.md"
+  },
+  {
+    "name": "ci-workflow-security-audit",
+    "command": "ci",
+    "description": "Review GitHub Actions workflows for mutable action references, privileged triggers, inherited secrets, broad permissions, and untrusted expressions.",
+    "agent": "agents/ci-workflow-security-audit.md"
+  },
+  {
+    "name": "container-boundary-audit",
+    "command": "containers",
+    "description": "Review Dockerfiles and YAML deployment files for explicit root users, privileged containers, host namespaces, daemon sockets, and remote ADD sources.",
+    "agent": "agents/container-boundary-audit.md"
+  },
+  {
+    "name": "infrastructure-exposure-audit",
+    "command": "iac",
+    "description": "Review Terraform HCL source for world address ranges, wildcard policy scope, public storage settings, disabled encryption, and validation bypasses.",
+    "agent": "agents/infrastructure-exposure-audit.md"
+  },
+  {
+    "name": "llm-data-boundary-audit",
+    "command": "llm-data",
+    "description": "Review local LLM settings and source for explicit content capture, disabled scrubbing, remote code trust, provider endpoints, and TLS verification bypasses.",
+    "agent": "agents/llm-data-boundary-audit.md"
+  },
+  {
+    "name": "agent-task-planner",
+    "command": "task-plan",
+    "description": "Review a bounded agent task graph for cycles, ownership collisions, missing evidence requirements, and step budgets before execution.",
+    "agent": "agents/agent-task-planner.md"
+  },
+  {
+    "name": "agent-handoff-review",
+    "command": "handoff",
+    "description": "Check a declared agent handoff for permission expansion, missing acceptance or evidence references, and unresolved completion claims.",
+    "agent": "agents/agent-handoff-review.md"
+  },
+  {
+    "name": "agent-context-checkpoint",
+    "command": "checkpoint",
+    "description": "Build a reference-only context checkpoint that retains constraints, evidence, revision, and unresolved work within a declared reference budget.",
+    "agent": "agents/agent-context-checkpoint.md"
+  },
+  {
+    "name": "agent-tool-preflight",
+    "command": "preflight",
+    "description": "Compare a proposed tool action with a supplied allowlist, resource scope, transfer policy, and approval declaration without invoking the tool.",
+    "agent": "agents/agent-tool-preflight.md"
+  },
+  {
+    "name": "agent-retry-guard",
+    "command": "retry",
+    "description": "Review a declared operation outcome and attempt budget, stopping retries after success and requiring reconciliation for ambiguous writes.",
+    "agent": "agents/agent-retry-guard.md"
+  },
+  {
+    "name": "attack-path-rehearsal",
+    "command": "attack-path",
+    "description": "Trace declared entry-to-asset paths and evaluate single-edge control counterfactuals while preserving unknown edges.",
+    "agent": "agents/attack-path-rehearsal.md"
+  },
+  {
+    "name": "detection-replay-lab",
+    "command": "detection-replay",
+    "description": "Replay bounded exact-match detection predicates against labeled synthetic events and show false positives and missed labels.",
+    "agent": "agents/detection-replay-lab.md"
+  },
+  {
+    "name": "security-regression-board",
+    "command": "regression-board",
+    "description": "Compare paired baseline and candidate security labels with explicit exclusions, precision, recall, and regression cases.",
+    "agent": "agents/security-regression-board.md"
+  },
+  {
+    "name": "security-skill-router",
+    "command": "skill-route",
+    "description": "Select a bounded set of local security skills from explicit goals and preserve unknown or deferred work.",
+    "agent": "agents/security-skill-router.md"
+  },
+  {
+    "name": "email-header-triage",
+    "command": "email-headers",
+    "description": "Review a supplied email header block for claimed SPF/DKIM/DMARC results and From/Reply-To differences without DNS, attachment processing, or sender verification.",
+    "agent": "agents/email-header-triage.md",
+    "provenance": "third-party-provenance.json"
+  },
+  {
+    "name": "http-header-snapshot-review",
+    "command": "http-headers",
+    "description": "Review supplied HTTP headers for HSTS, nosniff, referrer-policy presence, and identification headers without fetching a URL.",
+    "agent": "agents/http-header-snapshot-review.md",
+    "provenance": "third-party-provenance.json"
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "schema": "security-agent-skills/preflight-v1",
+  "policy": {
+    "allowed_tools": ["read_file"],
+    "allowed_resources": ["project_source"],
+    "allowed_effects": ["read"],
+    "external_transfer_allowed": false,
+    "approval_required_for_write": true
+  },
+  "action": {
+    "tool": "read_file",
+    "resources": ["project_source"],
+    "effect": "read",
+    "external_transfer": false,
+    "approval_recorded": false
+  }
+}

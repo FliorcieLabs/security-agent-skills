@@ -1,0 +1,34 @@
+# Requirements and traceability
+
+| ID | Requirement | Implementation | Acceptance evidence |
+|---|---|---|---|
+| SEC-001 | agent-egress-audit | inventory.py, audits.py | test_audits; see ../evidence.md |
+| SEC-002 | dependency-provenance-audit | audits.py | test_audits; see ../evidence.md |
+| SEC-003 | mcp-authority-review | audits.py | test_audits; see ../evidence.md |
+| SEC-004 | security-exposure-review | audits.py | test_audits; see ../evidence.md |
+| SEC-005 | authorized-appsec-validation | plans.py | test_workflows; see ../evidence.md |
+| SEC-006 | agent-package-change-sentinel | sentinel.py | test_workflows; see ../evidence.md |
+| SEC-007 | prompt-injection-boundary-lab | boundaries.py | test_workflows; see ../evidence.md |
+| SEC-008 | secret-route-mapper | boundaries.py | test_workflows; see ../evidence.md |
+| SEC-009 | safe-install-sandbox | plans.py | test_workflows; see ../evidence.md |
+| SEC-010 | security-evidence-pack | evidence.py | test_evidence; see ../evidence.md |
+| SEC-011 | Portable independent bundles, four host adapters, no overwrites | scripts/install_skills.py, scripts/build_skills.py | test_portability; see ../evidence.md |
+| SEC-012 | Compact consistent reports preserve unknowns and counts | reports.py, schemas/report-v1.schema.json | test_cli, scripts/benchmark_reports.py; see ../evidence.md |
+| SEC-013 | instruction-boundary-audit | extended_audits.py | test_extended_audits, test_installed_workflows; see ../evidence.md |
+| SEC-014 | ci-workflow-security-audit | extended_audits.py | test_extended_audits, test_installed_workflows; see ../evidence.md |
+| SEC-015 | container-boundary-audit | extended_audits.py | test_extended_audits, test_installed_workflows; see ../evidence.md |
+| SEC-016 | infrastructure-exposure-audit | extended_audits.py | test_extended_audits, test_installed_workflows; see ../evidence.md |
+| SEC-017 | llm-data-boundary-audit | extended_audits.py | test_extended_audits, test_installed_workflows; see ../evidence.md |
+| SEC-018 | Five portable Markdown agent profiles, bundled references, and usage documentation | agents/, docs/agents.md, README.md, docs/assets/security/, scripts/build_skills.py | validate_skills, test_installed_workflows, T19 presentation checks; see ../evidence.md |
+| SEC-019 | Bounded task dependency planning with distinct write ownership and evidence requirements | internal_operations.py task_plan, agent-task-planner | test_internal_operations, test_installed_workflows; see ../evidence.md |
+| SEC-020 | Handoff authority subset and completion-evidence consistency | internal_operations.py handoff_review, agent-handoff-review | test_internal_operations, test_installed_workflows; see ../evidence.md |
+| SEC-021 | Reference-only context checkpoint that never drops mandatory constraints or unresolved work to fit a budget | internal_operations.py context_checkpoint, agent-context-checkpoint | test_internal_operations, test_installed_workflows; see ../evidence.md |
+| SEC-022 | Declared tool proposal comparison without tool execution or an authority grant | internal_operations.py tool_preflight, agent-tool-preflight | test_internal_operations, test_installed_workflows; see ../evidence.md |
+| SEC-023 | Stop decisions and ambiguous-write reconciliation before a retry candidate | internal_operations.py retry_guard, agent-retry-guard | test_internal_operations, test_installed_workflows; see ../evidence.md |
+| SEC-024 | attack-path-rehearsal | assurance.py, attack-path-rehearsal | test_assurance, test_installed_workflows; see ../evidence.md |
+| SEC-025 | detection-replay-lab | assurance.py, detection-replay-lab | test_assurance, test_installed_workflows; see ../evidence.md |
+| SEC-026 | security-regression-board | assurance.py, security-regression-board | test_assurance, test_installed_workflows; see ../evidence.md |
+| SEC-027 | security-skill-router | assurance.py, security-skill-router | test_assurance, test_installed_workflows; see ../evidence.md |
+| SEC-028 | Optional bounded record-only MCP stdio interface with CLI-equivalent reports | mcp_stdio.py, assurance_contracts.py, docs/mcp.md | test_mcp_stdio, package_smoke; see ../evidence.md |
+| SEC-029 | email-header-triage: attributed offline email header adaptation | adapted_email_headers.py, header_records.py, THIRD_PARTY_NOTICES.md | test_header_records, test_installed_workflows; see ../evidence.md |
+| SEC-030 | http-header-snapshot-review: attributed offline HTTP header adaptation and bundled license retention | adapted_http_headers.py, header_records.py, scripts/build_skills.py | test_header_records, package_smoke; see ../evidence.md |

@@ -1,0 +1,11 @@
+{
+  "schema": "security-agent-skills/checkpoint-v1",
+  "objective_ref": "objective_01",
+  "revision_ref": "revision_01",
+  "constraint_refs": ["local_only", "preserve_unknowns"],
+  "evidence_refs": ["test_run_01"],
+  "unresolved_refs": ["review_01"],
+  "decision_refs": ["decision_01", "decision_02", "decision_03"],
+  "next_action_ref": "review_pending_evidence",
+  "max_refs": 8
+}

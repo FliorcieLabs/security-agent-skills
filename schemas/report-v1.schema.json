@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Security Agent Skills Report v1",
+  "type": "object",
+  "required": [
+    "schema",
+    "workflow",
+    "result",
+    "scope",
+    "finding_count",
+    "findings",
+    "coverage",
+    "limitations",
+    "details"
+  ],
+  "properties": {
+    "schema": {
+      "const": "security-agent-skills/report-v1"
+    },
+    "workflow": {
+      "type": "string"
+    },
+    "result": {
+      "enum": [
+        "PASS",
+        "FIX",
+        "PARTIAL",
+        "BLOCKED"
+      ]
+    },
+    "scope": {
+      "type": "string"
+    },
+    "finding_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "omitted_findings": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "rule",
+          "path",
+          "line",
+          "severity",
+          "confidence",
+          "message"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{16}$"
+          },
+          "rule": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "line": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "severity": {
+            "type": "string"
+          },
+          "confidence": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "occurrences": {
+            "type": "integer",
+            "minimum": 2
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "coverage": {
+      "type": "object"
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "details": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}
