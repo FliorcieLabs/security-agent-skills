@@ -1,6 +1,6 @@
 # Reproducible implementation evidence
 
-Current delivery: 26 skills, 16 Markdown agent profiles, four optional MCP tools, and 31 mapped requirements. Latest compact header-review delivery is T29 below. Earlier sections retain their original counts and timings as historical evidence.
+Current delivery: 26 skills, 16 Markdown agent profiles, four optional MCP tools, and 31 mapped requirements. Latest fresh-archive E2E validation and benchmark reproducibility correction is T30 below. Earlier sections retain their original counts and timings as historical evidence.
 
 ## T01 through T18 baseline
 
@@ -192,3 +192,28 @@ Added header-review to combine either or both strict records. Missing scope is e
 Measured minified JSON, including terminating newline: mail full 356 tokens to brief 237 (33.43% reduction, zero omissions); web 383 to 264 (31.07%, zero omissions); combined 634 to all-findings brief 461 (27.29%, zero omissions), or default brief 355 (44.01%, three of six findings omitted explicitly). Full/brief observations and coverage are regression-tested for equality. This is serialization on synthetic inputs, not a real-project/model-quality, latency, provider-billing, or universal tokenizer claim. The tokenizer is installed only in an ignored authoring virtual environment; shipped runtime dependencies remain empty. No project records were sent to a model.
 
 Remaining: no new native assistant discovery/session, hosted MCP integration, macOS execution, complete security coverage, or billing measurement. No global skills, host permissions, CI settings, release/tag/package publication, or main review policy were changed.
+
+## T30 fresh-archive E2E and reproducibility correction
+
+Date: October 31, 2026. Owner: primary implementation agent. Package version remains 0.1.0a4; runtime semantics are unchanged. Base commit: 6905ba5b2156ae4fab6dc88c030b18886a85a3e5. Tested candidate source tree: 78064d38a5b41ec0a97455a99aaa8a0033c38a59. Candidate archive SHA-256: 7c131bc33cf386d0e1dd8b8b9ebf3a0a82732565911ffc85bc22ee324337ad10. This snapshot includes the fix and regression below; subsequent verification-record updates change documentation only.
+
+E2E-001 found that saved benchmark fixture hashes changed under LF/CRLF conversion in a clean Git archive, although token counts and savings matched. Fixed hashing to use canonical parsed JSON (sorted keys, compact separators, ASCII escapes, UTF-8), documented the basis, regenerated recorded hashes, and added a regression that tolerates newline/key-order changes but detects changed input values. E2E-002 corrected a stale fixed helper count in CONTRIBUTING.md.
+
+| Final fresh-source suite | Result |
+|---|---|
+| Python 3.11.15, python -m unittest discover -s tests -t . -v | PASS, 118 tests in 31.633 seconds |
+| Python 3.12.13, same suite | PASS, 118 tests in 32.523 seconds |
+| Python 3.13.14, same suite | PASS, 118 tests in 32.092 seconds |
+| Python 3.14.6, same suite | PASS, 118 tests in 34.176 seconds |
+
+Total: 472 final test executions. Each runtime exercised all 26 catalog skills in four temporary host layouts (104 catalog bundles per runtime), plus eight combined-header calls. Pinned requirements-dev.txt installed in a fresh authoring environment. Python downloads were isolated to the temporary test directory without PATH or Windows registry registration.
+
+Fresh Ruff, MyPy (18 modules), Black (43 files), deterministic bundle check (692 files), 26-skill/16-profile validation, 31-requirement validation, wheel/sdist build, and offline installed CLI/MCP/license smoke all passed. Both saved benchmarks reproduced exactly from the fixed candidate archive, including canonical fixture identities; token counts and reduction percentages did not change.
+
+An independent MCP SDK 2.3.0 client tested the offline-installed wheel outside the source tree. Initialization negotiated protocol 2025-11-25. Ping, discovery of four tools, input-schema validation, all four tool calls with CLI-equivalent reports, progress metadata, invalid records, and unknown-tool rejection passed. Temporary harness imports and field accesses were adapted to the installed SDK's Python API before the successful run. This was a protocol client test, not a real assistant session.
+
+A separate installed user journey passed for both renamed header bundles across four host layouts: preview made no writes, repeat install was refused, full export retained all six leads while brief output showed two and declared four omissions, report schemas validated, raw synthetic header values stayed absent, existing outputs were preserved, evidence ZIPs were byte-reproducible, brief JSON was rejected as a full report, and an unexpected ZIP member was rejected.
+
+Documentation/contract checks passed for all 140 committed Markdown files, 187 relative links, four schema definitions, 33 schema/example cases, 26 bundle inventories/hashes, 18 standard-library-only runtime modules, no eval/exec/dynamic-import calls in that AST scope, and zero wheel runtime dependencies. All three README media files decoded, including five GIF frames; the synthetic demo reproduced its committed finding IDs/messages and omission counts. These are bounded checks, not complete source-to-sink analysis or a security certification.
+
+Remaining: Linux and macOS execution, native automatic discovery, real Claude/Cursor/Copilot sessions, hosted-client integration, model quality, and complete security coverage remain unverified. Copilot's detected executable is only an uninstalled-CLI shim. WSL is not installed and Docker is unavailable. GitHub Actions remained disabled, required status checks remained absent, and one independent PR approval remained required. No CI, release/tag/package publication, global skills, or host permissions were changed. The existing local header-evidence.json was preserved. Detailed logs, the tested archive, harnesses, and machine-readable results were saved under the original checkout's ignored security-reports folder.

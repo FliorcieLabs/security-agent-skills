@@ -16,7 +16,7 @@
         "tokens": 237
       },
       "finding_count": 3,
-      "fixture_sha256": "0daa974b34ab7d1170a455794f42414bd150a5bc8c43fc3fb808e161819d9515",
+      "fixture_sha256": "bd6d1a93156365d4525b30943a9683b222ba66ff93152661ba62e0dd0e3f6310",
       "full_bytes": 1493,
       "full_tokens": 356,
       "workflow": "email-headers"
@@ -37,7 +37,7 @@
         "tokens": 264
       },
       "finding_count": 3,
-      "fixture_sha256": "8c10edf223e948ffe8be1e51cd743d7de28af88ef18f62fb1054eedb7b4f515e",
+      "fixture_sha256": "b37b54f2b78340ac099b944b70cadc885f51550513e7eda0617d4a3df066a6ae",
       "full_bytes": 1626,
       "full_tokens": 383,
       "workflow": "http-headers"
@@ -58,12 +58,13 @@
         "tokens": 355
       },
       "finding_count": 6,
-      "fixture_sha256": "0d924cd8a1936264265d6e40d7f22f080feb42e8592884a0cb0e5d00b14a3066",
+      "fixture_sha256": "59e1d7759fd979c427d911fb211d2f6d3a6e530f0009644e3b75444fe529ef13",
       "full_bytes": 2596,
       "full_tokens": 634,
       "workflow": "header-review"
     }
   ],
+  "fixture_hash_basis": "canonical JSON: sorted keys, compact separators, ASCII escapes, UTF-8",
   "limits": [
     "Not a real-project, model-quality, latency, or billing benchmark.",
     "Default brief caps findings at three; omitted counts and all observations remain.",

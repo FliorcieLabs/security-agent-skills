@@ -34,3 +34,7 @@ These are preview support limits. There is no claim of universal native agent su
 Version 0.1.0a2 adds four record-analysis workflows and four Markdown roles. Local CLI and isolated installed-layout execution are tested; the earlier three explicit Codex workflows remain historical 0.1.0a1 evidence. No new Claude, Cursor, Copilot, macOS, or automatic-discovery result is implied. The optional stdio MCP interface is tested through a protocol subprocess; real host registration and assistant tool selection remain unverified. [MCP setup and boundaries](mcp.md).
 
 Version 0.1.0a3 adds two attributed offline header adaptations with portable Markdown profiles and retained Apache-2.0 notices. Their helpers accept local records and perform no independent external requests. They are not additional MCP tools. [Scope and provenance](adapted-skills.md).
+
+## Fresh local E2E matrix
+
+On October 31, 2026, the clean 0.1.0a4 candidate passed 118 tests on each of Windows Python 3.11.15, 3.12.13, 3.13.14, and 3.14.6. Each run exercised 26 catalog bundles across four host directory layouts. An independent MCP SDK 2.3.0 client also passed negotiation and four tool calls against an offline-installed wheel using protocol 2025-11-25. See T30 in [.specs/evidence.md](../.specs/evidence.md). These expand Python and protocol evidence, not native model-session or Linux/macOS verification. Copilot's detected shim reports that the actual CLI is not installed; no Claude, Cursor, or Copilot session was run.

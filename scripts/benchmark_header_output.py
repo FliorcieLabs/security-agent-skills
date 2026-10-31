@@ -26,7 +26,9 @@ def benchmark(tokenizer=None):
     rows = []
     for command, operation in HEADER_RECORDS.items():
         raw = (ROOT / "examples/adapted-headers" / (command + ".json")).read_bytes()
-        full = operation(json.loads(raw))
+        record = json.loads(raw)
+        canonical = json.dumps(record, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
+        full = operation(record)
         baseline = serialize(compact(full, 20))
         summaries = {
             "default_brief": brief_header_report(full, 3),
@@ -34,7 +36,7 @@ def benchmark(tokenizer=None):
         }
         row = {
             "workflow": command,
-            "fixture_sha256": sha256(raw).hexdigest(),
+            "fixture_sha256": sha256(canonical.encode("utf-8")).hexdigest(),
             "full_bytes": len(baseline.encode()),
             "finding_count": full["finding_count"],
             "full_tokens": len(encoding.encode(baseline)) if encoding else None,
@@ -59,6 +61,7 @@ def benchmark(tokenizer=None):
     return {
         "result": "PASS",
         "scope": "three fixed synthetic header records; minified JSON CLI output",
+        "fixture_hash_basis": "canonical JSON: sorted keys, compact separators, ASCII escapes, UTF-8",
         "tokenizer": (
             {
                 "encoding": tokenizer,

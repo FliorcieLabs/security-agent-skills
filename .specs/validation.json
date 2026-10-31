@@ -1,10 +1,10 @@
 {
-  "scope": "local Windows Python 3.14.6, T29 compact header workflow",
+  "scope": "fresh candidate archive, Windows Python 3.11.15 / 3.12.13 / 3.13.14 / 3.14.6, T30 E2E",
   "package_version": "0.1.0a4",
   "ci_required": false,
   "github_actions_enabled": false,
   "explicit_codex_workflows_exercised": 3,
-  "test_count": 117,
+  "test_count": 118,
   "checks": [
     {
       "command": [
@@ -129,10 +129,54 @@
   "reference_tracked_files_inventoried": 4532,
   "explicit_codex_evidence_scope": "historical 0.1.0a1, not the four new workflows",
   "validation_date": "2026-10-31",
-  "test_duration_seconds": 34.522,
+  "test_duration_seconds": 34.176,
   "adapted_upstream_modules": 2,
   "licensing": "MIT AND Apache-2.0",
   "header_combined_installed_calls": 8,
   "brief_schema_cases_validated": 12,
-  "token_benchmark": "docs/header-output-benchmark.json"
+  "token_benchmark": "docs/header-output-benchmark.json",
+  "python_matrix": [
+    {
+      "python": "Python 3.11.15",
+      "tests": 118,
+      "seconds": 31.633,
+      "result": "PASS",
+      "catalog_installs": 104,
+      "combined_installed_calls": 8,
+      "log": "final-tests-3.11.log"
+    },
+    {
+      "python": "Python 3.12.13",
+      "tests": 118,
+      "seconds": 32.523,
+      "result": "PASS",
+      "catalog_installs": 104,
+      "combined_installed_calls": 8,
+      "log": "final-tests-3.12.log"
+    },
+    {
+      "python": "Python 3.13.14",
+      "tests": 118,
+      "seconds": 32.092,
+      "result": "PASS",
+      "catalog_installs": 104,
+      "combined_installed_calls": 8,
+      "log": "final-tests-3.13.log"
+    },
+    {
+      "python": "Python 3.14.6",
+      "tests": 118,
+      "seconds": 34.176,
+      "result": "PASS",
+      "catalog_installs": 104,
+      "combined_installed_calls": 8,
+      "log": "final-tests-3.14.log"
+    }
+  ],
+  "total_final_test_executions": 472,
+  "independent_mcp_client": "mcp SDK 2.3.0",
+  "independent_mcp_protocol": "2025-11-25",
+  "e2e_base_commit": "6905ba5b2156ae4fab6dc88c030b18886a85a3e5",
+  "e2e_tested_candidate_tree": "78064d38a5b41ec0a97455a99aaa8a0033c38a59",
+  "e2e_source_archive_sha256": "7c131bc33cf386d0e1dd8b8b9ebf3a0a82732565911ffc85bc22ee324337ad10"
 }
