@@ -134,17 +134,17 @@
     "agent": "agents/security-skill-router.md"
   },
   {
-    "name": "email-header-triage",
+    "name": "mail-auth-review",
     "command": "email-headers",
-    "description": "Review a supplied email header block for claimed SPF/DKIM/DMARC results and From/Reply-To differences without DNS, attachment processing, or sender verification.",
-    "agent": "agents/email-header-triage.md",
+    "description": "Review supplied email authentication claims and sender/reply-to differences with concise output; no DNS or sender verification.",
+    "agent": "agents/mail-auth-review.md",
     "provenance": "third-party-provenance.json"
   },
   {
-    "name": "http-header-snapshot-review",
+    "name": "web-header-review",
     "command": "http-headers",
-    "description": "Review supplied HTTP headers for HSTS, nosniff, referrer-policy presence, and identification headers without fetching a URL.",
-    "agent": "agents/http-header-snapshot-review.md",
+    "description": "Review supplied HTTP security headers with concise output; no HTTP requests or live policy verification.",
+    "agent": "agents/web-header-review.md",
     "provenance": "third-party-provenance.json"
   }
 ]

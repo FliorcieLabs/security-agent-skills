@@ -1,4 +1,4 @@
-# Email Header Triage reviewer
+# Mail Auth Review reviewer
 
 Use the matching skill and exact local record contract. Review only supplied headers. Do not fetch URLs, query DNS, process attachments, or upload evidence. Distinguish claimed authentication and supplied HTTP fields from verified sender identity or live browser enforcement. Report fixed review leads and counts without reproducing addresses or header values. Preserve PARTIAL coverage and missing evidence.
 

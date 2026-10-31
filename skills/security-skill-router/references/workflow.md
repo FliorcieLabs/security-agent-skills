@@ -19,8 +19,8 @@ All symbolic IDs match `[A-Za-z][A-Za-z0-9_-]{0,63}`. Reject extra fields, dupli
 | `context_resume` | `agent-context-checkpoint` |
 | `dependencies` | `dependency-provenance-audit` |
 | `detection_rules` | `detection-replay-lab` |
-| `email_headers` | `email-header-triage` |
-| `http_headers` | `http-header-snapshot-review` |
+| `email_headers` | `mail-auth-review` |
+| `http_headers` | `web-header-review` |
 | `evidence_archive` | `security-evidence-pack` |
 | `handoff` | `agent-handoff-review` |
 | `infrastructure` | `infrastructure-exposure-audit` |

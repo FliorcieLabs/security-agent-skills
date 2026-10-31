@@ -11,9 +11,9 @@ Twenty-six local skills and sixteen portable agent profiles for security review 
 
 **No API key. No runtime Python dependencies. No telemetry. No source upload.** Analysis helpers read bounded local inputs without importing or executing reviewed code.
 
-**Release status: 0.1.0a3 development preview.** The earlier 0.1.0a1 draft remains pinned to its earlier source revision; these additions are not a published release. GitHub Actions is disabled, workflow files are removed, and no CI check is required to merge. Verification is local; independent review remains required. See the [development preview notes](docs/releases/0.1.0a3.md) and [release assessment](docs/release-readiness.md) for tested scope and limits.
+**Release status: 0.1.0a4 development preview.** The earlier 0.1.0a1 draft remains pinned to its earlier source revision; these additions are not a published release. GitHub Actions is disabled, workflow files are removed, and no CI check is required to merge. Verification is local; independent review remains required. See the [development preview notes](docs/releases/0.1.0a4.md) and [release assessment](docs/release-readiness.md) for tested scope and limits.
 
-[Quick start](#start-with-one-folder) ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· [Demo](#see-a-local-review) ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· [Security skills](#choose-the-security-question) ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· [Agent operations](#internal-agent-operations) ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· [Install](#install-for-your-assistant) ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· [16 agents](#portable-agent-profiles) ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· [Limits](#privacy-and-limits) ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· [Contribute](CONTRIBUTING.md)
+[Quick start](#start-with-one-folder) ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· [Demo](#see-a-local-review) ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· [Security skills](#choose-the-security-question) ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· [Agent operations](#internal-agent-operations) ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· [Install](#install-for-your-assistant) ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· [16 agents](#portable-agent-profiles) ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· [Limits](#privacy-and-limits) ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· [Contribute](CONTRIBUTING.md)
 
 Use it before installing an unfamiliar agent package, granting an MCP server access, accepting a dependency change, or sharing a security finding. Start with one question and one skill. Review the referenced source before deciding what to allow or fix.
 
@@ -98,15 +98,28 @@ We reviewed the complete tracked inventory of a widely adopted security skill li
 
 | Local skill | Upstream skill | Available behavior |
 |---|---|---|
-| [Email Header Triage](skills/email-header-triage) | analyzing-email-headers-for-phishing-investigation | Supplied header claims and sender/reply-to differences, without DNS or attachments |
-| [HTTP Header Snapshot Review](skills/http-header-snapshot-review) | performing-security-headers-audit | Supplied HSTS, nosniff, referrer-policy presence, and identification headers, without HTTP requests |
+| [Mail Auth Review](skills/mail-auth-review) | analyzing-email-headers-for-phishing-investigation | Supplied header claims and sender/reply-to differences, without DNS or attachments |
+| [Web Header Review](skills/web-header-review) | performing-security-headers-audit | Supplied HSTS, nosniff, referrer-policy presence, and identification headers, without HTTP requests |
 
 ```sh
 python scripts/security_check.py email-headers examples/adapted-headers/email-headers.json
 python scripts/security_check.py http-headers examples/adapted-headers/http-headers.json
 ```
 
-Both return PARTIAL, exit 3. These reuse selected reviewed pure functions, not the full upstream scripts. Names describe their narrower offline scope. Original authorship, pinned revision, changes, and Apache-2.0 terms remain explicit. [Third-party notices](THIRD_PARTY_NOTICES.md) and [adaptation limits](docs/adapted-skills.md). Original project code remains MIT; distributed bundles contain both licenses.
+Both return PARTIAL, exit 3, with brief output by default. These reuse selected reviewed pure functions, not the full upstream scripts. Names describe their narrower offline scope. Original authorship, pinned revision, changes, and Apache-2.0 terms remain explicit. [Third-party notices](THIRD_PARTY_NOTICES.md) and [adaptation limits](docs/adapted-skills.md). Original project code remains MIT; distributed bundles contain both licenses.
+
+### One compact header-review workflow
+
+Use the routed skill for one header type, or review both in one local record:
+
+```sh
+python scripts/security_check.py header-review examples/adapted-headers/header-review.json --output header-evidence.json
+python scripts/security_check.py header-review examples/adapted-headers/header-review.json --view full --max-findings 20
+```
+
+The first command displays at most three leads and saves every finding to a new evidence file. Both views retain PARTIAL, key observations, coverage, per-part counts, and missing scopes. Stable IDs connect follow-up questions to full evidence. Brief reports use a distinct schema; use the saved full report with Security Evidence Pack.
+
+On three fixed synthetic fixtures, `cl100k_base` output tokens fell **33.43% for mail** and **31.07% for web**, with every finding visible. Combined output fell **27.29% with every finding visible**, or **44.01% with the default three-finding cap and explicit omissions**. These measure local serialization, not actual host billing, latency, or model quality. [Workflow and reproducible measurements](docs/header-review-workflow.md).
 
 ## Internal agent operations
 
@@ -173,8 +186,8 @@ Each bundle includes its own helper and can run from another folder without this
 - [Detection Replay Reviewer](agents/detection-replay-lab.md)
 - [Security Regression Reviewer](agents/security-regression-board.md)
 - [Security Skill Selection Reviewer](agents/security-skill-router.md)
-- [Email Header Triage Reviewer](agents/email-header-triage.md)
-- [HTTP Header Snapshot Reviewer](agents/http-header-snapshot-review.md)
+- [Mail Auth Review Reviewer](agents/mail-auth-review.md)
+- [Web Header Reviewer](agents/web-header-review.md)
 
 Attach a profile or load its text into an assistant that accepts Markdown instructions. Each matching installed skill carries its profile in `references/agent.md`. These are portable instructions, not universal native agent registrations. Without filesystem access, an assistant can review supplied excerpts and report partial coverage. Running helpers requires terminal access and Python. [Agent usage](docs/agents.md).
 

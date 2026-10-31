@@ -1,6 +1,8 @@
 """Local record adapters for attributed offline header helpers; never fetch or emit values."""
 
+import json
 import re
+from copy import deepcopy
 from email import policy
 from email.message import Message
 from email.parser import HeaderParser
@@ -186,4 +188,65 @@ def http_headers(value: Any) -> dict[str, Any]:
     )
 
 
-HEADER_RECORDS = {"email-headers": email_headers, "http-headers": http_headers}
+def header_review(value: Any) -> dict[str, Any]:
+    """Review either or both supplied records without treating missing scope as clean."""
+    doc = _record(value, "header-review", {"email", "http"})
+    parts = {}
+    for name, operation in (("email", email_headers), ("http", http_headers)):
+        if doc[name] is not None:
+            parts[name] = operation(doc[name])
+    if not parts:
+        raise ValueError("Supply at least one header record")
+    return _result(
+        "header-review",
+        {
+            "parts": {name: part["details"] for name, part in parts.items()},
+            "finding_counts": {name: part["finding_count"] for name, part in parts.items()},
+            "not_supplied": [name for name in ("email", "http") if name not in parts],
+        },
+        [item for part in parts.values() for item in part["findings"]],
+    )
+
+
+BRIEF_SCHEMA = "security-agent-skills/header-brief-v1"
+
+
+def brief_header_report(value: dict[str, Any], limit: int) -> dict[str, Any]:
+    """Project presentation only; full evidence and all observations remain available."""
+    if value["workflow"] not in HEADER_RECORDS or limit < 0:
+        raise ValueError("Expected a header report and nonnegative finding cap")
+    selected = value["findings"][:limit]
+    return {
+        "schema": BRIEF_SCHEMA,
+        "workflow": value["workflow"],
+        "result": value["result"],
+        "finding_count": value["finding_count"],
+        "omitted_findings": value["finding_count"] - len(selected),
+        "findings": [{key: item[key] for key in ("id", "rule", "message")} for item in selected],
+        "coverage": deepcopy(value["coverage"]),
+        "details": deepcopy(value["details"]),
+        "limitations": [
+            "Review leads from supplied headers; authenticity and live behavior unverified."
+        ],
+    }
+
+
+def brief_header_markdown(value: dict[str, Any]) -> str:
+    lines = [
+        f"Result: {value['result']} | {value['workflow']}",
+        f"Findings: {value['finding_count']} | omitted: {value['omitted_findings']}",
+    ]
+    lines.extend(f"- {item['id']} {item['rule']}: {item['message']}" for item in value["findings"])
+    lines.append("Facts: " + json.dumps(value["details"], sort_keys=True, separators=(",", ":")))
+    lines.append(
+        "Coverage: " + json.dumps(value["coverage"], sort_keys=True, separators=(",", ":"))
+    )
+    lines.extend(value["limitations"])
+    return "\n".join(lines) + "\n"
+
+
+HEADER_RECORDS = {
+    "email-headers": email_headers,
+    "http-headers": http_headers,
+    "header-review": header_review,
+}

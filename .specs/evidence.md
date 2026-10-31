@@ -1,6 +1,6 @@
 # Reproducible implementation evidence
 
-Current delivery: 26 skills, 16 Markdown agent profiles, four optional MCP tools, and 30 mapped requirements. The latest attributed offline adaptations are recorded under T28 below. Earlier sections retain their original counts and timings as historical evidence.
+Current delivery: 26 skills, 16 Markdown agent profiles, four optional MCP tools, and 31 mapped requirements. Latest compact header-review delivery is T29 below. Earlier sections retain their original counts and timings as historical evidence.
 
 ## T01 through T18 baseline
 
@@ -165,3 +165,30 @@ Documentation check covered 101 Markdown files and 170 relative links with no br
 Remaining: no new live endpoint, sender cryptography, native assistant recognition, hosted MCP integration, macOS execution, comprehensive header grammar, or competitor benchmark was verified. No global install or host config was changed. CI and publication remain disabled/unchanged under existing policy. The earlier draft release is untouched.
 
 Build environment note: an optional `python -m build --no-isolation` attempt could not import setuptools.build_meta from the host interpreter. The required standard isolated `python -m build` succeeded without adding global build dependencies; its installed-wheel smoke passed. This was a build-environment limitation, not a passed no-isolation check.
+
+## T29 compact header-review workflow
+
+Date: October 31, 2026. Host: Windows Python 3.14.6. Version: 0.1.0a4 development preview. Owner: primary implementation agent. SEC-029 through SEC-031. Renamed email-header-triage to mail-auth-review and http-header-snapshot-review to web-header-review. Existing CLI command names and individual record schemas remain compatible. Routing goals map to the new names; installed copies are not automatically renamed or overwritten. Attribution and both licenses remain unchanged.
+
+Added header-review to combine either or both strict records. Missing scope is explicit and both-null input is rejected. Both renamed standalone launchers support this command. Brief header presentation uses its own schema and defaults to three findings, retaining total/omitted counts, stable IDs, all observations, coverage, no-action flags, and unresolved source claims. --view full restores full console presentation; --output always saves unabridged report-v1 evidence to a new file. All other command defaults and the four-tool MCP surface remain unchanged.
+
+| Executed check | Outcome |
+|---|---|
+| python -m unittest discover -s tests -t . -v | PASS, 117 tests in 34.522 seconds; 104 installed bundles plus eight combined-review calls through the two renamed bundles across four layouts |
+| python -m ruff check src scripts tests | PASS |
+| python -m mypy src | PASS, 18 runtime modules |
+| python -m black --check --workers 1 src scripts tests | PASS, 42 files |
+| python scripts/build_skills.py --check | PASS, 692 generated files |
+| python scripts/validate_skills.py | PASS, 26 skills and 16 profiles |
+| python scripts/validate_specs.py | PASS, 31 requirements |
+| python -m build | PASS, 0.1.0a4 sdist and wheel |
+| python scripts/package_smoke.py | PASS, offline installed individual/combined brief commands, existing MCP checks, and license inventory |
+| python scripts/benchmark_header_output.py | PASS, standard-library byte benchmark on three fixed synthetic records |
+| Isolated tokenizer run of benchmark_header_output.py --tokenizer cl100k_base | PASS, tiktoken 0.14.0, local token counts recorded in docs/header-output-benchmark.json |
+| skill-creator quick_validate | PASS, all 26 skills |
+| Draft202012Validator for header-brief-v1 | PASS, 12 case/cap combinations |
+| Documentation links | PASS, 103 Markdown files and 179 relative links; no em/en dash punctuation in that scope |
+
+Measured minified JSON, including terminating newline: mail full 356 tokens to brief 237 (33.43% reduction, zero omissions); web 383 to 264 (31.07%, zero omissions); combined 634 to all-findings brief 461 (27.29%, zero omissions), or default brief 355 (44.01%, three of six findings omitted explicitly). Full/brief observations and coverage are regression-tested for equality. This is serialization on synthetic inputs, not a real-project/model-quality, latency, provider-billing, or universal tokenizer claim. The tokenizer is installed only in an ignored authoring virtual environment; shipped runtime dependencies remain empty. No project records were sent to a model.
+
+Remaining: no new native assistant discovery/session, hosted MCP integration, macOS execution, complete security coverage, or billing measurement. No global skills, host permissions, CI settings, release/tag/package publication, or main review policy were changed.

@@ -1,0 +1,81 @@
+{
+  "cases": [
+    {
+      "all_findings_brief": {
+        "byte_reduction_percent": 36.5,
+        "bytes": 948,
+        "omitted_findings": 0,
+        "token_reduction_percent": 33.43,
+        "tokens": 237
+      },
+      "default_brief": {
+        "byte_reduction_percent": 36.5,
+        "bytes": 948,
+        "omitted_findings": 0,
+        "token_reduction_percent": 33.43,
+        "tokens": 237
+      },
+      "finding_count": 3,
+      "fixture_sha256": "0daa974b34ab7d1170a455794f42414bd150a5bc8c43fc3fb808e161819d9515",
+      "full_bytes": 1493,
+      "full_tokens": 356,
+      "workflow": "email-headers"
+    },
+    {
+      "all_findings_brief": {
+        "byte_reduction_percent": 33.52,
+        "bytes": 1081,
+        "omitted_findings": 0,
+        "token_reduction_percent": 31.07,
+        "tokens": 264
+      },
+      "default_brief": {
+        "byte_reduction_percent": 33.52,
+        "bytes": 1081,
+        "omitted_findings": 0,
+        "token_reduction_percent": 31.07,
+        "tokens": 264
+      },
+      "finding_count": 3,
+      "fixture_sha256": "8c10edf223e948ffe8be1e51cd743d7de28af88ef18f62fb1054eedb7b4f515e",
+      "full_bytes": 1626,
+      "full_tokens": 383,
+      "workflow": "http-headers"
+    },
+    {
+      "all_findings_brief": {
+        "byte_reduction_percent": 29.31,
+        "bytes": 1835,
+        "omitted_findings": 0,
+        "token_reduction_percent": 27.29,
+        "tokens": 461
+      },
+      "default_brief": {
+        "byte_reduction_percent": 44.57,
+        "bytes": 1439,
+        "omitted_findings": 3,
+        "token_reduction_percent": 44.01,
+        "tokens": 355
+      },
+      "finding_count": 6,
+      "fixture_sha256": "0d924cd8a1936264265d6e40d7f22f080feb42e8592884a0cb0e5d00b14a3066",
+      "full_bytes": 2596,
+      "full_tokens": 634,
+      "workflow": "header-review"
+    }
+  ],
+  "limits": [
+    "Not a real-project, model-quality, latency, or billing benchmark.",
+    "Default brief caps findings at three; omitted counts and all observations remain.",
+    "All-findings brief measures presentation savings without dropping findings.",
+    "Tokenizer selection does not establish another platform's actual token accounting.",
+    "Optional tokenizer is authoring-only; the shipped helpers remain standard-library only."
+  ],
+  "result": "PASS",
+  "scope": "three fixed synthetic header records; minified JSON CLI output",
+  "tokenizer": {
+    "encoding": "cl100k_base",
+    "library": "tiktoken",
+    "version": "0.14.0"
+  }
+}

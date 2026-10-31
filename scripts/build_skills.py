@@ -14,7 +14,12 @@ def generated_files():
     for skill in catalog:
         base = ROOT / "skills" / skill["name"]
         command = skill["command"]
-        modes = {"compare": ["snapshot"], "pack": ["verify"]}.get(command, [])
+        modes = {
+            "compare": ["snapshot"],
+            "pack": ["verify"],
+            "email-headers": ["header-review"],
+            "http-headers": ["header-review"],
+        }.get(command, [])
         launcher = (
             '"""Standalone skill entrypoint. No target code is imported."""\n'
             "import sys\nfrom pathlib import Path\nsys.dont_write_bytecode = True\n"

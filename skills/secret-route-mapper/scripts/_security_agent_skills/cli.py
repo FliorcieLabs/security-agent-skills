@@ -18,7 +18,7 @@ from .extended_audits import (
     audit_instructions,
     audit_llm,
 )
-from .header_records import HEADER_RECORDS
+from .header_records import HEADER_RECORDS, brief_header_markdown, brief_header_report
 from .internal_operations import OPERATIONS
 from .inventory import collect, reparse
 from .plans import appsec_plan, sandbox_plan
@@ -80,10 +80,17 @@ def parser() -> argparse.ArgumentParser:
             "--output", help="Write the full JSON result to a new file; never overwrite"
         )
         sub.add_argument("--format", choices=["json", "markdown"], default="json")
+        if name in HEADER_RECORDS:
+            sub.add_argument(
+                "--view",
+                choices=["brief", "full"],
+                default="brief",
+                help="Brief console view by default; --output always saves full evidence",
+            )
         sub.add_argument(
             "--max-findings",
             type=int,
-            default=20,
+            default=3 if name in HEADER_RECORDS else 20,
             help="Bound console findings only; total counts and coverage remain visible",
         )
         if name in {
@@ -178,8 +185,11 @@ def main(argv: list[str] | None = None) -> int:
                 stream.write("\n")
         if isinstance(value, dict) and value.get("schema") == SCHEMA:
             shown = compact(value, args.max_findings)
+            brief = args.command in HEADER_RECORDS and args.view == "brief"
+            if brief:
+                shown = brief_header_report(value, args.max_findings)
             text = (
-                markdown(shown)
+                (brief_header_markdown(shown) if brief else markdown(shown))
                 if args.format == "markdown"
                 else json.dumps(shown, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
                 + "\n"

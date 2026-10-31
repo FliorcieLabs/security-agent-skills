@@ -30,5 +30,6 @@
 | SEC-026 | security-regression-board | assurance.py, security-regression-board | test_assurance, test_installed_workflows; see ../evidence.md |
 | SEC-027 | security-skill-router | assurance.py, security-skill-router | test_assurance, test_installed_workflows; see ../evidence.md |
 | SEC-028 | Optional bounded record-only MCP stdio interface with CLI-equivalent reports | mcp_stdio.py, assurance_contracts.py, docs/mcp.md | test_mcp_stdio, package_smoke; see ../evidence.md |
-| SEC-029 | email-header-triage: attributed offline email header adaptation | adapted_email_headers.py, header_records.py, THIRD_PARTY_NOTICES.md | test_header_records, test_installed_workflows; see ../evidence.md |
-| SEC-030 | http-header-snapshot-review: attributed offline HTTP header adaptation and bundled license retention | adapted_http_headers.py, header_records.py, scripts/build_skills.py | test_header_records, package_smoke; see ../evidence.md |
+| SEC-029 | mail-auth-review: attributed offline email header adaptation | adapted_email_headers.py, header_records.py, THIRD_PARTY_NOTICES.md | test_header_records, test_installed_workflows; see ../evidence.md |
+| SEC-030 | web-header-review: attributed offline HTTP header adaptation and bundled license retention | adapted_http_headers.py, header_records.py, scripts/build_skills.py | test_header_records, package_smoke; see ../evidence.md |
+| SEC-031 | Compact header-review workflow retains observations, omissions, uncertainty and full evidence export | header_records.py, cli.py, renamed header skills, schemas/header-brief-v1.schema.json | test_header_workflow, test_installed_workflows, benchmark_header_output; see ../evidence.md |

@@ -317,8 +317,8 @@ ROUTES = {
     "detection_rules": "detection-replay-lab",
     "regression_metrics": "security-regression-board",
     "skill_selection": "security-skill-router",
-    "email_headers": "email-header-triage",
-    "http_headers": "http-header-snapshot-review",
+    "email_headers": "mail-auth-review",
+    "http_headers": "web-header-review",
 }
 
 

@@ -5,6 +5,6 @@ sys.dont_write_bytecode = True
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _security_agent_skills.cli import main
 arguments = sys.argv[1:]
-command = arguments.pop(0) if arguments and arguments[0] in [] else 'http-headers'
+command = arguments.pop(0) if arguments and arguments[0] in ['header-review'] else 'http-headers'
 if __name__ == "__main__":
     raise SystemExit(main([command, *arguments]))

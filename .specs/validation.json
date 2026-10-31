@@ -1,10 +1,10 @@
 {
-  "scope": "local Windows Python 3.14.6, T28 attributed offline adaptations",
-  "package_version": "0.1.0a3",
+  "scope": "local Windows Python 3.14.6, T29 compact header workflow",
+  "package_version": "0.1.0a4",
   "ci_required": false,
   "github_actions_enabled": false,
   "explicit_codex_workflows_exercised": 3,
-  "test_count": 108,
+  "test_count": 117,
   "checks": [
     {
       "command": [
@@ -108,6 +108,14 @@
       ],
       "exit_code": 0,
       "status": "PASS"
+    },
+    {
+      "command": [
+        "python",
+        "scripts/benchmark_header_output.py"
+      ],
+      "exit_code": 0,
+      "status": "PASS"
     }
   ],
   "skill_count": 26,
@@ -121,7 +129,10 @@
   "reference_tracked_files_inventoried": 4532,
   "explicit_codex_evidence_scope": "historical 0.1.0a1, not the four new workflows",
   "validation_date": "2026-10-31",
-  "test_duration_seconds": 34.259,
+  "test_duration_seconds": 34.522,
   "adapted_upstream_modules": 2,
-  "licensing": "MIT AND Apache-2.0"
+  "licensing": "MIT AND Apache-2.0",
+  "header_combined_installed_calls": 8,
+  "brief_schema_cases_validated": 12,
+  "token_benchmark": "docs/header-output-benchmark.json"
 }

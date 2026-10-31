@@ -1,5 +1,7 @@
 # Release readiness assessment
 
+Latest development preview: 0.1.0a4, with renamed header skills, brief console output, preserved full evidence, and combined local header review. Current checks are T29 in [.specs/evidence.md](../.specs/evidence.md). [Preview notes](releases/0.1.0a4.md).
+
 Latest development preview: 0.1.0a3, with 26 skills, 16 profiles, and two explicitly attributed offline adaptations. Current evidence is T28 in [.specs/evidence.md](../.specs/evidence.md). Mixed MIT and Apache-2.0 licensing is recorded in [notices](../THIRD_PARTY_NOTICES.md); earlier assessments below retain their historical source scope. [0.1.0a3 notes](releases/0.1.0a3.md).
 
 Current development preview: 0.1.0a2, October 31, 2026. Scope expands to 24 skills, 14 profiles, and a bounded four-tool stdio MCP interface. Current executed checks are recorded under T27 in [.specs/evidence.md](../.specs/evidence.md). The 0.1.0a1 assessment below is historical and its draft assets remain unchanged. No universal host or competitor benchmark claim is added. [Development preview notes](releases/0.1.0a2.md).

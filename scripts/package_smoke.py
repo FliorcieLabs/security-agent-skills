@@ -56,7 +56,7 @@ with tempfile.TemporaryDirectory() as temporary:
     value = json.loads(result.stdout)
     assert result.returncode == 3 and value["result"] == "PARTIAL"
     assert value["details"]["authorization_granted"] is False
-    for command in ["email-headers", "http-headers"]:
+    for command in ["email-headers", "http-headers", "header-review"]:
         record = Path(temporary) / (command + ".json")
         record.write_bytes((root / "examples/adapted-headers" / record.name).read_bytes())
         result = subprocess.run(
@@ -67,7 +67,10 @@ with tempfile.TemporaryDirectory() as temporary:
             check=False,
         )
         value = json.loads(result.stdout)
-        assert result.returncode == 3 and value["finding_count"] == 3
+        assert result.returncode == 3 and value["finding_count"] == (
+            6 if command == "header-review" else 3
+        )
+        assert value["schema"] == "security-agent-skills/header-brief-v1"
         assert value["details"]["executed"] is False
     # Exercise the installed MCP entrypoint from outside the source tree, offline.
     messages = [

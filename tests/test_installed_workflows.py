@@ -101,6 +101,16 @@ class InstalledWorkflowTests(unittest.TestCase):
                         )
                         self.assertEqual(value["finding_count"], 3)
                         self.assertFalse(value["details"]["executed"])
+                        combined = call(
+                            run,
+                            ["header-review", ROOT / "examples/adapted-headers/header-review.json"],
+                            3,
+                        )
+                        self.assertEqual(combined["finding_count"], 6)
+                        self.assertEqual(combined["omitted_findings"], 3)
+                        self.assertEqual(
+                            combined["details"]["finding_counts"], {"email": 3, "http": 3}
+                        )
                     elif command in ASSURANCE:
                         value = call(run, [ROOT / "examples/assurance" / (command + ".json")], 3)
                         self.assertFalse(value["details"]["executed"])
