@@ -95,7 +95,21 @@ class InstalledWorkflowTests(unittest.TestCase):
                     run = Path(entry["destination"]) / "scripts/run.py"
                     name = entry["skill"]
                     command = next(item["command"] for item in catalog if item["name"] == name)
-                    if command in HEADER_RECORDS:
+                    if command == "domain-review":
+                        value = call(run, [ROOT / "examples/domain-reviews" / (name + ".json")], 3)
+                        self.assertEqual(value["details"]["domain"], name)
+                        self.assertEqual(value["details"]["counts"]["unknown"], 5)
+                        self.assertFalse(value["details"]["executed"])
+                        other = next(
+                            item["name"]
+                            for item in catalog
+                            if item.get("domain") and item["name"] != name
+                        )
+                        rejected = call(
+                            run, [ROOT / "examples/domain-reviews" / (other + ".json")], 2
+                        )
+                        self.assertEqual(rejected["result"], "BLOCKED")
+                    elif command in HEADER_RECORDS:
                         value = call(
                             run, [ROOT / "examples/adapted-headers" / (command + ".json")], 3
                         )

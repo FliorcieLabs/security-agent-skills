@@ -1,6 +1,6 @@
 # Security Skill Router contract
 
-Required fields: `schema`, `goals`, `max_skills`. Goals are a nonempty unique symbolic ID array, at most 100. The skill cap is an integer from 1 to 26; booleans are rejected. Routing uses the closed vocabulary below and lexical selection, not model inference or risk priority. Unknown goals and skills deferred by the cap remain visible and selection_complete is false. Never silently discard deferred work when it is necessary for the user task. A complete selection is still not proof of host discovery or skill suitability.
+Required fields: `schema`, `goals`, `max_skills`. Goals are a nonempty unique symbolic ID array, at most 100. The skill cap is an integer from 1 to 41; booleans are rejected. Routing uses the closed vocabulary below and lexical selection, not model inference or risk priority. Unknown goals and skills deferred by the cap remain visible and selection_complete is false. Never silently discard deferred work when it is necessary for the user task. A complete selection is still not proof of host discovery or skill suitability.
 
 Load only the selected SKILL.md files, then retrieve workflow references on demand. The helper does not read or install those files. Repository-relative references are logical paths; resolve them under the user's actual installed skill root. This reduces selected discovery entries, not a measured number of model tokens.
 
@@ -52,3 +52,23 @@ All symbolic IDs match `[A-Za-z][A-Za-z0-9_-]{0,63}`. Reject extra fields, dupli
 ```
 
 For MCP clients, the corresponding tool is `skill_route`, taking an object with one `record` property containing this document. It returns the same report as the CLI. No files are read by that tool.
+
+## Additional domain goals
+
+- `memory_integrity`: `agent-memory-integrity-review`
+- `mcp_tool_drift`: `mcp-tool-drift-sentinel`
+- `approval_binding`: `agent-approval-binding-review`
+- `tenant_isolation`: `tenant-isolation-review`
+- `webhook_trust`: `webhook-trust-review`
+- `archive_paths`: `archive-path-boundary-review`
+- `ci_identity`: `ci-identity-oidc-review`
+- `sensitive_logging`: `sensitive-logging-review`
+- `race_replay`: `race-replay-review`
+- `oauth_integration`: `oauth-integration-review`
+- `browser_agent`: `browser-agent-boundary-review`
+- `rag_access`: `rag-access-boundary-review`
+- `crypto_usage`: `cryptographic-usage-review`
+- `fix_verification`: `security-fix-verification`
+- `deletion_propagation`: `data-deletion-propagation-review`
+
+These goals select review workflows with declared-evidence helpers, not automatic scanners.

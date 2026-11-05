@@ -321,12 +321,32 @@ ROUTES = {
     "http_headers": "web-header-review",
 }
 
+ROUTES.update(
+    {
+        "memory_integrity": "agent-memory-integrity-review",
+        "mcp_tool_drift": "mcp-tool-drift-sentinel",
+        "approval_binding": "agent-approval-binding-review",
+        "tenant_isolation": "tenant-isolation-review",
+        "webhook_trust": "webhook-trust-review",
+        "archive_paths": "archive-path-boundary-review",
+        "ci_identity": "ci-identity-oidc-review",
+        "sensitive_logging": "sensitive-logging-review",
+        "race_replay": "race-replay-review",
+        "oauth_integration": "oauth-integration-review",
+        "browser_agent": "browser-agent-boundary-review",
+        "rag_access": "rag-access-boundary-review",
+        "crypto_usage": "cryptographic-usage-review",
+        "fix_verification": "security-fix-verification",
+        "deletion_propagation": "data-deletion-propagation-review",
+    }
+)
+
 
 def skill_route(value: Any) -> dict[str, Any]:
     doc = _record(value, "skill-route", {"goals", "max_skills"})
     goals = _ids(doc["goals"])
     budget = doc["max_skills"]
-    if not goals or type(budget) is not int or not 1 <= budget <= 26:
+    if not goals or type(budget) is not int or not 1 <= budget <= len(ROUTES):
         raise ValueError("Invalid routing budget")
     unknown = sorted(set(goals) - ROUTES.keys())
     candidates = sorted({ROUTES[goal] for goal in goals if goal in ROUTES})

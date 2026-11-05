@@ -1,0 +1,6 @@
+{
+  "schema": "security-agent-skills/domain-review-v1",
+  "domain": "agent-memory-integrity-review",
+  "scope": "syntheticProject",
+  "checks": []
+}

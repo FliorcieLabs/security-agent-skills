@@ -1,0 +1,6 @@
+{
+  "schema": "security-agent-skills/domain-review-v1",
+  "domain": "data-deletion-propagation-review",
+  "scope": "syntheticProject",
+  "checks": []
+}

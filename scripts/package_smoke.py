@@ -72,6 +72,19 @@ with tempfile.TemporaryDirectory() as temporary:
         )
         assert value["schema"] == "security-agent-skills/header-brief-v1"
         assert value["details"]["executed"] is False
+    for example in sorted((root / "examples/domain-reviews").glob("*.json")):
+        result = subprocess.run(
+            [str(python), "-I", "-m", "security_agent_skills.cli", "domain-review", str(example)],
+            cwd=temporary,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        value = json.loads(result.stdout)
+        assert result.returncode == 3 and value["result"] == "PARTIAL"
+        assert value["details"]["domain"] == example.stem
+        assert value["details"]["counts"]["unknown"] == 5
+        assert value["details"]["executed"] is False
     # Exercise the installed MCP entrypoint from outside the source tree, offline.
     messages = [
         {

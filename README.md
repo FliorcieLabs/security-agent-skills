@@ -7,13 +7,13 @@
 [![MIT and Apache-2.0](https://img.shields.io/badge/license-MIT%20%2B%20Apache--2.0-blue.svg)](THIRD_PARTY_NOTICES.md)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-blue.svg)](pyproject.toml)
 
-Twenty-six local skills and sixteen portable agent profiles for security review and internal agent operations. Inspect unfamiliar AI tooling, review project boundaries, plan bounded tasks, prepare handoffs, checkpoint context, and review tool or retry proposals before execution.
+Forty-one local skills and thirty-one portable agent profiles for security review and internal agent operations. Inspect unfamiliar AI tooling, review project boundaries, plan bounded tasks, prepare handoffs, checkpoint context, and review tool or retry proposals before execution.
 
 **No API key. No runtime Python dependencies. No telemetry. No source upload.** Analysis helpers read bounded local inputs without importing or executing reviewed code.
 
 **Release status: 0.1.0a4 development preview.** The earlier 0.1.0a1 draft remains pinned to its earlier source revision; these additions are not a published release. GitHub Actions is disabled, workflow files are removed, and no CI check is required to merge. Verification is local; independent review remains required. See the [development preview notes](docs/releases/0.1.0a4.md) and [release assessment](docs/release-readiness.md) for tested scope and limits.
 
-[Quick start](#start-with-one-folder) ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· [Demo](#see-a-local-review) ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· [Security skills](#choose-the-security-question) ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· [Agent operations](#internal-agent-operations) ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· [Install](#install-for-your-assistant) ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· [16 agents](#portable-agent-profiles) ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· [Limits](#privacy-and-limits) ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· [Contribute](CONTRIBUTING.md)
+[Quick start](#start-with-one-folder) | [Demo](#see-a-local-review) | [Security skills](#choose-the-security-question) | [Additional domains](#additional-security-domains) | [Agent operations](#internal-agent-operations) | [Install](#install-for-your-assistant) | [31 agents](#portable-agent-profiles) | [Limits](#privacy-and-limits) | [Contribute](CONTRIBUTING.md)
 
 Use it before installing an unfamiliar agent package, granting an MCP server access, accepting a dependency change, or sharing a security finding. Start with one question and one skill. Review the referenced source before deciding what to allow or fix.
 
@@ -48,6 +48,34 @@ Prefer a still image? [Open the PNG sample](docs/assets/security/security-demo.p
 | Review a package upgrade | Agent Package Change Sentinel | A focused audit of the changed files |
 
 Each path narrows the next decision. It does not combine the results into a safety score.
+
+## Additional security domains
+
+Fifteen evidence-guided workflows add the following domains. Each includes a portable Markdown agent profile and an optional declared-evidence consistency helper. These are review workflows, not automatic vulnerability scanners. No new MCP tools or CI pipelines are installed.
+
+| Skill | Review boundary |
+|---|---|
+| [Agent Memory Integrity Review](skills/agent-memory-integrity-review/SKILL.md) | Review persistent agent memory for poisoning and cross-scope reuse. |
+| [MCP Tool Drift Sentinel](skills/mcp-tool-drift-sentinel/SKILL.md) | Compare MCP versions for changes to tool authority and contracts. |
+| [Agent Approval Binding Review](skills/agent-approval-binding-review/SKILL.md) | Review approval binding to exact actions, arguments, targets, and validity windows. |
+| [Tenant Isolation Review](skills/tenant-isolation-review/SKILL.md) | Review tenant boundaries in queries, storage, caches, and workers. |
+| [Webhook Trust Review](skills/webhook-trust-review/SKILL.md) | Review webhook signatures, replay controls, and duplicate processing. |
+| [Archive and Path Boundary Review](skills/archive-path-boundary-review/SKILL.md) | Review archive extraction for traversal, links, collisions, and resource exhaustion. |
+| [CI Identity and OIDC Review](skills/ci-identity-oidc-review/SKILL.md) | Review supplied CI cloud trust and token permissions without enabling a pipeline. |
+| [Sensitive Logging Review](skills/sensitive-logging-review/SKILL.md) | Review logs, traces, exceptions, and transcripts for sensitive data capture. |
+| [Race and Replay Review](skills/race-replay-review/SKILL.md) | Review concurrent state changes, duplicate actions, and ambiguous effects. |
+| [OAuth Integration Review](skills/oauth-integration-review/SKILL.md) | Review redirects, account linking, authorization callbacks, and token lifecycle. |
+| [Browser Agent Boundary Review](skills/browser-agent-boundary-review/SKILL.md) | Review untrusted pages influencing browser agents and authenticated actions. |
+| [RAG Access Boundary Review](skills/rag-access-boundary-review/SKILL.md) | Review document permissions across retrieval, indexing, citations, and caches. |
+| [Cryptographic Usage Review](skills/cryptographic-usage-review/SKILL.md) | Review cryptographic API misuse, randomness, nonce handling, and key lifecycle. |
+| [Security Fix Verification](skills/security-fix-verification/SKILL.md) | Verify security patches against original failures, variants, and legitimate behavior. |
+| [Data Deletion Propagation Review](skills/data-deletion-propagation-review/SKILL.md) | Review deletion through primary stores, caches, indexes, exports, and retained copies. |
+
+```sh
+python scripts/security_check.py domain-review examples/domain-reviews/agent-approval-binding-review.json --max-findings 3
+```
+
+The synthetic example reports five unresolved checks and exits 3. Evidence references are never opened or verified. [Contracts and limits](docs/domain-reviews.md).
 
 ## Choose the security question
 
@@ -159,7 +187,7 @@ python scripts/install_skills.py --agent codex --project ../my-project --skill i
 python scripts/install_skills.py --agent codex --project ../my-project --skill instruction-boundary-audit --apply
 ```
 
-Choose `claude`, `codex`, `cursor`, `copilot`, or `all`. Omit `--skill` to select all twenty-six. Replace `--project ../my-project` with `--global` for personal discovery across projects. Existing destinations are refused, never silently upgraded or overwritten.
+Choose `claude`, `codex`, `cursor`, `copilot`, or `all`. Omit `--skill` to select all forty-one. Replace `--project ../my-project` with `--global` for personal discovery across projects. Existing destinations are refused, never silently upgraded or overwritten.
 
 | Assistant | Project skills | Personal skills |
 |---|---|---|

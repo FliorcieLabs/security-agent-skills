@@ -54,3 +54,7 @@ Four [record workflows](assurance-workflows.md) analyze graph paths, exact-match
 ## Attributed header adaptations
 
 Two [offline header adaptations](adapted-skills.md) reuse selected Apache-2.0 helper functions with attribution. Email headers yield unverified authentication claims and From/Reply-To differences. HTTP snapshots check a limited subset of header presence/values. Neither acquires live evidence, sends DNS/HTTP requests, processes attachments, or verifies sender or application security. All valid reports remain PARTIAL.
+
+## Additional domain reviews
+
+Fifteen domain workflows add evidence-guided review procedures and portable profiles. The shared domain-review helper validates bounded caller declarations, preserves omitted controls as unknown, and always returns PARTIAL for valid records. It does not inspect project source, open evidence references, execute tests, or verify supplied claims. See [domain contracts and limits](domain-reviews.md).

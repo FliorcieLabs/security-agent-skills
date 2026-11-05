@@ -27,6 +27,8 @@ def generated_files():
             "from _security_agent_skills.cli import main\n"
             "arguments = sys.argv[1:]\n"
             f"command = arguments.pop(0) if arguments and arguments[0] in {modes!r} else {command!r}\n"
+            f'domain = {skill.get("domain")!r}\n'
+            'if domain:\n    arguments = [*arguments, "--domain", domain]\n'
             'if __name__ == "__main__":\n    raise SystemExit(main([command, *arguments]))\n'
         ).encode()
         files = {

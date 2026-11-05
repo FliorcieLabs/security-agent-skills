@@ -146,5 +146,110 @@
     "description": "Review supplied HTTP security headers with concise output; no HTTP requests or live policy verification.",
     "agent": "agents/web-header-review.md",
     "provenance": "third-party-provenance.json"
+  },
+  {
+    "name": "agent-memory-integrity-review",
+    "command": "domain-review",
+    "domain": "agent-memory-integrity-review",
+    "description": "Review persistent agent memory for poisoning and cross-scope reuse.",
+    "agent": "agents/agent-memory-integrity-review.md"
+  },
+  {
+    "name": "mcp-tool-drift-sentinel",
+    "command": "domain-review",
+    "domain": "mcp-tool-drift-sentinel",
+    "description": "Compare MCP versions for changes to tool authority and contracts.",
+    "agent": "agents/mcp-tool-drift-sentinel.md"
+  },
+  {
+    "name": "agent-approval-binding-review",
+    "command": "domain-review",
+    "domain": "agent-approval-binding-review",
+    "description": "Review approval binding to exact actions, arguments, targets, and validity windows.",
+    "agent": "agents/agent-approval-binding-review.md"
+  },
+  {
+    "name": "tenant-isolation-review",
+    "command": "domain-review",
+    "domain": "tenant-isolation-review",
+    "description": "Review tenant boundaries in queries, storage, caches, and workers.",
+    "agent": "agents/tenant-isolation-review.md"
+  },
+  {
+    "name": "webhook-trust-review",
+    "command": "domain-review",
+    "domain": "webhook-trust-review",
+    "description": "Review webhook signatures, replay controls, and duplicate processing.",
+    "agent": "agents/webhook-trust-review.md"
+  },
+  {
+    "name": "archive-path-boundary-review",
+    "command": "domain-review",
+    "domain": "archive-path-boundary-review",
+    "description": "Review archive extraction for traversal, links, collisions, and resource exhaustion.",
+    "agent": "agents/archive-path-boundary-review.md"
+  },
+  {
+    "name": "ci-identity-oidc-review",
+    "command": "domain-review",
+    "domain": "ci-identity-oidc-review",
+    "description": "Review supplied CI cloud trust and token permissions without enabling a pipeline.",
+    "agent": "agents/ci-identity-oidc-review.md"
+  },
+  {
+    "name": "sensitive-logging-review",
+    "command": "domain-review",
+    "domain": "sensitive-logging-review",
+    "description": "Review logs, traces, exceptions, and transcripts for sensitive data capture.",
+    "agent": "agents/sensitive-logging-review.md"
+  },
+  {
+    "name": "race-replay-review",
+    "command": "domain-review",
+    "domain": "race-replay-review",
+    "description": "Review concurrent state changes, duplicate actions, and ambiguous effects.",
+    "agent": "agents/race-replay-review.md"
+  },
+  {
+    "name": "oauth-integration-review",
+    "command": "domain-review",
+    "domain": "oauth-integration-review",
+    "description": "Review redirects, account linking, authorization callbacks, and token lifecycle.",
+    "agent": "agents/oauth-integration-review.md"
+  },
+  {
+    "name": "browser-agent-boundary-review",
+    "command": "domain-review",
+    "domain": "browser-agent-boundary-review",
+    "description": "Review untrusted pages influencing browser agents and authenticated actions.",
+    "agent": "agents/browser-agent-boundary-review.md"
+  },
+  {
+    "name": "rag-access-boundary-review",
+    "command": "domain-review",
+    "domain": "rag-access-boundary-review",
+    "description": "Review document permissions across retrieval, indexing, citations, and caches.",
+    "agent": "agents/rag-access-boundary-review.md"
+  },
+  {
+    "name": "cryptographic-usage-review",
+    "command": "domain-review",
+    "domain": "cryptographic-usage-review",
+    "description": "Review cryptographic API misuse, randomness, nonce handling, and key lifecycle.",
+    "agent": "agents/cryptographic-usage-review.md"
+  },
+  {
+    "name": "security-fix-verification",
+    "command": "domain-review",
+    "domain": "security-fix-verification",
+    "description": "Verify security patches against original failures, variants, and legitimate behavior.",
+    "agent": "agents/security-fix-verification.md"
+  },
+  {
+    "name": "data-deletion-propagation-review",
+    "command": "domain-review",
+    "domain": "data-deletion-propagation-review",
+    "description": "Review deletion through primary stores, caches, indexes, exports, and retained copies.",
+    "agent": "agents/data-deletion-propagation-review.md"
   }
 ]

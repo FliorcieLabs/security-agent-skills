@@ -1,182 +1,105 @@
 {
-  "scope": "fresh candidate archive, Windows Python 3.11.15 / 3.12.13 / 3.13.14 / 3.14.6, T30 E2E",
+  "result": "PASS",
+  "scope": "T31 domain workflow expansion, local Windows verification",
+  "validation_date": "2026-11-05",
   "package_version": "0.1.0a4",
+  "skill_count": 41,
+  "agent_count": 31,
+  "test_count": 124,
+  "test_executions": 248,
+  "python_versions": [
+    "3.11.15",
+    "3.14.6"
+  ],
+  "installed_bundles_per_suite": 164,
+  "generated_files": 1138,
+  "runtime_modules": 19,
+  "mcp_tools": 4,
   "ci_required": false,
   "github_actions_enabled": false,
-  "explicit_codex_workflows_exercised": 3,
-  "test_count": 118,
+  "native_host_sessions_tested_for_new_skills": false,
   "checks": [
     {
-      "command": [
-        "python",
-        "-m",
-        "unittest",
-        "discover",
-        "-s",
-        "tests",
-        "-t",
-        ".",
-        "-v"
-      ],
-      "exit_code": 0,
-      "status": "PASS"
+      "command": "python -m unittest discover -s tests -t . -v",
+      "result": "PASS",
+      "evidence": "124 tests on Windows Python 3.14.6, 65.828 seconds"
     },
     {
-      "command": [
-        "python",
-        "-m",
-        "ruff",
-        "check",
-        "src",
-        "scripts",
-        "tests"
-      ],
-      "exit_code": 0,
-      "status": "PASS"
+      "command": "python3.11 -m unittest discover -s tests -t . -v",
+      "result": "PASS",
+      "evidence": "124 tests on Windows Python 3.11.15, 53.022 seconds; explicit managed interpreter"
     },
     {
-      "command": [
-        "python",
-        "-m",
-        "mypy",
-        "src"
-      ],
-      "exit_code": 0,
-      "status": "PASS"
+      "command": "python -m ruff check src scripts tests",
+      "result": "PASS",
+      "evidence": "PASS"
     },
     {
-      "command": [
-        "python",
-        "-m",
-        "black",
-        "--check",
-        "--workers",
-        "1",
-        "src",
-        "scripts",
-        "tests"
-      ],
-      "exit_code": 0,
-      "status": "PASS"
+      "command": "python -m mypy src",
+      "result": "PASS",
+      "evidence": "19 source files"
     },
     {
-      "command": [
-        "python",
-        "scripts/build_skills.py",
-        "--check"
-      ],
-      "exit_code": 0,
-      "status": "PASS"
+      "command": "python -m black --check src scripts tests",
+      "result": "PASS",
+      "evidence": "45 files"
     },
     {
-      "command": [
-        "python",
-        "scripts/validate_skills.py"
-      ],
-      "exit_code": 0,
-      "status": "PASS"
+      "command": "python scripts/validate_skills.py",
+      "result": "PASS",
+      "evidence": "41 skills, 31 profiles"
     },
     {
-      "command": [
-        "python",
-        "scripts/validate_specs.py"
-      ],
-      "exit_code": 0,
-      "status": "PASS"
+      "command": "python scripts/validate_specs.py",
+      "result": "PASS",
+      "evidence": "32 requirements"
     },
     {
-      "command": [
-        "python",
-        "-m",
-        "build"
-      ],
-      "exit_code": 0,
-      "status": "PASS"
+      "command": "python scripts/build_skills.py --check",
+      "result": "PASS",
+      "evidence": "1138 generated files"
     },
     {
-      "command": [
-        "python",
-        "scripts/package_smoke.py"
-      ],
-      "exit_code": 0,
-      "status": "PASS"
+      "command": "python -m build --outdir <temporary-build-root>/dist",
+      "result": "PASS",
+      "evidence": "sdist and wheel built with isolated build dependencies"
     },
     {
-      "command": [
-        "python",
-        "scripts/benchmark_assurance.py"
-      ],
-      "exit_code": 0,
-      "status": "PASS"
+      "command": "python <temporary-build-root>/scripts/package_smoke.py",
+      "result": "PASS",
+      "evidence": "offline installed wheel; all 15 domain examples, existing CLI/header/MCP paths"
     },
     {
-      "command": [
-        "python",
-        "scripts/benchmark_header_output.py"
-      ],
-      "exit_code": 0,
-      "status": "PASS"
+      "command": "jsonschema Draft202012Validator + domain records",
+      "result": "PASS",
+      "evidence": "105 positive/negative cases"
+    },
+    {
+      "command": "relative Markdown link check",
+      "result": "PASS",
+      "evidence": "237 relative links before final evidence documentation additions"
+    },
+    {
+      "command": "benchmark_assurance.benchmark() == recorded JSON",
+      "result": "PASS",
+      "evidence": "exact match, updated 41-entry document selection"
+    },
+    {
+      "command": "benchmark_header_output.benchmark(cl100k_base) == recorded JSON",
+      "result": "PASS",
+      "evidence": "exact match; header token metrics unchanged"
+    },
+    {
+      "command": "gh api actions/permissions and branches/main/protection",
+      "result": "PASS",
+      "evidence": "Actions disabled, required status checks null, one approving review"
     }
   ],
-  "skill_count": 26,
-  "agent_count": 16,
-  "installed_bundles_tested": 104,
-  "generated_files": 692,
-  "runtime_modules": 18,
-  "mcp_tools": 4,
-  "new_native_host_sessions_tested": false,
-  "reference_python_files_parsed": 1103,
-  "reference_tracked_files_inventoried": 4532,
-  "explicit_codex_evidence_scope": "historical 0.1.0a1, not the four new workflows",
-  "validation_date": "2026-10-31",
-  "test_duration_seconds": 34.176,
-  "adapted_upstream_modules": 2,
-  "licensing": "MIT AND Apache-2.0",
-  "header_combined_installed_calls": 8,
-  "brief_schema_cases_validated": 12,
-  "token_benchmark": "docs/header-output-benchmark.json",
-  "python_matrix": [
-    {
-      "python": "Python 3.11.15",
-      "tests": 118,
-      "seconds": 31.633,
-      "result": "PASS",
-      "catalog_installs": 104,
-      "combined_installed_calls": 8,
-      "log": "final-tests-3.11.log"
-    },
-    {
-      "python": "Python 3.12.13",
-      "tests": 118,
-      "seconds": 32.523,
-      "result": "PASS",
-      "catalog_installs": 104,
-      "combined_installed_calls": 8,
-      "log": "final-tests-3.12.log"
-    },
-    {
-      "python": "Python 3.13.14",
-      "tests": 118,
-      "seconds": 32.092,
-      "result": "PASS",
-      "catalog_installs": 104,
-      "combined_installed_calls": 8,
-      "log": "final-tests-3.13.log"
-    },
-    {
-      "python": "Python 3.14.6",
-      "tests": 118,
-      "seconds": 34.176,
-      "result": "PASS",
-      "catalog_installs": 104,
-      "combined_installed_calls": 8,
-      "log": "final-tests-3.14.log"
-    }
-  ],
-  "total_final_test_executions": 472,
-  "independent_mcp_client": "mcp SDK 2.3.0",
-  "independent_mcp_protocol": "2025-11-25",
-  "e2e_base_commit": "6905ba5b2156ae4fab6dc88c030b18886a85a3e5",
-  "e2e_tested_candidate_tree": "78064d38a5b41ec0a97455a99aaa8a0033c38a59",
-  "e2e_source_archive_sha256": "7c131bc33cf386d0e1dd8b8b9ebf3a0a82732565911ffc85bc22ee324337ad10"
+  "historical_validation": "validation-t30.json",
+  "limitations": [
+    "Python 3.12 and 3.13 were not rerun for this expansion; their recorded T30 results cover the previous revision.",
+    "Linux, macOS, and native interactive Claude/Codex/Cursor/Copilot sessions were not exercised for the additions.",
+    "The new helper validates declared evidence consistency, not target security, exploitability, evidence truth, or permission.",
+    "No release, package publication, main merge, or CI enablement is part of this change."
+  ]
 }

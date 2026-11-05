@@ -13,3 +13,5 @@ Assurance owns four pure bounded record functions. The CLI reads regular local J
 header_records.py wraps selected reviewed pure functions in two attributed Apache-2.0 modules. Only strict local records are accepted. No acquisition, DNS/HTTP requests, subprocesses, attachment writes, or raw header output is exposed. The bundle builder and package metadata preserve both licenses, modification notices, and pinned source provenance.
 
 Header review combines either or both strict embedded records without evidence acquisition. The brief projection is presentation-only, with its own schema and explicit omissions. CLI exclusive --output writes the canonical full report before selecting console presentation. Existing non-header command defaults and the optional MCP surface are unchanged.
+
+Domain reviews own a closed fifteen-domain vocabulary of five controls each and a pure evidence-record reviewer. CLI and domain-bound launchers use the same function. Missing controls remain unknown; all valid records remain PARTIAL. References are never dereferenced. The MCP surface remains four tools.

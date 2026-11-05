@@ -10,6 +10,7 @@ from typing import Any
 from .assurance import ASSURANCE
 from .audits import audit_dependencies, audit_egress, audit_exposure, audit_mcp
 from .boundaries import grade_injection, injection_cases, map_routes
+from .domain_reviews import CONTROLS, review_domain
 from .evidence import pack_reports, verify_pack
 from .extended_audits import (
     audit_ci,
@@ -74,12 +75,16 @@ def parser() -> argparse.ArgumentParser:
         *OPERATIONS,
         *ASSURANCE,
         *HEADER_RECORDS,
+        "domain-review",
     ]:
         sub = subs.add_parser(name)
         sub.add_argument(
             "--output", help="Write the full JSON result to a new file; never overwrite"
         )
         sub.add_argument("--format", choices=["json", "markdown"], default="json")
+        if name == "domain-review":
+            sub.add_argument("record", help="Declared control evidence; no target execution")
+            sub.add_argument("--domain", choices=sorted(CONTROLS), help="Require this domain")
         if name in HEADER_RECORDS:
             sub.add_argument(
                 "--view",
@@ -136,6 +141,11 @@ def parser() -> argparse.ArgumentParser:
 
 
 def dispatch(args: argparse.Namespace) -> dict[str, Any] | list[dict[str, Any]]:
+    if args.command == "domain-review":
+        value = review_domain(read_json(args.record, unique_keys=True))
+        if args.domain and value["details"]["domain"] != args.domain:
+            raise ValueError("Wrong domain for this skill")
+        return value
     if args.command in HEADER_RECORDS:
         return HEADER_RECORDS[args.command](read_json(args.record, unique_keys=True))
     if args.command in ASSURANCE:
