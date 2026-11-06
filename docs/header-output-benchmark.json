@@ -1,0 +1,82 @@
+{
+  "cases": [
+    {
+      "all_findings_brief": {
+        "byte_reduction_percent": 36.5,
+        "bytes": 948,
+        "omitted_findings": 0,
+        "token_reduction_percent": 33.43,
+        "tokens": 237
+      },
+      "default_brief": {
+        "byte_reduction_percent": 36.5,
+        "bytes": 948,
+        "omitted_findings": 0,
+        "token_reduction_percent": 33.43,
+        "tokens": 237
+      },
+      "finding_count": 3,
+      "fixture_sha256": "bd6d1a93156365d4525b30943a9683b222ba66ff93152661ba62e0dd0e3f6310",
+      "full_bytes": 1493,
+      "full_tokens": 356,
+      "workflow": "email-headers"
+    },
+    {
+      "all_findings_brief": {
+        "byte_reduction_percent": 33.52,
+        "bytes": 1081,
+        "omitted_findings": 0,
+        "token_reduction_percent": 31.07,
+        "tokens": 264
+      },
+      "default_brief": {
+        "byte_reduction_percent": 33.52,
+        "bytes": 1081,
+        "omitted_findings": 0,
+        "token_reduction_percent": 31.07,
+        "tokens": 264
+      },
+      "finding_count": 3,
+      "fixture_sha256": "b37b54f2b78340ac099b944b70cadc885f51550513e7eda0617d4a3df066a6ae",
+      "full_bytes": 1626,
+      "full_tokens": 383,
+      "workflow": "http-headers"
+    },
+    {
+      "all_findings_brief": {
+        "byte_reduction_percent": 29.31,
+        "bytes": 1835,
+        "omitted_findings": 0,
+        "token_reduction_percent": 27.29,
+        "tokens": 461
+      },
+      "default_brief": {
+        "byte_reduction_percent": 44.57,
+        "bytes": 1439,
+        "omitted_findings": 3,
+        "token_reduction_percent": 44.01,
+        "tokens": 355
+      },
+      "finding_count": 6,
+      "fixture_sha256": "59e1d7759fd979c427d911fb211d2f6d3a6e530f0009644e3b75444fe529ef13",
+      "full_bytes": 2596,
+      "full_tokens": 634,
+      "workflow": "header-review"
+    }
+  ],
+  "fixture_hash_basis": "canonical JSON: sorted keys, compact separators, ASCII escapes, UTF-8",
+  "limits": [
+    "Not a real-project, model-quality, latency, or billing benchmark.",
+    "Default brief caps findings at three; omitted counts and all observations remain.",
+    "All-findings brief measures presentation savings without dropping findings.",
+    "Tokenizer selection does not establish another platform's actual token accounting.",
+    "Optional tokenizer is authoring-only; the shipped helpers remain standard-library only."
+  ],
+  "result": "PASS",
+  "scope": "three fixed synthetic header records; minified JSON CLI output",
+  "tokenizer": {
+    "encoding": "cl100k_base",
+    "library": "tiktoken",
+    "version": "0.14.0"
+  }
+}

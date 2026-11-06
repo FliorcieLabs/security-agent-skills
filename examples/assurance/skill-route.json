@@ -1,0 +1,9 @@
+{
+  "schema": "security-agent-skills/skill-route-v1",
+  "goals": [
+    "agent_egress",
+    "instruction_trust",
+    "mcp_authority"
+  ],
+  "max_skills": 2
+}

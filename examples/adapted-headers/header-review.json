@@ -1,0 +1,25 @@
+{
+  "schema": "security-agent-skills/header-review-v1",
+  "email": {
+    "schema": "security-agent-skills/email-headers-v1",
+    "headers": "From: Sender <sender@example.invalid>\nReply-To: reply@example.invalid\nAuthentication-Results: mx.example.invalid; spf=fail; dkim=pass; dmarc=fail\nReceived: from relay.example.invalid by mx.example.invalid\n"
+  },
+  "http": {
+    "schema": "security-agent-skills/http-headers-v1",
+    "secure_transport": true,
+    "headers": [
+      {
+        "name": "Strict-Transport-Security",
+        "value": "max-age=300"
+      },
+      {
+        "name": "X-Content-Type-Options",
+        "value": "nosniff"
+      },
+      {
+        "name": "Server",
+        "value": "Synthetic-Server"
+      }
+    ]
+  }
+}

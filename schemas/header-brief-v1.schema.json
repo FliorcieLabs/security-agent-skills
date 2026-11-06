@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Header Brief v1",
+  "type": "object",
+  "required": [
+    "schema",
+    "workflow",
+    "result",
+    "finding_count",
+    "omitted_findings",
+    "findings",
+    "coverage",
+    "details",
+    "limitations"
+  ],
+  "properties": {
+    "schema": {
+      "const": "security-agent-skills/header-brief-v1"
+    },
+    "workflow": {
+      "enum": [
+        "email-headers",
+        "http-headers",
+        "header-review"
+      ]
+    },
+    "result": {
+      "const": "PARTIAL"
+    },
+    "finding_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "omitted_findings": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "rule",
+          "message"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{16}$"
+          },
+          "rule": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "coverage": {
+      "type": "object"
+    },
+    "details": {
+      "type": "object"
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

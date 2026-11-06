@@ -1,0 +1,1536 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Structural contract; duplicate control IDs are additionally rejected by the runtime.",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "domain",
+        "scope",
+        "checks"
+      ],
+      "properties": {
+        "schema": {
+          "const": "security-agent-skills/domain-review-v1"
+        },
+        "domain": {
+          "const": "agent-memory-integrity-review"
+        },
+        "scope": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+        },
+        "checks": {
+          "type": "array",
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "outcome",
+              "basis",
+              "evidence"
+            ],
+            "properties": {
+              "id": {
+                "enum": [
+                  "write_provenance",
+                  "scope_isolation",
+                  "instruction_boundary",
+                  "expiry_reset",
+                  "poisoning_regression"
+                ]
+              },
+              "outcome": {
+                "enum": [
+                  "pass",
+                  "fail",
+                  "unknown",
+                  "not_applicable"
+                ]
+              },
+              "basis": {
+                "enum": [
+                  "observed",
+                  "reproduced",
+                  "unknown"
+                ]
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 8,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+                }
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "outcome": {
+                      "const": "unknown"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "basis": {
+                      "const": "unknown"
+                    }
+                  }
+                },
+                "else": {
+                  "properties": {
+                    "basis": {
+                      "enum": [
+                        "observed",
+                        "reproduced"
+                      ]
+                    },
+                    "evidence": {
+                      "minItems": 1
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "domain",
+        "scope",
+        "checks"
+      ],
+      "properties": {
+        "schema": {
+          "const": "security-agent-skills/domain-review-v1"
+        },
+        "domain": {
+          "const": "mcp-tool-drift-sentinel"
+        },
+        "scope": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+        },
+        "checks": {
+          "type": "array",
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "outcome",
+              "basis",
+              "evidence"
+            ],
+            "properties": {
+              "id": {
+                "enum": [
+                  "identity_pin",
+                  "schema_diff",
+                  "authority_diff",
+                  "description_boundary",
+                  "upgrade_regression"
+                ]
+              },
+              "outcome": {
+                "enum": [
+                  "pass",
+                  "fail",
+                  "unknown",
+                  "not_applicable"
+                ]
+              },
+              "basis": {
+                "enum": [
+                  "observed",
+                  "reproduced",
+                  "unknown"
+                ]
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 8,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+                }
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "outcome": {
+                      "const": "unknown"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "basis": {
+                      "const": "unknown"
+                    }
+                  }
+                },
+                "else": {
+                  "properties": {
+                    "basis": {
+                      "enum": [
+                        "observed",
+                        "reproduced"
+                      ]
+                    },
+                    "evidence": {
+                      "minItems": 1
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "domain",
+        "scope",
+        "checks"
+      ],
+      "properties": {
+        "schema": {
+          "const": "security-agent-skills/domain-review-v1"
+        },
+        "domain": {
+          "const": "agent-approval-binding-review"
+        },
+        "scope": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+        },
+        "checks": {
+          "type": "array",
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "outcome",
+              "basis",
+              "evidence"
+            ],
+            "properties": {
+              "id": {
+                "enum": [
+                  "action_binding",
+                  "freshness",
+                  "argument_substitution",
+                  "replay_control",
+                  "enforcement"
+                ]
+              },
+              "outcome": {
+                "enum": [
+                  "pass",
+                  "fail",
+                  "unknown",
+                  "not_applicable"
+                ]
+              },
+              "basis": {
+                "enum": [
+                  "observed",
+                  "reproduced",
+                  "unknown"
+                ]
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 8,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+                }
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "outcome": {
+                      "const": "unknown"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "basis": {
+                      "const": "unknown"
+                    }
+                  }
+                },
+                "else": {
+                  "properties": {
+                    "basis": {
+                      "enum": [
+                        "observed",
+                        "reproduced"
+                      ]
+                    },
+                    "evidence": {
+                      "minItems": 1
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "domain",
+        "scope",
+        "checks"
+      ],
+      "properties": {
+        "schema": {
+          "const": "security-agent-skills/domain-review-v1"
+        },
+        "domain": {
+          "const": "tenant-isolation-review"
+        },
+        "scope": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+        },
+        "checks": {
+          "type": "array",
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "outcome",
+              "basis",
+              "evidence"
+            ],
+            "properties": {
+              "id": {
+                "enum": [
+                  "identity_context",
+                  "object_authorization",
+                  "cache_storage",
+                  "async_context",
+                  "negative_matrix"
+                ]
+              },
+              "outcome": {
+                "enum": [
+                  "pass",
+                  "fail",
+                  "unknown",
+                  "not_applicable"
+                ]
+              },
+              "basis": {
+                "enum": [
+                  "observed",
+                  "reproduced",
+                  "unknown"
+                ]
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 8,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+                }
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "outcome": {
+                      "const": "unknown"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "basis": {
+                      "const": "unknown"
+                    }
+                  }
+                },
+                "else": {
+                  "properties": {
+                    "basis": {
+                      "enum": [
+                        "observed",
+                        "reproduced"
+                      ]
+                    },
+                    "evidence": {
+                      "minItems": 1
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "domain",
+        "scope",
+        "checks"
+      ],
+      "properties": {
+        "schema": {
+          "const": "security-agent-skills/domain-review-v1"
+        },
+        "domain": {
+          "const": "webhook-trust-review"
+        },
+        "scope": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+        },
+        "checks": {
+          "type": "array",
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "outcome",
+              "basis",
+              "evidence"
+            ],
+            "properties": {
+              "id": {
+                "enum": [
+                  "raw_signature",
+                  "timestamp_window",
+                  "key_rotation",
+                  "duplicate_delivery",
+                  "event_authority"
+                ]
+              },
+              "outcome": {
+                "enum": [
+                  "pass",
+                  "fail",
+                  "unknown",
+                  "not_applicable"
+                ]
+              },
+              "basis": {
+                "enum": [
+                  "observed",
+                  "reproduced",
+                  "unknown"
+                ]
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 8,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+                }
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "outcome": {
+                      "const": "unknown"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "basis": {
+                      "const": "unknown"
+                    }
+                  }
+                },
+                "else": {
+                  "properties": {
+                    "basis": {
+                      "enum": [
+                        "observed",
+                        "reproduced"
+                      ]
+                    },
+                    "evidence": {
+                      "minItems": 1
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "domain",
+        "scope",
+        "checks"
+      ],
+      "properties": {
+        "schema": {
+          "const": "security-agent-skills/domain-review-v1"
+        },
+        "domain": {
+          "const": "archive-path-boundary-review"
+        },
+        "scope": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+        },
+        "checks": {
+          "type": "array",
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "outcome",
+              "basis",
+              "evidence"
+            ],
+            "properties": {
+              "id": {
+                "enum": [
+                  "destination_containment",
+                  "link_boundary",
+                  "name_collisions",
+                  "resource_budget",
+                  "atomic_failure"
+                ]
+              },
+              "outcome": {
+                "enum": [
+                  "pass",
+                  "fail",
+                  "unknown",
+                  "not_applicable"
+                ]
+              },
+              "basis": {
+                "enum": [
+                  "observed",
+                  "reproduced",
+                  "unknown"
+                ]
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 8,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+                }
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "outcome": {
+                      "const": "unknown"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "basis": {
+                      "const": "unknown"
+                    }
+                  }
+                },
+                "else": {
+                  "properties": {
+                    "basis": {
+                      "enum": [
+                        "observed",
+                        "reproduced"
+                      ]
+                    },
+                    "evidence": {
+                      "minItems": 1
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "domain",
+        "scope",
+        "checks"
+      ],
+      "properties": {
+        "schema": {
+          "const": "security-agent-skills/domain-review-v1"
+        },
+        "domain": {
+          "const": "ci-identity-oidc-review"
+        },
+        "scope": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+        },
+        "checks": {
+          "type": "array",
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "outcome",
+              "basis",
+              "evidence"
+            ],
+            "properties": {
+              "id": {
+                "enum": [
+                  "trust_subject",
+                  "untrusted_events",
+                  "token_scope",
+                  "artifact_boundary",
+                  "denied_contexts"
+                ]
+              },
+              "outcome": {
+                "enum": [
+                  "pass",
+                  "fail",
+                  "unknown",
+                  "not_applicable"
+                ]
+              },
+              "basis": {
+                "enum": [
+                  "observed",
+                  "reproduced",
+                  "unknown"
+                ]
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 8,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+                }
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "outcome": {
+                      "const": "unknown"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "basis": {
+                      "const": "unknown"
+                    }
+                  }
+                },
+                "else": {
+                  "properties": {
+                    "basis": {
+                      "enum": [
+                        "observed",
+                        "reproduced"
+                      ]
+                    },
+                    "evidence": {
+                      "minItems": 1
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "domain",
+        "scope",
+        "checks"
+      ],
+      "properties": {
+        "schema": {
+          "const": "security-agent-skills/domain-review-v1"
+        },
+        "domain": {
+          "const": "sensitive-logging-review"
+        },
+        "scope": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+        },
+        "checks": {
+          "type": "array",
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "outcome",
+              "basis",
+              "evidence"
+            ],
+            "properties": {
+              "id": {
+                "enum": [
+                  "source_inventory",
+                  "scrubbing_order",
+                  "canary_validation",
+                  "retention_access",
+                  "capture_controls"
+                ]
+              },
+              "outcome": {
+                "enum": [
+                  "pass",
+                  "fail",
+                  "unknown",
+                  "not_applicable"
+                ]
+              },
+              "basis": {
+                "enum": [
+                  "observed",
+                  "reproduced",
+                  "unknown"
+                ]
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 8,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+                }
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "outcome": {
+                      "const": "unknown"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "basis": {
+                      "const": "unknown"
+                    }
+                  }
+                },
+                "else": {
+                  "properties": {
+                    "basis": {
+                      "enum": [
+                        "observed",
+                        "reproduced"
+                      ]
+                    },
+                    "evidence": {
+                      "minItems": 1
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "domain",
+        "scope",
+        "checks"
+      ],
+      "properties": {
+        "schema": {
+          "const": "security-agent-skills/domain-review-v1"
+        },
+        "domain": {
+          "const": "race-replay-review"
+        },
+        "scope": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+        },
+        "checks": {
+          "type": "array",
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "outcome",
+              "basis",
+              "evidence"
+            ],
+            "properties": {
+              "id": {
+                "enum": [
+                  "state_invariants",
+                  "atomic_boundary",
+                  "idempotency_scope",
+                  "crash_reconciliation",
+                  "schedule_regression"
+                ]
+              },
+              "outcome": {
+                "enum": [
+                  "pass",
+                  "fail",
+                  "unknown",
+                  "not_applicable"
+                ]
+              },
+              "basis": {
+                "enum": [
+                  "observed",
+                  "reproduced",
+                  "unknown"
+                ]
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 8,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+                }
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "outcome": {
+                      "const": "unknown"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "basis": {
+                      "const": "unknown"
+                    }
+                  }
+                },
+                "else": {
+                  "properties": {
+                    "basis": {
+                      "enum": [
+                        "observed",
+                        "reproduced"
+                      ]
+                    },
+                    "evidence": {
+                      "minItems": 1
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "domain",
+        "scope",
+        "checks"
+      ],
+      "properties": {
+        "schema": {
+          "const": "security-agent-skills/domain-review-v1"
+        },
+        "domain": {
+          "const": "oauth-integration-review"
+        },
+        "scope": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+        },
+        "checks": {
+          "type": "array",
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "outcome",
+              "basis",
+              "evidence"
+            ],
+            "properties": {
+              "id": {
+                "enum": [
+                  "flow_binding",
+                  "redirect_boundary",
+                  "token_lifecycle",
+                  "account_linking",
+                  "negative_callbacks"
+                ]
+              },
+              "outcome": {
+                "enum": [
+                  "pass",
+                  "fail",
+                  "unknown",
+                  "not_applicable"
+                ]
+              },
+              "basis": {
+                "enum": [
+                  "observed",
+                  "reproduced",
+                  "unknown"
+                ]
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 8,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+                }
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "outcome": {
+                      "const": "unknown"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "basis": {
+                      "const": "unknown"
+                    }
+                  }
+                },
+                "else": {
+                  "properties": {
+                    "basis": {
+                      "enum": [
+                        "observed",
+                        "reproduced"
+                      ]
+                    },
+                    "evidence": {
+                      "minItems": 1
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "domain",
+        "scope",
+        "checks"
+      ],
+      "properties": {
+        "schema": {
+          "const": "security-agent-skills/domain-review-v1"
+        },
+        "domain": {
+          "const": "browser-agent-boundary-review"
+        },
+        "scope": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+        },
+        "checks": {
+          "type": "array",
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "outcome",
+              "basis",
+              "evidence"
+            ],
+            "properties": {
+              "id": {
+                "enum": [
+                  "page_instruction_boundary",
+                  "origin_identity",
+                  "consequential_actions",
+                  "local_resources",
+                  "adversarial_fixture"
+                ]
+              },
+              "outcome": {
+                "enum": [
+                  "pass",
+                  "fail",
+                  "unknown",
+                  "not_applicable"
+                ]
+              },
+              "basis": {
+                "enum": [
+                  "observed",
+                  "reproduced",
+                  "unknown"
+                ]
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 8,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+                }
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "outcome": {
+                      "const": "unknown"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "basis": {
+                      "const": "unknown"
+                    }
+                  }
+                },
+                "else": {
+                  "properties": {
+                    "basis": {
+                      "enum": [
+                        "observed",
+                        "reproduced"
+                      ]
+                    },
+                    "evidence": {
+                      "minItems": 1
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "domain",
+        "scope",
+        "checks"
+      ],
+      "properties": {
+        "schema": {
+          "const": "security-agent-skills/domain-review-v1"
+        },
+        "domain": {
+          "const": "rag-access-boundary-review"
+        },
+        "scope": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+        },
+        "checks": {
+          "type": "array",
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "outcome",
+              "basis",
+              "evidence"
+            ],
+            "properties": {
+              "id": {
+                "enum": [
+                  "ingest_acl",
+                  "query_enforcement",
+                  "cache_citations",
+                  "revocation",
+                  "access_matrix"
+                ]
+              },
+              "outcome": {
+                "enum": [
+                  "pass",
+                  "fail",
+                  "unknown",
+                  "not_applicable"
+                ]
+              },
+              "basis": {
+                "enum": [
+                  "observed",
+                  "reproduced",
+                  "unknown"
+                ]
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 8,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+                }
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "outcome": {
+                      "const": "unknown"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "basis": {
+                      "const": "unknown"
+                    }
+                  }
+                },
+                "else": {
+                  "properties": {
+                    "basis": {
+                      "enum": [
+                        "observed",
+                        "reproduced"
+                      ]
+                    },
+                    "evidence": {
+                      "minItems": 1
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "domain",
+        "scope",
+        "checks"
+      ],
+      "properties": {
+        "schema": {
+          "const": "security-agent-skills/domain-review-v1"
+        },
+        "domain": {
+          "const": "cryptographic-usage-review"
+        },
+        "scope": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+        },
+        "checks": {
+          "type": "array",
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "outcome",
+              "basis",
+              "evidence"
+            ],
+            "properties": {
+              "id": {
+                "enum": [
+                  "purpose_primitive",
+                  "randomness_nonce",
+                  "key_lifecycle",
+                  "verification",
+                  "known_answer_tests"
+                ]
+              },
+              "outcome": {
+                "enum": [
+                  "pass",
+                  "fail",
+                  "unknown",
+                  "not_applicable"
+                ]
+              },
+              "basis": {
+                "enum": [
+                  "observed",
+                  "reproduced",
+                  "unknown"
+                ]
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 8,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+                }
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "outcome": {
+                      "const": "unknown"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "basis": {
+                      "const": "unknown"
+                    }
+                  }
+                },
+                "else": {
+                  "properties": {
+                    "basis": {
+                      "enum": [
+                        "observed",
+                        "reproduced"
+                      ]
+                    },
+                    "evidence": {
+                      "minItems": 1
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "domain",
+        "scope",
+        "checks"
+      ],
+      "properties": {
+        "schema": {
+          "const": "security-agent-skills/domain-review-v1"
+        },
+        "domain": {
+          "const": "security-fix-verification"
+        },
+        "scope": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+        },
+        "checks": {
+          "type": "array",
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "outcome",
+              "basis",
+              "evidence"
+            ],
+            "properties": {
+              "id": {
+                "enum": [
+                  "baseline_reproduction",
+                  "candidate_equivalence",
+                  "variant_coverage",
+                  "legitimate_behavior",
+                  "evidence_identity"
+                ]
+              },
+              "outcome": {
+                "enum": [
+                  "pass",
+                  "fail",
+                  "unknown",
+                  "not_applicable"
+                ]
+              },
+              "basis": {
+                "enum": [
+                  "observed",
+                  "reproduced",
+                  "unknown"
+                ]
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 8,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+                }
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "outcome": {
+                      "const": "unknown"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "basis": {
+                      "const": "unknown"
+                    }
+                  }
+                },
+                "else": {
+                  "properties": {
+                    "basis": {
+                      "enum": [
+                        "observed",
+                        "reproduced"
+                      ]
+                    },
+                    "evidence": {
+                      "minItems": 1
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "domain",
+        "scope",
+        "checks"
+      ],
+      "properties": {
+        "schema": {
+          "const": "security-agent-skills/domain-review-v1"
+        },
+        "domain": {
+          "const": "data-deletion-propagation-review"
+        },
+        "scope": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+        },
+        "checks": {
+          "type": "array",
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "outcome",
+              "basis",
+              "evidence"
+            ],
+            "properties": {
+              "id": {
+                "enum": [
+                  "lineage_inventory",
+                  "deletion_semantics",
+                  "propagation",
+                  "restore_recreation",
+                  "canary_evidence"
+                ]
+              },
+              "outcome": {
+                "enum": [
+                  "pass",
+                  "fail",
+                  "unknown",
+                  "not_applicable"
+                ]
+              },
+              "basis": {
+                "enum": [
+                  "observed",
+                  "reproduced",
+                  "unknown"
+                ]
+              },
+              "evidence": {
+                "type": "array",
+                "maxItems": 8,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+                }
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "outcome": {
+                      "const": "unknown"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "basis": {
+                      "const": "unknown"
+                    }
+                  }
+                },
+                "else": {
+                  "properties": {
+                    "basis": {
+                      "enum": [
+                        "observed",
+                        "reproduced"
+                      ]
+                    },
+                    "evidence": {
+                      "minItems": 1
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

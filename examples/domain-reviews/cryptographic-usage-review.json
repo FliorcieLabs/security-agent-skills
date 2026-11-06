@@ -1,0 +1,6 @@
+{
+  "schema": "security-agent-skills/domain-review-v1",
+  "domain": "cryptographic-usage-review",
+  "scope": "syntheticProject",
+  "checks": []
+}

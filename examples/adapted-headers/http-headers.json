@@ -1,0 +1,18 @@
+{
+  "schema": "security-agent-skills/http-headers-v1",
+  "secure_transport": true,
+  "headers": [
+    {
+      "name": "Strict-Transport-Security",
+      "value": "max-age=300"
+    },
+    {
+      "name": "X-Content-Type-Options",
+      "value": "nosniff"
+    },
+    {
+      "name": "Server",
+      "value": "Synthetic-Server"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "result": "PASS",
+  "scope": "T31 domain workflow expansion, local Windows verification",
+  "validation_date": "2026-11-05",
+  "package_version": "0.1.0a4",
+  "skill_count": 41,
+  "agent_count": 31,
+  "test_count": 124,
+  "test_executions": 248,
+  "python_versions": [
+    "3.11.15",
+    "3.14.6"
+  ],
+  "installed_bundles_per_suite": 164,
+  "generated_files": 1138,
+  "runtime_modules": 19,
+  "mcp_tools": 4,
+  "ci_required": false,
+  "github_actions_enabled": false,
+  "native_host_sessions_tested_for_new_skills": false,
+  "checks": [
+    {
+      "command": "python -m unittest discover -s tests -t . -v",
+      "result": "PASS",
+      "evidence": "124 tests on Windows Python 3.14.6, 65.828 seconds"
+    },
+    {
+      "command": "python3.11 -m unittest discover -s tests -t . -v",
+      "result": "PASS",
+      "evidence": "124 tests on Windows Python 3.11.15, 53.022 seconds; explicit managed interpreter"
+    },
+    {
+      "command": "python -m ruff check src scripts tests",
+      "result": "PASS",
+      "evidence": "PASS"
+    },
+    {
+      "command": "python -m mypy src",
+      "result": "PASS",
+      "evidence": "19 source files"
+    },
+    {
+      "command": "python -m black --check src scripts tests",
+      "result": "PASS",
+      "evidence": "45 files"
+    },
+    {
+      "command": "python scripts/validate_skills.py",
+      "result": "PASS",
+      "evidence": "41 skills, 31 profiles"
+    },
+    {
+      "command": "python scripts/validate_specs.py",
+      "result": "PASS",
+      "evidence": "32 requirements"
+    },
+    {
+      "command": "python scripts/build_skills.py --check",
+      "result": "PASS",
+      "evidence": "1138 generated files"
+    },
+    {
+      "command": "python -m build --outdir <temporary-build-root>/dist",
+      "result": "PASS",
+      "evidence": "sdist and wheel built with isolated build dependencies"
+    },
+    {
+      "command": "python <temporary-build-root>/scripts/package_smoke.py",
+      "result": "PASS",
+      "evidence": "offline installed wheel; all 15 domain examples, existing CLI/header/MCP paths"
+    },
+    {
+      "command": "jsonschema Draft202012Validator + domain records",
+      "result": "PASS",
+      "evidence": "105 positive/negative cases"
+    },
+    {
+      "command": "relative Markdown link check",
+      "result": "PASS",
+      "evidence": "237 relative links before final evidence documentation additions"
+    },
+    {
+      "command": "benchmark_assurance.benchmark() == recorded JSON",
+      "result": "PASS",
+      "evidence": "exact match, updated 41-entry document selection"
+    },
+    {
+      "command": "benchmark_header_output.benchmark(cl100k_base) == recorded JSON",
+      "result": "PASS",
+      "evidence": "exact match; header token metrics unchanged"
+    },
+    {
+      "command": "gh api actions/permissions and branches/main/protection",
+      "result": "PASS",
+      "evidence": "Actions disabled, required status checks null, one approving review"
+    }
+  ],
+  "historical_validation": "validation-t30.json",
+  "limitations": [
+    "Python 3.12 and 3.13 were not rerun for this expansion; their recorded T30 results cover the previous revision.",
+    "Linux, macOS, and native interactive Claude/Codex/Cursor/Copilot sessions were not exercised for the additions.",
+    "The new helper validates declared evidence consistency, not target security, exploitability, evidence truth, or permission.",
+    "No release, package publication, main merge, or CI enablement is part of this change."
+  ]
+}

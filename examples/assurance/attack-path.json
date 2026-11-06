@@ -1,0 +1,32 @@
+{
+  "schema": "security-agent-skills/attack-path-v1",
+  "nodes": [
+    "entry",
+    "agent",
+    "vault"
+  ],
+  "entries": [
+    "entry"
+  ],
+  "assets": [
+    "vault"
+  ],
+  "edges": [
+    {
+      "id": "retrieval",
+      "from": "entry",
+      "to": "agent",
+      "state": "open",
+      "evidence": [
+        "reviewA"
+      ]
+    },
+    {
+      "id": "readVault",
+      "from": "agent",
+      "to": "vault",
+      "state": "unknown",
+      "evidence": []
+    }
+  ]
+}

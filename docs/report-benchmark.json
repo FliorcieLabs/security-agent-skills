@@ -1,0 +1,18 @@
+{
+  "fixture_findings": 1000,
+  "console_findings": 20,
+  "full_json_bytes": 267150,
+  "compact_json_bytes": 4335,
+  "bytes_reduction_percent": 98.38,
+  "token_counts": {
+    "encoding": "cl100k_base",
+    "tiktoken_version": "0.14.0",
+    "full": 78487,
+    "compact": 1157,
+    "reduction_percent": 98.53
+  },
+  "limitations": [
+    "Synthetic report only. Context, model billing, hidden prompts, and real-project savings are not measured.",
+    "Bounded console output retains total counts, coverage, limitations, and an omitted-findings count; full evidence remains available separately."
+  ]
+}

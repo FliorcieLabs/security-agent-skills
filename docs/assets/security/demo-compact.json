@@ -1,0 +1,48 @@
+{
+  "coverage": {
+    "bytes_read": 139,
+    "files_read": 1,
+    "runtime_observed": false,
+    "skipped": [
+      {
+        "path": ".env",
+        "reason": "credential-file-excluded"
+      }
+    ],
+    "skipped_count": 1,
+    "snapshot_atomic": false,
+    "text_bytes_admitted": 139
+  },
+  "details": {},
+  "finding_count": 3,
+  "findings": [
+    {
+      "confidence": "review-lead",
+      "id": "11d73ed8a16a8a6c",
+      "line": 1,
+      "message": "Sensitive input access; trace its consumers without printing values.",
+      "path": "agent.txt",
+      "rule": "sensitive-source",
+      "severity": "review"
+    },
+    {
+      "confidence": "review-lead",
+      "id": "2e7b8be93777afe0",
+      "line": 2,
+      "message": "Network client call; inspect destination, payload, trigger, and redirects.",
+      "path": "agent.txt",
+      "rule": "outbound-client",
+      "severity": "review"
+    }
+  ],
+  "limitations": [
+    "Static review leads require manual source-to-sink confirmation.",
+    "No runtime, dependency execution, advisory lookup, or network capture was performed.",
+    "Missing indicators do not establish safety. Symlinks and concurrent replacement cannot be fully attested on every host."
+  ],
+  "omitted_findings": 1,
+  "result": "PARTIAL",
+  "schema": "security-agent-skills/report-v1",
+  "scope": "<synthetic-demo>",
+  "workflow": "agent-egress-audit"
+}
