@@ -46,3 +46,10 @@ Constraints: no text, no letters, no numbers, no checkmark, no product UI, no th
 ```
 
 The banner PNG is included as generated. The demo graphics are rendered independently with Pillow; they do not modify the generated banner. The assets and renderer are distributed with this repository under its [MIT license](../../../LICENSE).
+# Original identity and workflow artwork
+
+The README hero, seven SVG icons, and workflow illustration are original geometric artwork created for this repository. They do not reuse the reference project's logos, animal illustrations, or screenshots. The hero's 41 skills, 31 profiles, and four MCP tools describe the current catalog; update the renderer if those counts change.
+
+Source: [render_identity.py](render_identity.py). Run `python docs/assets/security/render_identity.py` from the repository root with the optional Pillow authoring dependency. It uses Segoe UI on Windows or DejaVu Sans on Linux and fails if neither is available. It makes no network requests. Font metrics can differ by system; inspect regenerated images before committing.
+
+Outputs: `fliorcie-security-hero.png` (1600 by 640), `security-workflow.png` (1600 by 520), and seven `icon-*.svg` files (64 by 64). Images are documentation illustrations, not product screenshots or evidence of live assistant compatibility. Their English text has equivalent descriptions in the translated introductions. Artwork and renderer are covered by the repository's MIT license. Fonts are referenced from the local system and are not redistributed.
