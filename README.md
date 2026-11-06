@@ -1,35 +1,62 @@
+<p align="center"><a href="https://github.com/FliorcieLabs">FLIORCIE LABS</a></p>
+
 # Security Agent Skills
 
-![Security Agent Skills: a circuit-node shield on a dark navy background](docs/assets/security/security-banner.png)
+![Security Agent Skills by Fliorcie Labs: 41 skills, 31 agent profiles, four MCP tools, public preview](docs/assets/security/fliorcie-security-hero.png)
+
+<p align="center">English · <a href="README.ja.md">日本語</a> · <a href="README.zh-CN.md">简体中文</a> · <a href="README.ko.md">한국어</a> · <a href="README.hi.md">हिन्दी</a> · <a href="README.es.md">Español</a></p>
+
+Translated introductions: [scope and review status](docs/translations.md).
 
 **Review the risk. Rehearse the boundary. Check whether the fix holds.**
 
 [![MIT and Apache-2.0](https://img.shields.io/badge/license-MIT%20%2B%20Apache--2.0-blue.svg)](THIRD_PARTY_NOTICES.md)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-blue.svg)](pyproject.toml)
+[![Public preview](https://img.shields.io/badge/status-public%20preview-d6a64b.svg)](docs/release-readiness.md)
 
 Forty-one local skills and thirty-one portable agent profiles for security review and internal agent operations. Inspect unfamiliar AI tooling, review project boundaries, plan bounded tasks, prepare handoffs, checkpoint context, and review tool or retry proposals before execution.
 
 **No API key. No runtime Python dependencies. No telemetry. No source upload.** Analysis helpers read bounded local inputs without importing or executing reviewed code.
 
-**Release status: 0.1.0a4 development preview.** The earlier 0.1.0a1 draft remains pinned to its earlier source revision; these additions are not a published release. GitHub Actions is disabled, workflow files are removed, and no CI check is required to merge. Verification is local; independent review remains required. See the [development preview notes](docs/releases/0.1.0a4.md) and [release assessment](docs/release-readiness.md) for tested scope and limits.
+**Release status: 0.1.0a4 development preview, available on main.** No stable release or universal assistant compatibility is claimed. GitHub Actions is disabled and no CI check is required. See the [development preview notes](docs/releases/0.1.0a4.md) and [release assessment](docs/release-readiness.md) for tested scope and limits. Translated introductions cover setup and boundaries; the English documentation contains the complete catalog and contracts.
 
-[Quick start](#start-with-one-folder) | [Demo](#see-a-local-review) | [Security skills](#choose-the-security-question) | [Additional domains](#additional-security-domains) | [Agent operations](#internal-agent-operations) | [Install](#install-for-your-assistant) | [31 agents](#portable-agent-profiles) | [Limits](#privacy-and-limits) | [Contribute](CONTRIBUTING.md)
+[Quick start](#start-with-one-folder) | [Demo](#see-a-local-review) | [Security skills](#choose-the-security-question) | [Additional domains](#additional-security-domains) | [Agent operations](#internal-agent-operations) | [Install](#install-for-your-assistant) | [31 agents](#portable-agent-profiles) | [Fliorcie Labs suite](#the-fliorcie-labs-suite) | [Limits](#privacy-and-limits) | [Contribute](CONTRIBUTING.md)
 
 Use it before installing an unfamiliar agent package, granting an MCP server access, accepting a dependency change, or sharing a security finding. Start with one question and one skill. Review the referenced source before deciding what to allow or fix.
 
 ## Start with one folder
 
-The implementation is on `integ` while its protected-main pull request is under review:
+The complete public preview is available on `main`:
 
 ```sh
-git clone --branch integ https://github.com/FliorcieLabs/security-agent-skills.git
+git clone https://github.com/FliorcieLabs/security-agent-skills.git
 cd security-agent-skills
 python scripts/security_check.py egress ../my-project --format markdown --max-findings 5
 ```
 
 Replace `../my-project` with an existing project folder. Python 3.11+ is required; use `python3` or `py -3` if that is your interpreter command. Static scans return **exit 3, PARTIAL**, including when they find no indicators. This is an intentional evidence status, not a crashed command.
 
+## Three ways to use it
+
+| Use | What you get | Requirements |
+|---|---|---|
+| <img src="docs/assets/security/icon-skills.svg" width="40" height="40" alt="Review checklist" /> Skills | 41 focused review procedures with bundled local helpers | SKILL.md discovery or manual Markdown loading |
+| <img src="docs/assets/security/icon-agents.svg" width="40" height="40" alt="Agent role" /> Agent profiles | 31 roles with scope and evidence rules | An assistant that accepts Markdown instructions |
+| <img src="docs/assets/security/icon-mcp.svg" width="40" height="40" alt="Tool connection" /> MCP | Four bounded record-analysis tools over stdio | A compatible stdio client and Python 3.11+ |
+
+Start with Egress Audit for unfamiliar packages, MCP Authority Review for tool access, or Security Fix Verification for a patch. Load only the relevant skill. Local helper execution and installation layouts are tested; live discovery in every assistant is not verified. [Compatibility matrix](docs/compatibility.md).
+
+Example request:
+
+> Use Agent Egress Audit on this project. Keep the review local. Show outbound data-flow leads with file and line evidence, list skipped scope, and preserve unknowns. Do not execute the package being reviewed.
+
+Planning a directory listing? Use the [submission kit](docs/directory-submission.md). This is a public preview, not a stable release or a guarantee of universal native compatibility.
+
 ## See a local review
+
+![Review workflow: choose one skill, inspect bounded local input, review source leads and skipped scope, then record the next decision. Static leads remain PARTIAL.](docs/assets/security/security-workflow.png)
+
+Choose one question, inspect bounded input, review the source evidence, and record the next action. The illustration describes the workflow; it is not an application screenshot. The animation below presents actual CLI results from synthetic inputs.
 
 ![Animated synthetic egress review: inspect inert text, find three review leads, show two with one omitted, report one skipped file, and retain PARTIAL coverage](docs/assets/security/security-demo.gif)
 
@@ -241,7 +268,7 @@ Keep a follow-up small: pass the saved report, relevant finding IDs, and the sou
 
 ## One result contract
 
-Every report uses [`security-agent-skills/report-v1`](schemas/report-v1.schema.json), retaining workflow, scope, findings, coverage, limitations, and details. Findings have stable IDs, rule names, source locations, and confidence. Lexical matches are review leads, not confirmed vulnerabilities.
+Full analysis reports use [`security-agent-skills/report-v1`](schemas/report-v1.schema.json), retaining workflow, scope, findings, coverage, limitations, and details. Header commands default to a distinct brief schema; snapshot and fixture commands can emit other data contracts. Findings have stable IDs, rule names, source locations, and confidence. Lexical matches are review leads, not confirmed vulnerabilities.
 
 | Exit | Result | Meaning |
 |---|---|---|
@@ -282,6 +309,20 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for lint, types, formatting, build, and i
 
 Documentation artwork and demo sources live in [docs/assets/security](docs/assets/security/README.md). They are local assets, so the README does not depend on a third-party GIF host. The optional Pillow renderer is for documentation authors only; it is not a runtime dependency.
 
-`integ` is the development branch. `main` remains protected, including for administrators, and requires independent review. The required CI check has been removed. No release or merge is automatic. See [branch policy](docs/branch-policy.md).
+`main` contains the public preview; `integ` is the development branch. Protection was restored after the maintainer-authorized merge. The required CI check has been removed. No release or merge is automatic. See [branch policy](docs/branch-policy.md).
+
+## The Fliorcie Labs suite
+
+Public projects for local agent review, telemetry, and reproducible evidence. Each repository defines its own license, setup, status, and limits. These links do not imply that the projects are installed together or that integrations have been verified.
+
+| | Project | What it provides | Source and documentation |
+|---|---|---|---|
+| <img src="docs/assets/security/icon-skills.svg" width="40" height="40" alt="Security reviews" /> | **Security Agent Skills** | 41 review skills, 31 Markdown profiles, and four optional MCP record tools. Development preview. | [GitHub](https://github.com/FliorcieLabs/security-agent-skills) · [Get started](#start-with-one-folder) |
+| <img src="docs/assets/security/icon-witness.svg" width="40" height="40" alt="Local observation" /> | **LLMWitness Community** | Local telemetry for single-user localhost development, best-effort pattern scrubbing, and local tamper-evident receipts. | [GitHub](https://github.com/FliorcieLabs/LLMWitness) · [Documentation](https://github.com/FliorcieLabs/LLMWitness#readme) |
+| <img src="docs/assets/security/icon-bench.svg" width="40" height="40" alt="Benchmark bars" /> | **Fliorcie Bench** | Local benchmark and conformance records with scenario outcomes, environment, and limitations. | [GitHub](https://github.com/FliorcieLabs/fliorcie-bench) · [Documentation](https://github.com/FliorcieLabs/fliorcie-bench#readme) |
+| <img src="docs/assets/security/icon-evidence.svg" width="40" height="40" alt="Evidence document" /> | **Evidence Bundle Verifier** | Offline shape and integrity checks for exported local evidence bundles. Internal consistency does not establish external truth. | [GitHub](https://github.com/FliorcieLabs/fliorcie-evidence-bundle-verifier) · [Documentation](https://github.com/FliorcieLabs/fliorcie-evidence-bundle-verifier#readme) |
+| <img src="docs/assets/security/icon-adapter.svg" width="40" height="40" alt="Adapter connection" /> | **Provider Adapter Kit** | An adapter protocol and local conformance fixtures for duplicate dispatch, response loss, stale verification, and compensation failure. No live provider calls. | [GitHub](https://github.com/FliorcieLabs/fliorcie-provider-adapter-kit) · [Documentation](https://github.com/FliorcieLabs/fliorcie-provider-adapter-kit#readme) |
+
+Explore the [Fliorcie Labs public organization](https://github.com/FliorcieLabs). Cloud and Enterprise offerings are not advertised here as available products. Community receipts are ordinary local files, not immutable storage or compliance certification.
 
 Original Fliorcie-authored code is MIT licensed. Two adapted helper modules retain Apache-2.0 licensing and original attribution. Standalone bundles carry both licenses and [third-party notices](THIRD_PARTY_NOTICES.md). [Portfolio estimates](docs/portfolio.md) are hypotheses, not promises of adoption.

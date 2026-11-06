@@ -1,5 +1,21 @@
 # Release readiness assessment
 
+## Current assessment: November 6, 2026
+
+PARTIAL: suitable for public preview distribution with documented limits. A stable release or universal native assistant compatibility claim is not supported.
+
+The current main branch contains 41 skills, 31 portable Markdown profiles, and four optional stdio MCP tools. Source revision 187e2d71a9941b55e6c2189d399071e5fcd49493 was merged by PR #1 as 41a9e03be2ce76fcf95849ecac4f925ea0999573. The maintainer authorized the administrator override; protection was restored afterward. No new public release or package was published by the merge.
+
+T31 records 124 tests passing on each of Windows Python 3.11.15 and 3.14.6, including 41 bundles across four installation layouts per suite. Catalog, generated bundle, lint, type, format, schema, build, and offline wheel checks passed for that expansion. T30 records earlier independent MCP SDK verification. See [.specs/evidence.md](../.specs/evidence.md) for exact revision scope. These are recorded checks, not new executions implied by this document.
+
+Directory-layout tests do not prove native discovery or model behavior. Live sessions for all 41 skills, other assistants, Linux, and current macOS remain unverified. Fifteen domain procedures have declared-evidence helpers, not automatic project scanners. MCP exposes four record operations, not every skill. Original MIT and adapted Apache-2.0 notices remain required.
+
+Use the complete source repository for skill installation. A wheel provides the CLI runtime, not all skill folders. GitHub Actions remains disabled and no CI check is required. See [compatibility](compatibility.md) and the [directory submission kit](directory-submission.md).
+
+## Historical assessments
+
+The sections below retain earlier counts, branch state, and verification scope for provenance. Their pending-merge statements and release prerequisites are historical and do not describe the current main branch.
+
 Latest development preview: 0.1.0a4, with renamed header skills, brief console output, preserved full evidence, and combined local header review. Current checks are T29 in [.specs/evidence.md](../.specs/evidence.md). [Preview notes](releases/0.1.0a4.md).
 
 Latest development preview: 0.1.0a3, with 26 skills, 16 profiles, and two explicitly attributed offline adaptations. Current evidence is T28 in [.specs/evidence.md](../.specs/evidence.md). Mixed MIT and Apache-2.0 licensing is recorded in [notices](../THIRD_PARTY_NOTICES.md); earlier assessments below retain their historical source scope. [0.1.0a3 notes](releases/0.1.0a3.md).
